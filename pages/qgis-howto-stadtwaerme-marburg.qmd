@@ -22,12 +22,14 @@ execute:
 
 # Ziel
 
-Dieser Ablauf bildet den Kern des automatisierten QGIS-Pakets manuell nach: **Luftbild und Oberflächentemperatur werden in QGIS überlagert und auf räumliche Muster geprüft.** Für die Minimalversion werden keine automatische Oberflächenklassifikation, kein R-Workflow und keine Printlayouts benötigt.
+**Quellrepository:** [OGERHub / KlimaResilienzSchule](https://github.com/OGERHub/KlimaResilienzSchule) · [Summer in the City: Skripte und Datenverarbeitung](https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city/scripts)
+
+Dieser Ablauf bildet den Kern des automatisierten QGIS-Pakets manuell nach: **Luftbild und Oberflächentemperatur werden in QGIS überlagert und auf räumliche Muster geprüft.** Im QGIS-Teil werden ein fertiges LST-Quantilraster und ein RGB-Luftbild verwendet. Die Datenvorverarbeitung liegt vor diesem Arbeitsschritt.
 
 Das Ergebnis ist ein QGIS-Projekt mit zwei Rasterebenen und einer selbst gezeichneten Erwartungsebene.
 
 ::: {.callout-important}
-Die Skripte im Repository verwenden **Landsat 8/9 Collection 2 Level-2** für die Oberflächentemperatur. Der hier beschriebene Ein-Szenen-Weg folgt derselben Datenidee, erzeugt aber nicht das automatisierte Hot-q90-Komposit aus zehn Szenen. Er ist eine minimale manuelle Modellübung.
+Verwendet wird das **fertige Hot-q90-GeoTIFF** des Materialworkflows. Es enthält bereits Oberflächentemperaturen in °C. In QGIS werden weder einzelne Satellitenszenen heruntergeladen noch DN-Werte umgerechnet.
 :::
 
 # Was du brauchst
@@ -35,7 +37,7 @@ Die Skripte im Repository verwenden **Landsat 8/9 Collection 2 Level-2** für di
 | Eingabe | Quelle | Verwendung |
 |---|---|---|
 | RGB-Luftbild für Marburg | [Hessen DOP-WMS](https://hvbg.hessen.de/geoinformation/geodateninfrastruktur/geoportal-hessen/geodatendienste-im-originaeren-format) | Oberflächen erkennen und Erwartungen einzeichnen |
-| Landsat-Wärmeband `ST_B10` | [USGS EarthExplorer](https://earthexplorer.usgs.gov/) | Oberflächentemperatur in °C berechnen |
+| Fertiges LST-Hot-q90-GeoTIFF für Marburg | bereitgestellte Ausgabe des Materialworkflows | obere Temperaturtendenz der ausgewählten heißen Szenen vergleichen |
 
 Installiertes QGIS: [QGIS herunterladen](https://qgis.org/download/).
 
@@ -45,8 +47,7 @@ Arbeitsordner anlegen:
 marburg_stadtwaerme/
 ├── daten/
 │   ├── marburg_luftbild.tif
-│   ├── landsat_st_b10.tif
-│   └── marburg_lst_celsius.tif
+│   └── marburg_LST_hot_q90_C_EPSG25832.tif
 ├── erwartungen.gpkg
 └── marburg_stadtwaerme.qgz
 ```
@@ -70,45 +71,40 @@ In QGIS:
 
 Quellenangabe für Karte und Projekt: **© Hessische Verwaltung für Bodenmanagement und Geoinformation (HVBG)**. Ergänze das Aufnahmejahr, wenn es in den Metadaten angezeigt wird.
 
-# 2. Landsat-Wärmeband herunterladen
+# 2. Fertiges Wärmebild übernehmen
 
-Die Skripte suchen Landsat-8/9-Level-2-Szenen aus den Sommermonaten und berechnen aus dem thermischen Produkt die Landoberflächentemperatur. Für den manuellen Einstieg genügt eine einzelne wolkenarme Szene.
-
-1. [USGS EarthExplorer](https://earthexplorer.usgs.gov/) öffnen und den Bereich um Marburg suchen. Das Stadtzentrum liegt ungefähr bei **50,81° N, 8,77° E**.
-2. Sommerzeitraum einstellen und bei den Ergebnissen auf möglichst geringe Wolkenbedeckung achten.
-3. Unter **Data Sets → Landsat → Landsat Collection 2 Level-2** den Datensatz **Landsat 8-9 OLI/TIRS C2 L2** auswählen.
-4. Eine Szene wählen, die Marburg vollständig abdeckt. Datum, Szenen-ID und Wolkenanteil notieren.
-5. Das Band **Surface Temperature (`ST_B10`)** herunterladen. EarthExplorer kann Level-2-Bänder einzeln anbieten; falls nur das Produktarchiv erscheint, das `ST_B10`-GeoTIFF daraus entpacken.
-
-Quellen zur Produktauswahl und Umrechnung:
-
-- [USGS: Landsat Collection 2 Level-2-Produkte](https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products)
-- [USGS: Landsat Collection 2 Surface Temperature](https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature)
-
-# 3. Temperatur in QGIS berechnen
-
-Das Level-2-Band enthält gespeicherte Integerwerte (`DN`). Der USGS-Skalierungsfaktor lautet:
-
-$$
-T_{°C} = DN \times 0{,}00341802 + 149{,}0 - 273{,}15
-$$
-
-In QGIS:
-
-1. `ST_B10` als Rasterlayer laden.
-2. **Raster → Rasterrechner…** öffnen.
-3. Den Bandnamen aus der Layerliste doppelt anklicken und diesen Ausdruck eingeben; den Beispielnamen durch den vollständigen Layernamen ersetzen:
+Benötigt wird die **für Marburg erzeugte** Datei:
 
 ```text
-if("landsat_st_b10@1" = 0, 0 / 0,
-   "landsat_st_b10@1" * 0.00341802 + 149.0 - 273.15)
+marburg_LST_hot_q90_C_EPSG25832.tif
 ```
 
-4. Ausgabe als Float-GeoTIFF speichern: `daten/marburg_lst_celsius.tif`.
-5. Prüfen, dass Fill-Pixel (`DN = 0`) als NoData erscheinen und keine großen Flächen mit unplausiblen Werten enthalten sind.
-6. In **Layereigenschaften → Symbolisierung** `Einkanal-Pseudofarbe` wählen. Einen Farbverlauf von kühl nach warm verwenden, anhand der tatsächlichen Werte klassifizieren und die Legende mit **Oberflächentemperatur (°C)** beschriften.
+Im Skriptworkflow liegen die fertigen, projizierten Temperaturprodukte unter:
 
-Die thermische Beobachtung von Landsat 8/9 hat eine räumliche Auflösung von 100 m und wird auf ein 30-m-Raster gebracht. Das 30-m-Raster bedeutet deshalb keine 30-m-Thermalmessung. Kleine Dächer, Einzelbäume und schmale Straßen lassen sich nicht zuverlässig einzeln unterscheiden.
+```text
+data/landsat_lst/<gebiet>/05_teaching_layers/projected_lst/
+```
+
+Das vorhandene Köln-Beispiel heißt `koeln_LST_hot_q90_C_EPSG25832.tif`. Es deckt Köln ab und kann nicht durch Umbenennen für Marburg verwendet werden.
+
+**Bereitstellung:** Das Marburger GeoTIFF muss aus einer für Marburg durchgeführten Materialproduktion bereitgestellt werden. Das verlinkte Repository enthält im Demo-ZIP nur Druck-PDFs; ein direkter Download des Marburger Quantilrasters ist dort nicht hinterlegt. Für diese Übung muss daher das fertige GeoTIFF zusammen mit der Anleitung ausgegeben werden.
+
+Datei herunterladen bzw. aus dem bereitgestellten Materialordner kopieren und unter `daten/` ablegen. Die ursprüngliche Datei unverändert behalten. Zeitraum, Auswahl der Szenen und Quantil aus den begleitenden Metadaten notieren.
+
+# 3. Wärmebild in QGIS darstellen
+
+1. Das fertige Hot-q90-GeoTIFF in QGIS ziehen oder über **Layer → Layer hinzufügen → Rasterlayer hinzufügen** öffnen.
+2. Über **Eigenschaften → Information** KBS, Ausdehnung und Pixelgröße prüfen. Das Raster muss Marburg abdecken.
+3. Unter **Symbolisierung → Einkanal-Pseudofarbe** Band 1 auswählen.
+4. Einen Farbverlauf von kühl nach warm verwenden und die tatsächlichen Min-/Max-Werte laden. Für den Einstieg fünf gleich breite Temperaturklassen einstellen.
+5. Layername: **LST Hot-q90 (°C)**. NoData transparent lassen.
+6. Den Wärmebildlayer über dem Luftbild anordnen. Für das Erkennen der Temperaturmuster zunächst 100 % Deckkraft verwenden; zum räumlichen Zuordnen zeitweise ausblenden oder die Deckkraft reduzieren.
+
+**Keine Skalierung im Rasterrechner:** Die Kennzeichnung `_C_` im Dateinamen bezeichnet im verlinkten Workflow bereits Grad Celsius. Eine erneute Anwendung des Landsat-Skalierungsfaktors würde die Werte verfälschen.
+
+**Bedeutung des Produkts:** Im Skript werden Szenen nach ihrem gebietsweiten q90-Temperaturwert sortiert. Aus den ausgewählten heißen Szenen wird anschließend für jede Rasterzelle das zeitliche q90 berechnet. Das fertige Raster zeigt somit keinen einzelnen Aufnahmetag; benachbarte Zellen können durch unterschiedliche Termine geprägt sein.
+
+Die thermische Landsat-8/9-Auflösung beträgt etwa 100 m; das Produkt wird auf einem 30-m-Raster geliefert. Ein feineres Darstellungsraster erzeugt keine zusätzlichen thermischen Details.
 
 # 4. Erwartung im Luftbild einzeichnen
 
@@ -140,21 +136,20 @@ Für jede Fläche festhalten:
 
 Die zentrale Frage lautet: **Wo stimmen die aus Oberflächen und Stadtstruktur abgeleiteten Erwartungen mit der Temperaturkarte überein – und wo nicht?**
 
-LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Eine einzelne Landsat-Aufnahme ist außerdem eine Momentaufnahme und hängt von Aufnahmetag, Tageszeit, Bewölkung und Oberflächenzustand ab.
+LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Das Hot-q90-Komposit beschreibt eine obere Temperaturtendenz der ausgewählten Szenen. Es zeigt weder gleichzeitige Temperaturen an einem bestimmten Tag noch das zeitliche Maximum jeder Zelle.
 
-# Was wird aus dem Skriptworkflow weggelassen?
+# Bezug zum Skriptworkflow
 
-| Skriptworkflow | Minimale QGIS-Version |
+| Im Materialworkflow vorbereitet | Im manuellen QGIS-Weg |
 |---|---|
-| Viele Landsat-Szenen suchen, maskieren und auswerten | eine wolkenarme Landsat-Szene auswählen |
-| Zehn Szenen nach gebietsweitem `q90_C` sortieren | keine automatische Szenenauswahl |
-| Pixelweises Hot-q90-Komposit erstellen | Einzeltermin in °C umrechnen |
-| CIR-WMS abrufen und Vegetation/Wasser/Versiegelung klassifizieren | RGB-Luftbild visuell interpretieren |
-| AOI, Teaching-Layer, QGIS-Projekt und Printlayouts automatisch erzeugen | Ausschnitt und Erwartungsflächen manuell in QGIS anlegen |
+| Landsat-Szenen laden, nach QA maskieren und in °C umrechnen | fertiges Temperatur-GeoTIFF laden |
+| Heiße Szenen auswählen und pixelweises q90 berechnen | vorhandenes Hot-q90-Produkt darstellen |
+| CIR-Oberflächenmaske klassifizieren | Oberflächen im RGB-Luftbild selbst interpretieren |
+| Projekt und Printlayouts automatisch erzeugen | Layer anordnen, Erwartungen digitalisieren und Projekt speichern |
 
-Damit wird die **Modelllogik** nachgebildet: Oberflächenstruktur führt zu einer Erwartung; die Wärmeebene prüft diese Erwartung. Das q90-Produkt der Skripte wird dabei nicht reproduziert. Dafür wären mehrere Szenen, QA-Maskierung, Szenenranking und eine pixelweise Quantilberechnung erforderlich.
+Damit bleibt die thermische Datengrundlage des automatisierten Workflows erhalten. Manuell nachgebildet werden die **räumliche Interpretation, die Erwartung und ihr Abgleich mit dem fertigen Wärmebild**.
 
-Die verlinkten Skripte sind auf die **Köln-Demo** eingestellt. Für Marburg werden hier der hessische Luftbilddienst und ein Marburger Untersuchungsraum verwendet; die Landsat-Auswahl erfolgt manuell.
+Die verlinkten Skripte verwenden die STAC-Collection `landsat-c2-l2` mit Einzelaufnahmen. **Median, q10 und q90 werden dort lokal berechnet; ein fertig bezogenes q95-Zeitreihenprodukt ist in diesem Skript nicht enthalten.** Maßgeblich sind die Funktionen `build_extreme_products()` und `terra::app()` im Hauptskript. Ein anderes fertiges Quantilprodukt kann ebenfalls verwendet werden, muss aber mit seinem tatsächlichen Quantil, Zeitraum, seiner Szenenauswahl und Einheit gekennzeichnet werden.
 
 # Quellen und weitere Informationen
 
@@ -162,5 +157,4 @@ Die verlinkten Skripte sind auf die **Köln-Demo** eingestellt. Für Marburg wer
 - [Technisches Hauptskript: Landsat-LST und Oberflächenmaske](https://github.com/OGERHub/KlimaResilienzSchule/blob/main/04-summer-in-the-city/scripts/landsat_lst_mit_dop_cir_oberflaechenmaske.R)
 - [QGIS-Projekterzeugung im Skriptpaket](https://github.com/OGERHub/KlimaResilienzSchule/blob/main/04-summer-in-the-city/scripts/create_qgis_project.py)
 - [Hessen: Orthophotos und TrueDOP](https://hvbg.hessen.de/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-true-orthophoto)
-- [USGS EarthExplorer](https://earthexplorer.usgs.gov/)
-- [USGS: Skalierung der Landsat-Level-2-Daten](https://www.usgs.gov/faqs/how-do-i-use-a-scale-factor-landsat-level-2-science-products)
+- [USGS: Landsat Collection 2 Surface Temperature](https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature)

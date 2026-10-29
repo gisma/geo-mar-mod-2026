@@ -420,7 +420,7 @@ background: ../images/01-splash.png;
 <section id="ziel" class="level1">
 <h1>Ziel</h1>
 <p><strong>Quellrepository:</strong> <a href="https://github.com/OGERHub/KlimaResilienzSchule">OGERHub / KlimaResilienzSchule</a> · <a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city/scripts">Summer in the City: Skripte und Datenverarbeitung</a></p>
-<p>Dieser Ablauf bildet den Kern des automatisierten QGIS-Pakets manuell nach: <strong>Luftbild und Oberflächentemperatur werden in QGIS überlagert und auf räumliche Muster geprüft.</strong> Im QGIS-Teil werden ein fertiges LST-Quantilraster und ein RGB-Luftbild verwendet. Die Datenvorverarbeitung liegt vor diesem Arbeitsschritt.</p>
+<p>Dieser Ablauf bildet den Kern des automatisierten QGIS-Pakets manuell nach: <strong>Luftbild und Oberflächentemperatur werden in QGIS überlagert und auf räumliche Muster geprüft.</strong> Verwendet werden ein frei herunterladbares Landsat-LST-Sommermittel für Deutschland und ein RGB-Luftbild. Aus dem Temperaturdatensatz wird in QGIS der Ausschnitt für Marburg gespeichert.</p>
 <p>Das Ergebnis ist ein QGIS-Projekt mit zwei Rasterebenen und einer selbst gezeichneten Erwartungsebene.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -432,7 +432,7 @@ Important
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Verwendet wird das <strong>fertige Hot-q90-GeoTIFF</strong> des Materialworkflows. Es enthält bereits Oberflächentemperaturen in °C. In QGIS werden weder einzelne Satellitenszenen heruntergeladen noch DN-Werte umgerechnet.</p>
+<p><strong>Direkter Datendownload:</strong> <a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">DLR-LST-Sommermittel 2021–2025 als GeoTIFF herunterladen (ca. 1,3 GiB)</a>. Das Raster umfasst Deutschland einschließlich Marburg und enthält bereits °C. Es handelt sich um einen zeitlichen Mittelwert, nicht um ein q90- oder q95-Produkt.</p>
 </div>
 </div>
 </section>
@@ -453,9 +453,9 @@ Important
 <td>Oberflächen erkennen und Erwartungen einzeichnen</td>
 </tr>
 <tr class="even">
-<td>Fertiges LST-Hot-q90-GeoTIFF für Marburg</td>
-<td>bereitgestellte Ausgabe des Materialworkflows</td>
-<td>obere Temperaturtendenz der ausgewählten heißen Szenen vergleichen</td>
+<td>Landsat-LST-Sommermittel 2021–2025, Deutschland</td>
+<td><a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">GeoTIFF direkt herunterladen</a></td>
+<td>Marburg ausschneiden und sommerliche Temperaturmuster vergleichen</td>
 </tr>
 </tbody>
 </table>
@@ -464,7 +464,8 @@ Important
 <pre class="text"><code>marburg_stadtwaerme/
 ├── daten/
 │   ├── marburg_luftbild.tif
-│   └── marburg_LST_hot_q90_C_EPSG25832.tif
+│   ├── Germany_LST_summer_2021-2025_mean.tif
+│   └── marburg_lst_sommermittel_2021-2025.tif
 ├── erwartungen.gpkg
 └── marburg_stadtwaerme.qgz</code></pre>
 </section>
@@ -487,29 +488,71 @@ Important
 </ol>
 <p>Quellenangabe für Karte und Projekt: <strong>© Hessische Verwaltung für Bodenmanagement und Geoinformation (HVBG)</strong>. Ergänze das Aufnahmejahr, wenn es in den Metadaten angezeigt wird.</p>
 </section>
-<section id="fertiges-wärmebild-übernehmen" class="level1">
-<h1>2. Fertiges Wärmebild übernehmen</h1>
-<p>Benötigt wird die <strong>für Marburg erzeugte</strong> Datei:</p>
-<pre class="text"><code>marburg_LST_hot_q90_C_EPSG25832.tif</code></pre>
-<p>Im Skriptworkflow liegen die fertigen, projizierten Temperaturprodukte unter:</p>
-<pre class="text"><code>data/landsat_lst/&lt;gebiet&gt;/05_teaching_layers/projected_lst/</code></pre>
-<p>Das vorhandene Köln-Beispiel heißt <code>koeln_LST_hot_q90_C_EPSG25832.tif</code>. Es deckt Köln ab und kann nicht durch Umbenennen für Marburg verwendet werden.</p>
-<p><strong>Bereitstellung:</strong> Das Marburger GeoTIFF muss aus einer für Marburg durchgeführten Materialproduktion bereitgestellt werden. Das verlinkte Repository enthält im Demo-ZIP nur Druck-PDFs; ein direkter Download des Marburger Quantilrasters ist dort nicht hinterlegt. Für diese Übung muss daher das fertige GeoTIFF zusammen mit der Anleitung ausgegeben werden.</p>
-<p>Datei herunterladen bzw. aus dem bereitgestellten Materialordner kopieren und unter <code>daten/</code> ablegen. Die ursprüngliche Datei unverändert behalten. Zeitraum, Auswahl der Szenen und Quantil aus den begleitenden Metadaten notieren.</p>
+<section id="temperaturdatei-herunterladen-und-marburg-ausschneiden" class="level1">
+<h1>2. Temperaturdatei herunterladen und Marburg ausschneiden</h1>
+<p><strong>Datei:</strong> <a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">Germany_LST_summer_2021-2025_mean.tif – direkter GeoTIFF-Download</a></p>
+<p>Die Datei ist etwa <strong>1,3 GiB</strong> groß. Sie enthält ganz Deutschland und damit auch Marburg. Der Download erfolgt direkt vom DLR-Geoservice; ein Köln-Datensatz oder ein vorheriger Skriptlauf ist nicht erforderlich.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Eigenschaft</th>
+<th>Inhalt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Datenquelle</td>
+<td>Landsat 8 und 9, vom DLR zeitlich aggregiert</td>
+</tr>
+<tr class="even">
+<td>Zeitraum</td>
+<td>Juni bis August der Jahre 2021–2025</td>
+</tr>
+<tr class="odd">
+<td>Statistik</td>
+<td>Mittelwert der gültigen wolkenfreien Beobachtungen je Rasterzelle</td>
+</tr>
+<tr class="even">
+<td>Einheit</td>
+<td>Grad Celsius, bereits umgerechnet</td>
+</tr>
+<tr class="odd">
+<td>Daten-KBS</td>
+<td>EPSG:3035 – ETRS89 / LAEA Europe</td>
+</tr>
+<tr class="even">
+<td>Rasterweite</td>
+<td>30 m; native thermische Sensorauflösung etwa 100 m</td>
+</tr>
+</tbody>
+</table>
+<p>In QGIS:</p>
+<ol type="1">
+<li>Die Datei über den obigen Link herunterladen und unter <code>daten/</code> speichern.</li>
+<li>Das GeoTIFF in QGIS ziehen. Den Untersuchungsraum anhand des bereits geladenen Luftbilds in Marburg einstellen.</li>
+<li>Das <strong>Projekt-KBS vorübergehend auf EPSG:3035</strong> stellen. Dadurch haben Kartenausschnitt und Temperaturdatei beim Zuschneiden dasselbe KBS; die Originaldateien werden dadurch nicht verändert.</li>
+<li>In der <strong>Verarbeitungswerkzeugkiste → GDAL → Rasterextraktion → Raster auf Ausdehnung zuschneiden</strong> öffnen. Alternativ das Werkzeug über die Suche nach <code>Ausdehnung zuschneiden</code> finden.</li>
+<li>Eingabelayer: <code>Germany_LST_summer_2021-2025_mean</code>. Für die Ausdehnung <strong>aktuellen Kartenausschnitt verwenden</strong> oder das gewünschte Rechteck in der Karte aufziehen.</li>
+<li>Ausgabe: <code>daten/marburg_lst_sommermittel_2021-2025.tif</code>. Die ursprüngliche Rasterweite beibehalten.</li>
+<li>Den lokalen Marburg-Ausschnitt laden und den deutschlandweiten Layer ausblenden. Das Projekt-KBS kann danach wieder auf <strong>EPSG:25832</strong> gestellt werden; QGIS stellt die Layer gemeinsam dar.</li>
+</ol>
+<p><strong>Produktbeschreibung:</strong> <a href="https://geoservice.dlr.de/web/datasets/lst_de">DLR-Datensatzseite</a> · <a href="https://download.geoservice.dlr.de/LST_DE/files/LST_README.txt">README mit Einheit und KBS</a> · <a href="https://download.geoservice.dlr.de/LST_DE/files/">Downloadverzeichnis</a>.</p>
+<p>Quellenangabe: <strong>DLR/EOC, Land Surface Temperature – Aggregates – Germany, Summer 2021–2025</strong>, DOI: <a href="https://doi.org/10.15489/g3x9qw3nyj45">10.15489/g3x9qw3nyj45</a>, Lizenz CC BY 4.0. Eigene Bearbeitung: Ausschnitt Marburg.</p>
 </section>
 <section id="wärmebild-in-qgis-darstellen" class="level1">
 <h1>3. Wärmebild in QGIS darstellen</h1>
 <ol type="1">
-<li>Das fertige Hot-q90-GeoTIFF in QGIS ziehen oder über <strong>Layer → Layer hinzufügen → Rasterlayer hinzufügen</strong> öffnen.</li>
-<li>Über <strong>Eigenschaften → Information</strong> KBS, Ausdehnung und Pixelgröße prüfen. Das Raster muss Marburg abdecken.</li>
-<li>Unter <strong>Symbolisierung → Einkanal-Pseudofarbe</strong> Band 1 auswählen.</li>
-<li>Einen Farbverlauf von kühl nach warm verwenden und die tatsächlichen Min-/Max-Werte laden. Für den Einstieg fünf gleich breite Temperaturklassen einstellen.</li>
-<li>Layername: <strong>LST Hot-q90 (°C)</strong>. NoData transparent lassen.</li>
+<li>Beim Marburger Temperaturlayer <strong>Eigenschaften → Symbolisierung → Einkanal-Pseudofarbe</strong> öffnen und Band 1 auswählen.</li>
+<li>Die tatsächlichen Min-/Max-Werte des lokalen Rasters laden. Einen Farbverlauf von kühl nach warm und zunächst fünf gleich breite Temperaturklassen verwenden.</li>
+<li>Layername: <strong>LST-Sommermittel 2021–2025 (°C)</strong>. NoData transparent lassen.</li>
 <li>Den Wärmebildlayer über dem Luftbild anordnen. Für das Erkennen der Temperaturmuster zunächst 100 % Deckkraft verwenden; zum räumlichen Zuordnen zeitweise ausblenden oder die Deckkraft reduzieren.</li>
 </ol>
-<p><strong>Keine Skalierung im Rasterrechner:</strong> Die Kennzeichnung <code>_C_</code> im Dateinamen bezeichnet im verlinkten Workflow bereits Grad Celsius. Eine erneute Anwendung des Landsat-Skalierungsfaktors würde die Werte verfälschen.</p>
-<p><strong>Bedeutung des Produkts:</strong> Im Skript werden Szenen nach ihrem gebietsweiten q90-Temperaturwert sortiert. Aus den ausgewählten heißen Szenen wird anschließend für jede Rasterzelle das zeitliche q90 berechnet. Das fertige Raster zeigt somit keinen einzelnen Aufnahmetag; benachbarte Zellen können durch unterschiedliche Termine geprägt sein.</p>
-<p>Die thermische Landsat-8/9-Auflösung beträgt etwa 100 m; das Produkt wird auf einem 30-m-Raster geliefert. Ein feineres Darstellungsraster erzeugt keine zusätzlichen thermischen Details.</p>
+<p><strong>Keine Temperaturumrechnung:</strong> Das DLR-GeoTIFF enthält bereits Grad Celsius. Der Landsat-Skalierungsfaktor darf hier nicht erneut angewendet werden.</p>
+<p><strong>Interpretation:</strong> Die Karte zeigt den Mittelwert verfügbarer wolkenfreier Satellitenbeobachtungen in den Sommern 2021–2025. Sie ist weder ein Tagesmaximum noch ein Mittel über sämtliche Tages- und Nachtstunden. Das 30-m-Raster erzeugt gegenüber der nativen Thermalauflösung keine zusätzlichen thermischen Details.</p>
 </section>
 <section id="erwartung-im-luftbild-einzeichnen" class="level1">
 <h1>4. Erwartung im Luftbild einzeichnen</h1>
@@ -580,7 +623,7 @@ Important
 </tbody>
 </table>
 <p>Die zentrale Frage lautet: <strong>Wo stimmen die aus Oberflächen und Stadtstruktur abgeleiteten Erwartungen mit der Temperaturkarte überein – und wo nicht?</strong></p>
-<p>LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Das Hot-q90-Komposit beschreibt eine obere Temperaturtendenz der ausgewählten Szenen. Es zeigt weder gleichzeitige Temperaturen an einem bestimmten Tag noch das zeitliche Maximum jeder Zelle.</p>
+<p>LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Das DLR-Sommermittel zeigt wiederkehrende räumliche Temperaturunterschiede in den verfügbaren wolkenfreien Sommerbeobachtungen. Es zeigt weder gleichzeitige Temperaturen an einem bestimmten Tag noch Temperaturspitzen. Luftbild und Temperaturzeitraum können außerdem unterschiedliche Bebauungszustände abbilden.</p>
 </section>
 <section id="bezug-zum-skriptworkflow" class="level1">
 <h1>Bezug zum Skriptworkflow</h1>
@@ -591,31 +634,34 @@ Important
 </colgroup>
 <thead>
 <tr class="header">
-<th>Im Materialworkflow vorbereitet</th>
-<th>Im manuellen QGIS-Weg</th>
+<th>Skriptworkflow im Quellrepository</th>
+<th>Minimaler manueller QGIS-Weg</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Landsat-Szenen laden, nach QA maskieren und in °C umrechnen</td>
-<td>fertiges Temperatur-GeoTIFF laden</td>
+<td>Landsat-Szenen laden, maskieren und in °C umrechnen</td>
+<td>bereits aufbereitetes DLR-LST-GeoTIFF direkt herunterladen</td>
 </tr>
 <tr class="even">
 <td>Heiße Szenen auswählen und pixelweises q90 berechnen</td>
-<td>vorhandenes Hot-q90-Produkt darstellen</td>
+<td>das frei verfügbare Sommermittel 2021–2025 verwenden</td>
 </tr>
 <tr class="odd">
+<td>Untersuchungsgebiet zuschneiden</td>
+<td>Deutschlandraster in QGIS auf Marburg zuschneiden</td>
+</tr>
+<tr class="even">
 <td>CIR-Oberflächenmaske klassifizieren</td>
 <td>Oberflächen im RGB-Luftbild selbst interpretieren</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Projekt und Printlayouts automatisch erzeugen</td>
 <td>Layer anordnen, Erwartungen digitalisieren und Projekt speichern</td>
 </tr>
 </tbody>
 </table>
-<p>Damit bleibt die thermische Datengrundlage des automatisierten Workflows erhalten. Manuell nachgebildet werden die <strong>räumliche Interpretation, die Erwartung und ihr Abgleich mit dem fertigen Wärmebild</strong>.</p>
-<p>Die verlinkten Skripte verwenden die STAC-Collection <code>landsat-c2-l2</code> mit Einzelaufnahmen. <strong>Median, q10 und q90 werden dort lokal berechnet; ein fertig bezogenes q95-Zeitreihenprodukt ist in diesem Skript nicht enthalten.</strong> Maßgeblich sind die Funktionen <code>build_extreme_products()</code> und <code>terra::app()</code> im Hauptskript. Ein anderes fertiges Quantilprodukt kann ebenfalls verwendet werden, muss aber mit seinem tatsächlichen Quantil, Zeitraum, seiner Szenenauswahl und Einheit gekennzeichnet werden.</p>
+<p>Manuell nachgebildet werden die <strong>räumliche Interpretation, die Erwartung und ihr Abgleich mit einem Landsat-basierten Wärmebild</strong>. Die thermische Statistik unterscheidet sich: Das Skript erzeugt Hot-q90 aus ausgewählten heißen Szenen; das hier direkt herunterladbare DLR-Produkt enthält das Sommermittel der gültigen Beobachtungen. Deshalb werden Ergebnis und Legende ausdrücklich als <strong>Sommermittel</strong> bezeichnet.</p>
 </section>
 <section id="quellen-und-weitere-informationen" class="level1">
 <h1>Quellen und weitere Informationen</h1>
@@ -624,7 +670,9 @@ Important
 <li><a href="https://github.com/OGERHub/KlimaResilienzSchule/blob/main/04-summer-in-the-city/scripts/landsat_lst_mit_dop_cir_oberflaechenmaske.R">Technisches Hauptskript: Landsat-LST und Oberflächenmaske</a></li>
 <li><a href="https://github.com/OGERHub/KlimaResilienzSchule/blob/main/04-summer-in-the-city/scripts/create_qgis_project.py">QGIS-Projekterzeugung im Skriptpaket</a></li>
 <li><a href="https://hvbg.hessen.de/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-true-orthophoto">Hessen: Orthophotos und TrueDOP</a></li>
-<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">USGS: Landsat Collection 2 Surface Temperature</a></li>
+<li><a href="https://geoservice.dlr.de/web/datasets/lst_de">DLR: LST-Sommermittel für Deutschland 2021–2025</a></li>
+<li><a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">DLR: GeoTIFF direkt herunterladen</a></li>
+<li><a href="https://download.geoservice.dlr.de/LST_DE/files/LST_README.txt">DLR: README zu Datenformat, Einheit und KBS</a></li>
 </ul>
 
 

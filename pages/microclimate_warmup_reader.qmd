@@ -22,17 +22,13 @@ execute:
 
 # Worum es geht
 
-Dieser Reader begleitet einen Hands-on-Einstieg in räumliches Arbeiten mit R und RStudio. Im Mittelpunkt steht ein basales Skript: Es wird geöffnet, blockweise ausgeführt und so gelesen, dass nachvollziehbar wird, welche Daten eingelesen werden, welche räumlichen Operationen stattfinden und welche Ergebnisdatensätze daraus entstehen. Die SuS sollen hier nicht selbst einen vollständigen Forschungsworkflow entwickeln, sondern trainieren, ein vorhandenes Skript kontrolliert zu nutzen, seine Zwischenschritte zu verstehen und die Ergebnisse fachlich zu lesen.
+Messungen liegen an einzelnen Stationen vor, die Frage richtet sich auf die Temperaturverteilung im Raum. Welche Annahme erlaubt uns, zwischen den Messpunkten Werte zu schätzen, und wie lässt sich diese Annahme prüfen?
 
-Fachlich geht es um ein typisches Problem der Geoinformatik und physischen Geographie: Messungen liegen punktuell vor, die Fragestellung richtet sich aber auf eine Fläche. Das ist die normale Ausgangslage vieler Messkampagnen. Man hat Stationen, Logger oder einzelne Messpunkte, aber die eigentliche Frage lautet nicht nur: Was wurde genau an diesen Punkten gemessen? Sie lautet: Wie können wir aus diesen Punkten eine begrenzte, nachvollziehbare räumliche Aussage ableiten?
+Die Studierenden begründen und vergleichen vier Modelle räumlicher Übertragung. Voronoi, IDW, Höhenregression und Random Forest schreiben unterschiedliche Zusammenhänge in die Ergebnisfläche ein. Eine glatte Karte, ein komplexes Verfahren oder ein kleiner Punktfehler begründen für sich noch keine belastbare räumliche Aussage.
 
-Die Übung ist deshalb zugleich technisch und inhaltlich angelegt. Technisch geht es darum, mit RStudio ein Skript auszuführen, einfache räumliche Datenobjekte zu verarbeiten, Ergebnisraster zu erzeugen und diese am Ende auch interaktiv in einer Leaflet-Karte zu betrachten. Inhaltlich geht es darum zu verstehen, dass jede flächenhafte Darstellung aus Punktdaten eine Annahme darüber enthält, wie Werte zwischen Messpunkten in den Raum übertragen werden.
+**Ausgangspunkt:** Skizzieren Sie vor der Berechnung, welche Temperaturmuster Sie zwischen den Stationen erwarten und weshalb. Entscheiden Sie, ob Entfernung, Höhe oder weitere Prozesse diese Erwartung tragen. Formulieren Sie einen Gegenbefund, der Sie zur Revision zwingen würde.
 
-Die zentrale Frage lautet:
-
-> Wir haben wie üblich nur einzelne Messpunkte. Wie gehen wir vor, wenn wir daraus trotzdem eine räumliche Aussage zur Temperaturverteilung ableiten wollen?
-
-Die Übung fragt also methodisch: Was tun wir, wenn die Beobachtung punktuell ist, die Frage aber flächenhaft gestellt wird?
+Der bereitgestellte Code unterstützt den Vergleich. Die fachliche Leistung besteht darin, ein zur Frage passendes Modell auszuwählen, seine Übertragungsannahme zu prüfen und die Aussagefläche zu begründen. Auch eine gut modellierte Lufttemperaturfläche erfasst nur einen Teil der menschlichen Wärmebilanz; für die [Stadtwärme-Fragestellung](modellierung_luftbild_lst.qmd) kommen Strahlung, Feuchte, Wind, Tätigkeit und metabolische Wärmeproduktion hinzu.
 
 # Projekt herunterladen und öffnen
 
@@ -298,7 +294,7 @@ Für diese Übung ist Mikroklima der fachliche Anlass für die methodische Frage
 
 Zwischen Höhe, Luftdruck und Temperatur besteht ein grundlegender physikalischer Zusammenhang: Mit zunehmender Höhe nimmt der Luftdruck ab, Luft dehnt sich bei Aufstieg aus und kühlt dabei in der Regel ab. Deshalb ist Höhe häufig ein sinnvoller erster Prädiktor für räumliche Temperaturunterschiede.
 
-Verwendet werden daher neben den Temperaturmessungen an einzelnen Stationen  ein digitales Höhenmodell. Die Übung nutzt Höhe als einfache, fachlich begründbare Hilfsvariable ein, um zu zeigen, wie Punktmessungen mit einem flächenhaften Raster verbunden und in eine räumliche Ergebnisfläche übersetzt werden können.
+Zusätzlich zu den Temperaturmessungen steht ein digitales Höhenmodell zur Verfügung. Ob Höhe die beobachteten Unterschiede im bodennahen Messnetz erklärt, bleibt zu prüfen. Der Zusammenhang in der freien Atmosphäre begründet noch keine hinreichende Erklärung für Schatten, Kaltluft oder andere lokale Einflüsse.
 
 1. Temperaturmessungen an mehreren Stationen.
 2. Höhe aus einem digitalen Höhenmodell.
@@ -307,11 +303,11 @@ Das Ergebnis ist daher ein modellierter räumlicher Datensatz. Je nachdem, ob N�
 
 # Methodische Idee: Raum füllen
 
-Messstationen liefern punktuelle Werte. Eine räumliche Aussagefläche braucht aber Werte für viele Rasterzellen. Zwischen diesen beiden Ebenen liegt die zentrale methodische Aufgabe. Genau diese Aufgabe beantwortet das basale Skript Schritt für Schritt:
+Messstationen liefern punktuelle Werte. Eine räumliche Aussagefläche braucht aber Werte für viele Rasterzellen. Zwischen diesen beiden Ebenen liegt die zentrale methodische Aufgabe. Dafür müssen wir einen Zusammenhang zwischen beobachteten Punkten und unbeobachteten Orten begründen:
 
 > Punktwerte müssen in eine flächenhafte Aussage übersetzt werden.
 
-Das Skript zeigt vier einfache Wege, diese Übersetzung vorzunehmen. Sie stehen nicht für „richtig“ oder „falsch“, sondern für unterschiedliche Annahmen über räumliche Übertragung.
+Die vier Verfahren nehmen unterschiedliche Beziehungen zwischen den Messpunkten an. Ob eine Beziehung für die konkrete Frage tragfähig ist, wird anhand der Daten und eines geeigneten Prüfvergleichs beurteilt. Ein Verfahren kann an dieser Prüfung scheitern.
 
 ## Voronoi
 
@@ -483,9 +479,9 @@ Der RMSE gibt an, wie groß der typische Vorhersagefehler bei dieser Rückschät
 
 Für die Interpretation des flächenhaften Ergebnisses reicht das aber nicht. Der RMSE bewertet Punktvorhersagen an bekannten Stationsorten. Er sagt nicht automatisch, ob die gesamte Ergebnisfläche fachlich plausibel modelliert wurde. Besonders bei wenigen und räumlich eng liegenden Punkten muss das Ergebnis zusätzlich nach seiner Modelllogik gelesen werden.
 
-# Technische Minimalleistung des basalen Skripts
+# Technische Referenz für den Modellvergleich
 
-Das Skript ersetzt keinen vollständigen Forschungsworkflow. Es zeigt die kleinste sinnvolle Kette, mit der aus Messpunkten, einem Höhenraster und einfachen Modellannahmen räumliche Ergebnisdatensätze entstehen. Genau deshalb eignet es sich als Trainingsskript: Die SuS können den Arbeitsweg nachvollziehen, ohne dass Rohdatenimport, Paketmanagement, Fehlerbehandlung oder ein vollständiger Analyseviewer den Kern überdecken.
+Die folgenden Abschnitte legen die Berechnung offen. Nutzen Sie sie, um eine konkrete Annahme zu untersuchen: etwa die Wirkung der Nachbarschaft, der Höhenvariable oder der räumlichen Begrenzung. Begründen Sie vor jeder Änderung, welchen Unterschied Sie erwarten und woran Sie seine Bedeutung beurteilen.
 
 ## 1. Daten laden
 
@@ -702,7 +698,7 @@ print(rmse)
 
 ## 11. Ergebnisse als Leaflet-Karte darstellen
 
-Am Ende werden die gleichen Ergebnisraster zusätzlich in eine interaktive Leaflet-Karte eingebunden. Die Karte ersetzt die statischen Plots nicht, sondern ergänzt sie: Die SuS können zwischen den Modellannahmen umschalten, die Messpunkte sichtbar lassen und dadurch prüfen, wie stark sich die räumliche Aussage je nach Verfahren verändert.
+In der Leaflet-Karte lassen sich die Ergebnisraster bei sichtbaren Messpunkten vergleichen. Prüfen Sie gezielt Orte, an denen die Modelle unterschiedliche Werte liefern, und begründen Sie, welche zusätzliche Beobachtung dort zwischen den Annahmen unterscheiden könnte.
 
 ::: {.callout-note title="Code-Snippet: Leaflet-Karte" collapse="true"}
 ```r
@@ -763,43 +759,14 @@ leaflet_map
 ```
 :::
 
-# Was nicht enthalten ist
+# Ein Modell auswählen und seine Grenzen prüfen
 
-Viele Bestandteile, die in einer umfangreichen Analyse zwingend oder sinnvoll wären, werden bewusst weggelassen:
+1. Welche räumliche Beziehung nimmt jedes Verfahren an, und welcher Prozess könnte diese Beziehung begründen?
+2. Welche Ihrer Erwartungen wird durch den Vergleich gestützt, welche müssen Sie revidieren?
+3. Ist Höhe eine tragfähige erklärende Größe oder ein Stellvertreter für andere räumliche Unterschiede? Wie könnten Sie das prüfen?
+4. Welcher Gegenbefund würde Ihre Modellwahl verändern? Reicht die Prüfung an ausgelassenen Stationen dafür aus?
+5. Warum endet die Aussagefläche an der gewählten Grenze? Welche Unsicherheit besteht auch innerhalb der konvexen Hülle?
+6. Welche zusätzliche Station würden Sie aufstellen, um die entscheidende Annahme zu prüfen?
+7. Welche Frage zum menschlichen Wärmehaushalt bleibt auch bei einer verlässlichen Lufttemperaturkarte offen?
 
-```text
-Ecowitt-Rohdatenimport
-automatische Paketinstallation
-tryCatch-Sicherheitslogik
-Backup-Dateien
-R*-Tuning
-Variogramm-Interpretation
-KED
-OK
-GAM
-TPS
-große Benchmark-Tabellen
-vollständiger Ergebnisviewer
-PDF-Report
-Batch-Verarbeitung aller Zeitpunkte
-```
-
-Diese Elemente können später wichtig werden. Für diesen Warmup würden sie den Kern verdecken: Punktdaten, Raster, Aussagefläche, Interpolation, Modellannahme und erste Validierung.
-
-# Leitfragen zur Auswertung
-
-Nach dem Ausführen des Skripts sollen die Ergebnisse nicht nur betrachtet, sondern methodisch gelesen werden.
-
-Leitfragen:
-
-1. Welches Ergebnis zeigt harte Stationsbereiche?
-2. Welches Ergebnis zeigt lokale Nachbarschaft?
-3. Welches Ergebnis folgt vor allem der Höhe?
-4. Welches Ergebnis wirkt rechnerisch gut, ist aber fachlich riskant?
-5. Welche Rolle spielt die Begrenzung auf die Convex-Hull-Fläche?
-6. Was wird in der Leaflet-Karte leichter erkennbar als in den statischen Plots?
-7. Warum reicht ein niedriger RMSE nicht als alleinige Begründung?
-
-Die wichtigste Schlussfolgerung lautet:
-
-> Eine räumliche Ergebnisfläche aus Messpunkten ist immer eine modellierte Aussage. Sie muss zur Datenlage, zur fachlichen Fragestellung, zur räumlichen Gültigkeitsfläche und zur gewählten Modellannahme passen. Das basale Skript zeigt dafür den kleinsten nachvollziehbaren Arbeitsweg: von Punkten über Raster und Modellannahme zur statischen und interaktiven Ergebnisdarstellung.
+Begründen Sie Ihre Wahl anhand von Fragestellung, Daten und Prüfvergleich. Dokumentieren Sie eine verworfene Erklärung und den Befund, der dagegen spricht.

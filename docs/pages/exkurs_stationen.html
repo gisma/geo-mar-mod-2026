@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Von Oberflächentemperatur zu thermischer Belastung – Modellieren in der Geographie</title>
+<title>Umwelt und Körper: Was bildet UTCI ab? – Modellieren in der Geographie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,11 +109,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta property="og:title" content="Von Oberflächentemperatur zu thermischer Belastung – Modellieren in der Geographie">
-<meta property="og:description" content="Stationsdaten aus Mittelhessen und ein UTCI-Szenario">
+<meta property="og:title" content="Umwelt und Körper: Was bildet UTCI ab? – Modellieren in der Geographie">
+<meta property="og:description" content="Luftbedingungen, Wärmehaushalt und physiologische Referenzannahmen">
 <meta property="og:site_name" content="Modellieren in der Geographie">
-<meta name="twitter:title" content="Von Oberflächentemperatur zu thermischer Belastung – Modellieren in der Geographie">
-<meta name="twitter:description" content="Stationsdaten aus Mittelhessen und ein UTCI-Szenario">
+<meta name="twitter:title" content="Umwelt und Körper: Was bildet UTCI ab? – Modellieren in der Geographie">
+<meta name="twitter:description" content="Luftbedingungen, Wärmehaushalt und physiologische Referenzannahmen">
 <meta name="twitter:creator" content="@gisma">
 <meta name="twitter:card" content="summary">
 </head>
@@ -290,7 +290,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Von Oberflächentemperatur zu thermischer Belastung</h1>
+          <h1 class="quarto-secondary-nav-title">Umwelt und Körper: Was bildet UTCI ab?</h1>
         </a>     
     </div>
   </nav>
@@ -328,13 +328,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellierung städtischer Hitze</span></a>
+ <span class="menu-text">Modellkonzept: Oberfläche, Umwelt, Mensch</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
+ <span class="menu-text">Modellkritik: Messdaten und UTCI</span></a>
   </div>
 </li>
       </ul>
@@ -342,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Anleitung</span></a>
+ <span class="menu-text">Werkzeugreferenzen</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -352,6 +352,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container">
+  <a href="../pages/r-werkzeuge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R-Referenz: Zeitreihen und Regionen</span></a>
   </div>
 </li>
       </ul>
@@ -367,14 +373,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#warum-lufttemperatur-in-dieser-fallstudie" id="toc-warum-lufttemperatur-in-dieser-fallstudie" class="nav-link active" data-scroll-target="#warum-lufttemperatur-in-dieser-fallstudie">Warum Lufttemperatur in dieser Fallstudie?</a></li>
-  <li><a href="#was-ist-mit-wohlfühltemperatur-gemeint" id="toc-was-ist-mit-wohlfühltemperatur-gemeint" class="nav-link" data-scroll-target="#was-ist-mit-wohlfühltemperatur-gemeint">Was ist mit „Wohlfühltemperatur“ gemeint?</a></li>
+  <li><a href="#welche-zielgröße-brauchen-wir" id="toc-welche-zielgröße-brauchen-wir" class="nav-link" data-scroll-target="#welche-zielgröße-brauchen-wir">Welche Zielgröße brauchen wir?</a></li>
+  <li><a href="#wo-bleibt-der-stoffwechsel-im-utci" id="toc-wo-bleibt-der-stoffwechsel-im-utci" class="nav-link" data-scroll-target="#wo-bleibt-der-stoffwechsel-im-utci">Wo bleibt der Stoffwechsel im UTCI?</a></li>
   <li><a href="#können-wir-lst-in-utci-umrechnen" id="toc-können-wir-lst-in-utci-umrechnen" class="nav-link" data-scroll-target="#können-wir-lst-in-utci-umrechnen">Können wir LST in UTCI umrechnen?</a></li>
   <li><a href="#einfaches-rechenbeispiel-verschattung" id="toc-einfaches-rechenbeispiel-verschattung" class="nav-link" data-scroll-target="#einfaches-rechenbeispiel-verschattung">Einfaches Rechenbeispiel: Verschattung</a></li>
   <li><a href="#verfügbare-stationen-im-großraum-mittelhessen" id="toc-verfügbare-stationen-im-großraum-mittelhessen" class="nav-link" data-scroll-target="#verfügbare-stationen-im-großraum-mittelhessen">Verfügbare Stationen im Großraum Mittelhessen</a>
   <ul class="collapse">
   <li><a href="#stationsdaten-mit-einem-überflug-verbinden" id="toc-stationsdaten-mit-einem-überflug-verbinden" class="nav-link" data-scroll-target="#stationsdaten-mit-einem-überflug-verbinden">Stationsdaten mit einem Überflug verbinden</a></li>
   </ul></li>
-  <li><a href="#von-thermischer-belastung-zu-planungsbedarf" id="toc-von-thermischer-belastung-zu-planungsbedarf" class="nav-link" data-scroll-target="#von-thermischer-belastung-zu-planungsbedarf">Von thermischer Belastung zu Planungsbedarf</a></li>
+  <li><a href="#was-bleibt-für-die-konkrete-person-offen" id="toc-was-bleibt-für-die-konkrete-person-offen" class="nav-link" data-scroll-target="#was-bleibt-für-die-konkrete-person-offen">Was bleibt für die konkrete Person offen?</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/edit/main/pages/exkurs_stationen.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -384,8 +391,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Von Oberflächentemperatur zu thermischer Belastung</h1>
-<p class="subtitle lead">Stationsdaten aus Mittelhessen und ein UTCI-Szenario</p>
+<h1 class="title d-none d-lg-block">Umwelt und Körper: Was bildet UTCI ab?</h1>
+<p class="subtitle lead">Luftbedingungen, Wärmehaushalt und physiologische Referenzannahmen</p>
 </div>
 
 
@@ -404,14 +411,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="warum-lufttemperatur-in-dieser-fallstudie" class="level1">
 <h1>Warum Lufttemperatur in dieser Fallstudie?</h1>
-<p>Die Hotspot-Karten zeigen Temperaturmuster der Oberflächen. Die anschließende Planungsfrage betrifft Menschen: Wie belastend ist ein Aufenthalt an einer Haltestelle, auf einem Schulhof oder auf einem Weg zur Pflegeeinrichtung?</p>
+<p>Im <a href="../pages/modellierung_luftbild_lst.html">Parkfall</a> erklärt eine kühle Oberflächenkarte die Beanspruchung der älteren Person nicht. Daraus entsteht eine neue Frage: Unter welchen Bedingungen kann ihr Körper die eigene metabolische Wärme und aufgenommene Umweltwärme wieder abgeben? Diese Vertiefung untersucht den Beitrag der Luftbedingungen und prüft, wie ein Index die Umwelt mit einem physiologischen Modell verbindet.</p>
 <p>Warme Oberflächen beeinflussen die Umgebung durch langwellige Wärmestrahlung und den Austausch fühlbarer Wärme mit der Luft. Wie stark sich die Luft erwärmt, hängt zusätzlich von Wind, Durchmischung und der Umgebung ab. Aus 45 °C Oberflächentemperatur folgt deshalb kein fester Wert der Lufttemperatur. Im Schatten eines Baumes kann die Strahlungsbelastung deutlich geringer sein, obwohl die Lufttemperatur nur wenig von der benachbarten besonnten Fläche abweicht.</p>
 <p>Eine Station ergänzt die räumliche Momentaufnahme um die Wetterentwicklung. Sie zeigt etwa, ob der Überflug an einem außergewöhnlich warmen Tag stattfand und wie sich die Lufttemperatur danach entwickelte. Die Stationsumgebung muss zur Fragestellung passen: Eine Freilandstation beschreibt andere Bedingungen als ein dicht bebauter Straßenraum.</p>
 </section>
-<section id="was-ist-mit-wohlfühltemperatur-gemeint" class="level1">
-<h1>Was ist mit „Wohlfühltemperatur“ gemeint?</h1>
+<section id="welche-zielgröße-brauchen-wir" class="level1">
+<h1>Welche Zielgröße brauchen wir?</h1>
 <p>Für die Bewertung im Freien wird das Zusammenwirken von Lufttemperatur, Feuchte, Wind und Strahlung betrachtet. UTCI und PET bilden diese Einflüsse über Modelle des menschlichen Wärmehaushalts ab und drücken das Ergebnis als äquivalente Temperatur in °C aus. Individuelles Wohlbefinden und die Empfindlichkeit bestimmter Personengruppen gehen darüber hinaus.</p>
-<p>In dieser Sitzung verwenden wir <strong>UTCI (Universal Thermal Climate Index)</strong>. Er beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. <a href="https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature">ECMWF: Definition und Referenzbedingungen</a>.</p>
+<p>Für einen Vergleich der Umweltsituationen untersuchen wir <strong>UTCI (Universal Thermal Climate Index)</strong>. Er beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. <a href="https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature">ECMWF: Definition und Referenzbedingungen</a>.</p>
+</section>
+<section id="wo-bleibt-der-stoffwechsel-im-utci" class="level1">
+<h1>Wo bleibt der Stoffwechsel im UTCI?</h1>
+<p>Der Körper produziert durch den Stoffwechsel Wärme. Tätigkeit und äußere mechanische Arbeit bestimmen mit, wie viel davon abgegeben werden muss. Lufttemperatur allein kann diese innere Wärmequelle nicht beschreiben. Kleidung und körperliche Regulation beeinflussen den Austausch mit der Umgebung; dieselbe Umwelt kann deshalb bei verschiedenen Personen oder Tätigkeiten zu unterschiedlicher Beanspruchung führen.</p>
+<p>UTCI berücksichtigt diese Prozesse über ein thermophysiologisches Modell mit festgelegten Referenzannahmen. Dazu gehört eine Tätigkeit entsprechend Gehen mit etwa 4 km/h und einer metabolischen Leistung von 135 W/m². Die Bekleidung folgt einer modellierten Anpassung an die Umgebungstemperatur. <a href="https://www.utci.org/resources/utci_poster.pdf">UTCI: Referenzbedingungen und Modellkonzept</a>.</p>
+<p>Im hier verwendeten Rechner ist der Stoffwechsel deshalb kein frei veränderbarer Eingabewert. Zwei Personen mit verschiedenen tatsächlichen Tätigkeiten erhalten bei denselben vier Umwelteingaben denselben UTCI-Wert. Das ist eine Eigenschaft des standardisierten Umweltvergleichs. Ihre individuelle Beanspruchung muss damit nicht gleich sein.</p>
+<p><strong>Auftrag vor der Berechnung:</strong> Stellen Sie die Frage „Welche Bank bietet günstigere Umweltbedingungen?“ der Frage „Warum kollabiert diese Person?“ gegenüber. Für welche kann UTCI unter seinen Referenzannahmen einen Beitrag leisten? Welche Informationen über Tätigkeit, Dauer, Bekleidung und physiologische Voraussetzungen fehlen bei der anderen?</p>
 </section>
 <section id="können-wir-lst-in-utci-umrechnen" class="level1">
 <h1>Können wir LST in UTCI umrechnen?</h1>
@@ -453,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>Die mittlere Strahlungstemperatur ist keine Oberflächentemperatur. Sie berücksichtigt kurz- und langwellige Strahlung aus unterschiedlichen Richtungen. Die LST liefert hierfür einen Teil der Information über die Oberflächen; für eine Berechnung fehlen weiterhin unter anderem Strahlungsgeometrie und direkte Sonneneinstrahlung.</p>
-<p>Der Rechenweg lautet daher: <strong>Stations- oder lokale Messdaten ergänzen → Strahlungssituation messen oder modellieren → UTCI berechnen.</strong> Für die Sitzung setzen wir plausible Szenarien an und kennzeichnen sie als Annahmen. So wird der Einfluss einer Planungsentscheidung sichtbar, ohne eine gemessene Belastung vorzutäuschen. Die Eingangsgrößen und deren Gültigkeitsbereiche sind im <a href="https://confluence.ecmwf.int/spaces/CKB/pages/650383669/UTCI+Timeseries+User+Guide">UTCI-Leitfaden des ECMWF</a> erläutert.</p>
+<p>Eine UTCI-Berechnung ist erst begründet, wenn die Frage einen Umweltvergleich unter den Referenzannahmen verlangt. Dafür müssen die vier Eingangsgrößen zeitlich und räumlich zusammenpassen. Für die Diskussion verwenden wir ein angenommenes Szenario. Es zeigt die Reaktion des Modells auf eine veränderte Eingabe; die Wirkung einer realen Maßnahme muss zusätzlich beobachtet oder modelliert werden. Die Eingangsgrößen und deren Gültigkeitsbereiche sind im <a href="https://confluence.ecmwf.int/spaces/CKB/pages/650383669/UTCI+Timeseries+User+Guide">UTCI-Leitfaden des ECMWF</a> erläutert.</p>
 </section>
 <section id="einfaches-rechenbeispiel-verschattung" class="level1">
 <h1>Einfaches Rechenbeispiel: Verschattung</h1>
@@ -496,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Das Skript liefert für diese Annahmen 32,9 °C UTCI am besonnten und 30,9 °C am verschatteten Standort und zeichnet den Vergleich. <strong>Arbeitsauftrag:</strong> Verändern Sie anschließend nur die Windgeschwindigkeit oder nur die Lufttemperatur. Erläutern Sie, welche Größe verändert wurde, welche konstant blieb und wie belastbar die Annahme für den gewählten Standort ist.</p>
+<p>Das Skript liefert für diese Annahmen 32,9 °C UTCI am besonnten und 30,9 °C am verschatteten Standort und zeichnet den Vergleich. <strong>Arbeitsauftrag:</strong> Formulieren Sie zunächst, welche Änderung der Wärmeflüsse Sie bei mehr Wind oder höherer Lufttemperatur erwarten. Variieren Sie dann eine Größe innerhalb des dokumentierten Gültigkeitsbereichs und vergleichen Sie Modellantwort und Erwartung. Begründen Sie die konstant gehaltenen Größen. Kann der Vergleich auch erklären, wie sich ein anstrengender Weg gegenüber ruhigem Sitzen auswirkt? Benennen Sie die dafür festgelegte Modellannahme.</p>
 <p>Für eine reale räumliche UTCI-Karte müssen die vier Größen für denselben Zeitpunkt und die jeweiligen Aufenthaltsorte vorliegen. Eine einzelne Station liefert keine vollständige räumliche Verteilung dieser Größen. Eine empirische Beziehung zwischen LST und Lufttemperatur wäre ebenfalls ein eigenes, lokal zu prüfendes Modell.</p>
 </section>
 <section id="verfügbare-stationen-im-großraum-mittelhessen" class="level1">
@@ -540,10 +554,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Das Stationspixel beantwortet eine andere räumliche Frage als der Median eines Stadtquartiers. Beide können verglichen werden, wenn der Unterschied der Bezugseinheiten ausdrücklich benannt wird. Ein Tagesmaximum der Lufttemperatur gehört ebenfalls zu einer anderen Zeitbasis als eine einzelne Überflugaufnahme.</p>
 </section>
 </section>
-<section id="von-thermischer-belastung-zu-planungsbedarf" class="level1">
-<h1>Von thermischer Belastung zu Planungsbedarf</h1>
-<p>Die Wahl des Index beendet die Modellierung nicht. Für die Planung kommen Aufenthaltsorte, Aufenthaltsdauer, erreichbare kühle Räume und empfindliche Personengruppen hinzu. Ältere und vorerkrankte Menschen sowie kleine Kinder gehören zu Gruppen mit erhöhtem Hitzeschutzbedarf. Zusätzlich können Arbeitsbedingungen oder fehlende Ausweichmöglichkeiten die Exposition erhöhen. <a href="https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze">UBA: Hitze und vulnerable Gruppen</a>.</p>
-<p>UTCI beschreibt dabei die Umweltsituation unter Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum <a href="../pages/modellierung_luftbild_lst.html#planungsauftrag">Planungsauftrag der Sitzung</a>.</p>
+<section id="was-bleibt-für-die-konkrete-person-offen" class="level1">
+<h1>Was bleibt für die konkrete Person offen?</h1>
+<p>Ein Umweltindex liefert keine individuelle Erklärung des Kollapses. Dafür fehlen unter anderem der Verlauf der Exposition, die tatsächliche Tätigkeit und die körperlichen Voraussetzungen. Alter allein ersetzt diese Informationen nicht.</p>
+<p>Die Wahl des Index beendet auch die räumliche Bewertung nicht. Für die Planung kommen Aufenthaltsorte, Aufenthaltsdauer, erreichbare kühle Räume und empfindliche Personengruppen hinzu. Ältere und vorerkrankte Menschen sowie kleine Kinder gehören zu Gruppen mit erhöhtem Hitzeschutzbedarf. Zusätzlich können Arbeitsbedingungen oder fehlende Ausweichmöglichkeiten die Exposition erhöhen. <a href="https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze">UBA: Hitze und vulnerable Gruppen</a>.</p>
+<p>UTCI beschreibt dabei die Umweltsituation unter Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum <a href="../pages/modellierung_luftbild_lst.html#planungsauftrag">Auftrag: ein eigenes Modell begründen</a>.</p>
 
 
 </section>
@@ -969,8 +984,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/modellierung_luftbild_lst.html" class="pagination-link" aria-label="Modellierung städtischer Hitze">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modellierung städtischer Hitze</span>
+      <a href="../pages/modellierung_luftbild_lst.html" class="pagination-link" aria-label="Modellkonzept: Oberfläche, Umwelt, Mensch">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modellkonzept: Oberfläche, Umwelt, Mensch</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

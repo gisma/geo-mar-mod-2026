@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Modellierung städtischer Hitze – Modellieren in der Geographie</title>
+<title>Stadtwärme: Was muss unser Modell erklären? – Modellieren in der Geographie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -137,11 +102,11 @@ window.Quarto = {
 };
 </script>
 
-<meta property="og:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
-<meta property="og:description" content="Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen">
+<meta property="og:title" content="Stadtwärme: Was muss unser Modell erklären? – Modellieren in der Geographie">
+<meta property="og:description" content="Vom Oberflächenbild zur Wärmebilanz des Menschen">
 <meta property="og:site_name" content="Modellieren in der Geographie">
-<meta name="twitter:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
-<meta name="twitter:description" content="Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen">
+<meta name="twitter:title" content="Stadtwärme: Was muss unser Modell erklären? – Modellieren in der Geographie">
+<meta name="twitter:description" content="Vom Oberflächenbild zur Wärmebilanz des Menschen">
 <meta name="twitter:creator" content="@gisma">
 <meta name="twitter:card" content="summary">
 </head>
@@ -318,7 +283,7 @@ window.Quarto = {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Modellierung städtischer Hitze</h1>
+          <h1 class="quarto-secondary-nav-title">Stadtwärme: Was muss unser Modell erklären?</h1>
         </a>     
     </div>
   </nav>
@@ -356,13 +321,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Modellierung städtischer Hitze</span></a>
+ <span class="menu-text">Modellkonzept: Oberfläche, Umwelt, Mensch</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
+ <span class="menu-text">Modellkritik: Messdaten und UTCI</span></a>
   </div>
 </li>
       </ul>
@@ -370,7 +335,7 @@ window.Quarto = {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Anleitung</span></a>
+ <span class="menu-text">Werkzeugreferenzen</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -380,6 +345,12 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container">
+  <a href="../pages/r-werkzeuge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R-Referenz: Zeitreihen und Regionen</span></a>
   </div>
 </li>
       </ul>
@@ -394,24 +365,16 @@ window.Quarto = {
     <h2 id="toc-title">Inhalt</h2>
    
   <ul>
-  <li><a href="#lehrpfad-für-eine-kurssitzung" id="toc-lehrpfad-für-eine-kurssitzung" class="nav-link active" data-scroll-target="#lehrpfad-für-eine-kurssitzung">Lehrpfad für eine Kurssitzung</a></li>
-  <li><a href="#was-beschreibt-das-mittelwertbild" id="toc-was-beschreibt-das-mittelwertbild" class="nav-link" data-scroll-target="#was-beschreibt-das-mittelwertbild">1 · Was beschreibt das Mittelwertbild?</a></li>
-  <li><a href="#wofür-brauchen-wir-eine-zeitreihe" id="toc-wofür-brauchen-wir-eine-zeitreihe" class="nav-link" data-scroll-target="#wofür-brauchen-wir-eine-zeitreihe">2 · Wofür brauchen wir eine Zeitreihe?</a></li>
-  <li><a href="#wie-entsteht-die-zeitreihe" id="toc-wie-entsteht-die-zeitreihe" class="nav-link" data-scroll-target="#wie-entsteht-die-zeitreihe">3 · Wie entsteht die Zeitreihe?</a>
-  <ul class="collapse">
-  <li><a href="#untersuchungsgebiet-und-vergleichsflächen" id="toc-untersuchungsgebiet-und-vergleichsflächen" class="nav-link" data-scroll-target="#untersuchungsgebiet-und-vergleichsflächen">Untersuchungsgebiet und Vergleichsflächen</a></li>
-  <li><a href="#einen-termin-nachvollziehen" id="toc-einen-termin-nachvollziehen" class="nav-link" data-scroll-target="#einen-termin-nachvollziehen">Einen Termin nachvollziehen</a></li>
-  <li><a href="#wiederholung-automatisieren" id="toc-wiederholung-automatisieren" class="nav-link" data-scroll-target="#wiederholung-automatisieren">Wiederholung automatisieren</a></li>
-  </ul></li>
-  <li><a href="#mittelwert-q90-und-q95-räumlich-vergleichen" id="toc-mittelwert-q90-und-q95-räumlich-vergleichen" class="nav-link" data-scroll-target="#mittelwert-q90-und-q95-räumlich-vergleichen">4 · Mittelwert, q90 und q95 räumlich vergleichen</a></li>
-  <li><a href="#von-rasterzellen-zu-flächen-und-regionen" id="toc-von-rasterzellen-zu-flächen-und-regionen" class="nav-link" data-scroll-target="#von-rasterzellen-zu-flächen-und-regionen">5 · Von Rasterzellen zu Flächen und Regionen</a>
-  <ul class="collapse">
-  <li><a href="#vorgegebene-gebiete-aggregieren" id="toc-vorgegebene-gebiete-aggregieren" class="nav-link" data-scroll-target="#vorgegebene-gebiete-aggregieren">Vorgegebene Gebiete aggregieren</a></li>
-  <li><a href="#temperaturbasierte-regionen-ableiten" id="toc-temperaturbasierte-regionen-ableiten" class="nav-link" data-scroll-target="#temperaturbasierte-regionen-ableiten">Temperaturbasierte Regionen ableiten</a></li>
-  </ul></li>
-  <li><a href="#einordnung-als-geographische-modellierung" id="toc-einordnung-als-geographische-modellierung" class="nav-link" data-scroll-target="#einordnung-als-geographische-modellierung">6 · Einordnung als geographische Modellierung</a></li>
-  <li><a href="#vom-oberflächenhotspot-zur-thermischen-belastung" id="toc-vom-oberflächenhotspot-zur-thermischen-belastung" class="nav-link" data-scroll-target="#vom-oberflächenhotspot-zur-thermischen-belastung">7 · Vom Oberflächenhotspot zur thermischen Belastung</a></li>
-  <li><a href="#planungsauftrag" id="toc-planungsauftrag" class="nav-link" data-scroll-target="#planungsauftrag">8 · Planungsauftrag: räumliche Prioritäten begründen</a></li>
+  <li><a href="#der-fall-an-dem-das-erste-modell-scheitert" id="toc-der-fall-an-dem-das-erste-modell-scheitert" class="nav-link active" data-scroll-target="#der-fall-an-dem-das-erste-modell-scheitert">Der Fall, an dem das erste Modell scheitert</a></li>
+  <li><a href="#das-erste-modell-oberfläche-als-hinweis-auf-hitze" id="toc-das-erste-modell-oberfläche-als-hinweis-auf-hitze" class="nav-link" data-scroll-target="#das-erste-modell-oberfläche-als-hinweis-auf-hitze">Das erste Modell: Oberfläche als Hinweis auf Hitze</a></li>
+  <li><a href="#warum-das-dlr-lst-produkt" id="toc-warum-das-dlr-lst-produkt" class="nav-link" data-scroll-target="#warum-das-dlr-lst-produkt">Warum das DLR-LST-Produkt?</a></li>
+  <li><a href="#warum-eine-eigene-lst-auswertung-und-wann-hilft-sie-nicht-weiter" id="toc-warum-eine-eigene-lst-auswertung-und-wann-hilft-sie-nicht-weiter" class="nav-link" data-scroll-target="#warum-eine-eigene-lst-auswertung-und-wann-hilft-sie-nicht-weiter">Warum eine eigene LST-Auswertung – und wann hilft sie nicht weiter?</a></li>
+  <li><a href="#warum-die-luft-dazugehört" id="toc-warum-die-luft-dazugehört" class="nav-link" data-scroll-target="#warum-die-luft-dazugehört">Warum die Luft dazugehört</a></li>
+  <li><a href="#warum-der-stoffwechsel-dazugehört" id="toc-warum-der-stoffwechsel-dazugehört" class="nav-link" data-scroll-target="#warum-der-stoffwechsel-dazugehört">Warum der Stoffwechsel dazugehört</a></li>
+  <li><a href="#was-leistet-utci-in-diesem-konzept" id="toc-was-leistet-utci-in-diesem-konzept" class="nav-link" data-scroll-target="#was-leistet-utci-in-diesem-konzept">Was leistet UTCI in diesem Konzept?</a></li>
+  <li><a href="#welche-räumlichen-einheiten-passen-zur-frage" id="toc-welche-räumlichen-einheiten-passen-zur-frage" class="nav-link" data-scroll-target="#welche-räumlichen-einheiten-passen-zur-frage">Welche räumlichen Einheiten passen zur Frage?</a></li>
+  <li><a href="#planungsauftrag" id="toc-planungsauftrag" class="nav-link" data-scroll-target="#planungsauftrag">Ein eigenes Modell begründen</a></li>
+  <li><a href="#diskussion-in-einer-90-minütigen-sitzung" id="toc-diskussion-in-einer-90-minütigen-sitzung" class="nav-link" data-scroll-target="#diskussion-in-einer-90-minütigen-sitzung">Diskussion in einer 90-minütigen Sitzung</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/edit/main/pages/modellierung_luftbild_lst.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -421,8 +384,8 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Modellierung städtischer Hitze</h1>
-<p class="subtitle lead">Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen</p>
+<h1 class="title d-none d-lg-block">Stadtwärme: Was muss unser Modell erklären?</h1>
+<p class="subtitle lead">Vom Oberflächenbild zur Wärmebilanz des Menschen</p>
 </div>
 
 
@@ -439,9 +402,113 @@ window.Quarto = {
 </header>
 
 
-<section id="lehrpfad-für-eine-kurssitzung" class="level1">
-<h1>Lehrpfad für eine Kurssitzung</h1>
-<p>Die Sitzung untersucht, wie aus einer Temperaturbeobachtung eine räumliche Planungsgrundlage entsteht. Ausgangspunkt sind Oberflächenhotspots im Satellitenbild. Anschließend werden die zeitliche Statistik, die räumliche Gebietseinteilung und die menschliche Exposition als aufeinander aufbauende Modellentscheidungen behandelt.</p>
+<section id="der-fall-an-dem-das-erste-modell-scheitert" class="level1">
+<h1>Der Fall, an dem das erste Modell scheitert</h1>
+<p>Eine ältere Frau kollabiert an einem heißen Tag in einem Park. Im Satellitenbild erscheint der Park gegenüber den umliegenden Straßen kühl. <strong>Wie kann das zusammenpassen?</strong></p>
+<p>Das ist der Ausgangspunkt der Fallstudie. Zunächst formulieren die Studierenden eigene Erklärungen und benennen, was sie dafür wissen müssten. Die Frage „Welche Oberflächen sind warm?“ erfasst einen anderen Gegenstand als „Unter welchen Bedingungen kann diese Person ihre Körperwärme noch abgeben?“. Eine Karte kühler Vegetation beantwortet die zweite Frage noch nicht. Der geschilderte Fall dient der Modellbildung; seine individuelle Ursache ist mit den Kursdaten nicht feststellbar.</p>
+<p><strong>Erster Auftrag:</strong> Skizzieren Sie ein Wirkungsgefüge für den Fall, bevor Sie Daten laden. Verbinden Sie Oberfläche, Luft, Strahlung, Wind, Feuchte, Tätigkeit und Körper. Kennzeichnen Sie jede Verbindung, die eine LST-Karte tatsächlich beobachten kann, und jede, für die Sie eine zusätzliche Annahme benötigen.</p>
+</section>
+<section id="das-erste-modell-oberfläche-als-hinweis-auf-hitze" class="level1">
+<h1>Das erste Modell: Oberfläche als Hinweis auf Hitze</h1>
+<p>Die Aussage „Grünflächen sind kühl, dort sind Menschen vor Hitze geschützt“ enthält bereits ein Modell. Es überträgt eine Eigenschaft der Oberfläche auf die Beanspruchung eines Menschen. Dafür müssten mehrere Zusammenhänge gelten: Die beobachtete Oberfläche müsste die Aufenthaltsumgebung repräsentieren, der zeitliche Bezug müsste passen, und die Wärmeabgabe des Körpers müsste dort ausreichend möglich sein.</p>
+<p>Das Luftbild erlaubt Hypothesen zu Vegetation, Versiegelung und Schatten. LST beschreibt den thermischen Zustand der vom Sensor erfassten Oberflächen. Beides hilft, die Umgebung zu charakterisieren. Ob die ältere Frau gerade einen besonnten Weg hinaufgeht, wie warm und feucht die Luft ist oder wie ihr Körper Wärme reguliert, ist daraus nicht abzulesen.</p>
+<p><strong>Prüffrage:</strong> Welche Beobachtung würde Ihre erste Erklärung erschüttern? Ein kühles Parkmittel bei hoher Beanspruchung auf einem besonnten Weg? Gleiche LST bei unterschiedlicher Lufttemperatur? Zwei Personen mit unterschiedlicher Anstrengung am selben Ort? Formulieren Sie eine prüfbare Gegenüberstellung.</p>
+</section>
+<section id="warum-das-dlr-lst-produkt" class="level1">
+<h1>Warum das DLR-LST-Produkt?</h1>
+<p>Das DLR-Sommermittel bietet eine vorhandene, räumlich zusammenhängende Beschreibung von Oberflächentemperaturmustern. Es eignet sich, um eine erste Hypothese zu prüfen: Sind die aus dem Luftbild als warm oder kühl eingeschätzten größeren Flächen auch in den verfügbaren Satellitenbeobachtungen entsprechend auffällig? Die eigene Herstellung eines solchen Mittelwertbilds hätte für diese Frage zunächst keinen notwendigen Erkenntnisgewinn.</p>
+<p>Das Produkt mittelt gültige wolkenfreie Landsat-Beobachtungen der Sommer 2021–2025. Es beschreibt weder die Temperatur am Tag des Kollapses noch das gesamte Tagesgeschehen. Das ergänzende Beobachtungszahlraster hilft, die räumlich unterschiedliche Datengrundlage zu prüfen. <a href="https://geoservice.dlr.de/web/datasets/lst_de">DLR-Produktbeschreibung</a> und <a href="https://download.geoservice.dlr.de/LST_DE/files/LST_README.txt">Produktmetadaten</a>.</p>
+<p><strong>Entscheidung:</strong> Für eine Frage nach mittleren Oberflächenmustern kann dieses Produkt ausreichen. Für die Situation einer Person an einem bestimmten Nachmittag reicht es nicht. Begründen Sie die Eignung anhand von Zielgröße, Zeitpunkt und räumlichem Bezug. Die <a href="../pages/qgis-howto-stadtwaerme-marburg.html">QGIS-Referenz</a> unterstützt diesen Vergleich.</p>
+</section>
+<section id="warum-eine-eigene-lst-auswertung-und-wann-hilft-sie-nicht-weiter" class="level1">
+<h1>Warum eine eigene LST-Auswertung – und wann hilft sie nicht weiter?</h1>
+<p>Eine eigene Zeitreihe wird sinnvoll, sobald die Fragestellung die im Mittelwert verlorene zeitliche Information benötigt. Etwa: Bleibt der Park an besonders warmen Aufnahmeterminen gegenüber dem Umfeld kühler? Wird der Unterschied auf dem Weg und im Park an denselben Terminen beobachtet? Welche Rolle spielt die Auswahl wolkenfreier Tage?</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Offene Frage</th>
+<th>Begründete Untersuchung</th>
+<th>Grenze der Aussage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wie unterscheiden sich mittlere Oberflächenmuster?</td>
+<td>DLR-Mittelwert und Beobachtungszahl prüfen</td>
+<td>kein bestimmter Ereignistag</td>
+</tr>
+<tr class="even">
+<td>Bleibt eine Rangfolge über die Aufnahmetermine bestehen?</td>
+<td>eigene Zeitreihe mit vergleichbaren Terminen auswerten</td>
+<td>Lücken zwischen den Überflügen bleiben</td>
+</tr>
+<tr class="odd">
+<td>Wie unterscheiden sich mittleres Niveau und obere Temperaturen?</td>
+<td>Mittelwert und q90/q95 derselben Stichprobe vergleichen</td>
+<td>obere Quantile sind keine gemessenen Tagesmaxima</td>
+</tr>
+<tr class="even">
+<td>Welche Luftbedingungen herrschen am Aufenthaltsort?</td>
+<td>zeitlich passende lokale Messungen oder ein geprüftes räumliches Modell nutzen</td>
+<td>zusätzliche LST-Kennwerte beantworten diese Frage nicht</td>
+</tr>
+</tbody>
+</table>
+<p>Ein einfaches Gegenbeispiel: Oberfläche A hat fünf Beobachtungen mit 20 °C und fünf mit 40 °C; Oberfläche B hat zehnmal 32 °C. Im Mittel ist B wärmer (32 gegenüber 30 °C), beim q90 ist A wärmer (40 gegenüber 32 °C). <strong>Welcher Kennwert passt zu welcher Frage?</strong> Die Wahl verändert die Bewertung, ohne neue Beobachtungen hinzuzufügen.</p>
+<p>Eine eigene Berechnung legt Entscheidungen über Zeitraum, Wolkenmaske, Raster und Statistik offen. Sie ist deshalb eine Möglichkeit, Annahmen zu untersuchen. Sie ist keine unabhängige Bestätigung des DLR-Produkts, wenn beide auf denselben Landsat-Beobachtungen beruhen. Unterschiede müssen zunächst aus Auswahl und Verarbeitung erklärt werden. Die <a href="../pages/r-werkzeuge.html">R-Referenz</a> stellt die Berechnungen bereit.</p>
+<p><strong>Auftrag:</strong> Entscheiden Sie, ob Ihre Frage eine eigene LST-Auswertung verlangt. Nennen Sie den erwarteten Erkenntnisgewinn und eine Frage zum Fall der älteren Frau, die auch danach offenbleibt. Die begründete Entscheidung, mit dem vorhandenen Produkt weiterzuarbeiten, ist ein vollständiges Ergebnis.</p>
+</section>
+<section id="warum-die-luft-dazugehört" class="level1">
+<h1>Warum die Luft dazugehört</h1>
+<p>Der Körper tauscht Wärme mit der umgebenden Luft aus. Dieser Austausch hängt unter anderem vom Temperaturunterschied zwischen Haut und Luft sowie von der Luftbewegung ab. Eine kühle Oberfläche garantiert keine ausreichend kühle Luft am Aufenthaltsort. Umgekehrt kann Schatten die Strahlung auf den Menschen verringern, während die Lufttemperatur ähnlich bleibt.</p>
+<p>Wir benötigen daher eine präzisere Frage: <strong>Welche Wärme kann der Körper an diesem Ort und zu diesem Zeitpunkt abgeben oder aus der Umgebung aufnehmen?</strong> Dazu gehören Lufttemperatur, Wind, Feuchte und kurz- sowie langwellige Strahlung. Luftfeuchte beeinflusst die Möglichkeit, über Verdunstung von Schweiß Wärme abzugeben. Wind beeinflusst sowohl den konvektiven als auch den verdunstungsbedingten Austausch.</p>
+<p>Eine Wetterstation liefert einen zeitlichen Bezug. Ob sie die Luft im Park, auf dem Weg oder an einer Bank repräsentiert, ist eine eigene Modellannahme. Die Übertragung von Stationsdaten in den Stadtraum muss geprüft werden. Die mittlere Strahlungstemperatur beschreibt die Strahlungsumgebung des Körpers; sie kann nicht durch die LST eines einzelnen Pixels ersetzt werden.</p>
+<p><strong>Auftrag:</strong> Entwerfen Sie einen Vergleich zwischen einer besonnten und einer verschatteten Bank. Welche Größen müssen zeitgleich beobachtet werden, um die Hypothese „Schatten verringert die Beanspruchung“ zu untersuchen? Welche Alternativerklärung bleibt bei einer bloßen Messung der Lufttemperatur bestehen?</p>
+</section>
+<section id="warum-der-stoffwechsel-dazugehört" class="level1">
+<h1>Warum der Stoffwechsel dazugehört</h1>
+<p>Auch in einer kühlen Umgebung erzeugt der Körper durch den Stoffwechsel Wärme. Beim Gehen, Treppensteigen oder Tragen steigt die Wärmeproduktion gegenüber dem ruhigen Sitzen. Ob der Körper Wärme speichert, ergibt sich aus dem Zusammenwirken dieser inneren Produktion mit den Austauschprozessen zur Umgebung.</p>
+<p>Als vereinfachtes Denkmodell schreiben wir alle Beiträge als Leistungen pro Körperoberfläche:</p>
+<p><span class="math display">\[
+S = M - W + R + C + K - E.
+\]</span></p>
+<p>Dabei ist <span class="math inline">\(S\)</span> die Wärmespeicherung pro Zeit, <span class="math inline">\(M\)</span> die metabolische Leistung, <span class="math inline">\(W\)</span> die nach außen verrichtete mechanische Arbeit und <span class="math inline">\(E\)</span> die Wärmeabgabe durch Verdunstung. <span class="math inline">\(R\)</span>, <span class="math inline">\(C\)</span> und <span class="math inline">\(K\)</span> sind die Nettoflüsse durch Strahlung, Konvektion und Wärmeleitung; sie sind hier bei Wärmegewinn positiv und bei Verlust negativ. Bei <span class="math inline">\(S&gt;0\)</span> wird Wärme im Körper gespeichert. Atmungswärme und einzelne Regulationsprozesse sind in dieser vereinfachten Bilanz nicht gesondert aufgelöst.</p>
+<p>Die Bilanz ordnet die Erklärungen: LST liefert Hinweise für einen Teil der Umgebung; Lufttemperatur und Wind beeinflussen <span class="math inline">\(C\)</span>, die Strahlungsumgebung beeinflusst <span class="math inline">\(R\)</span>, Feuchte und Schweißverdunstung beeinflussen <span class="math inline">\(E\)</span>, die Tätigkeit beeinflusst <span class="math inline">\(M-W\)</span>. Kleidung verändert den Austausch. Physiologische Regulation und gesundheitliche Voraussetzungen beeinflussen, wie der Körper mit der Situation umgehen kann. Grundlagen erläutert <a href="https://www.canada.ca/en/health-canada/services/environmental-workplace-health/reports-publications/climate-change-health/extreme-heat-events-guidelines-technical-guide-health-care-workers.html">Health Canada zur menschlichen Thermoregulation</a>.</p>
+<p><strong>Gedankenexperiment:</strong> Zwei Personen befinden sich bei denselben Umweltbedingungen im Park. Eine sitzt, die andere kommt nach einem anstrengenden Anstieg an. Welche Bilanzgröße unterscheidet sich bereits durch die Tätigkeit? Was müssten Sie zusätzlich wissen, um ihre jeweilige Beanspruchung zu beurteilen? Begründen Sie auch, weshalb das Lebensalter allein dafür nicht genügt.</p>
+</section>
+<section id="was-leistet-utci-in-diesem-konzept" class="level1">
+<h1>Was leistet UTCI in diesem Konzept?</h1>
+<p>Nun lässt sich ein Index gezielt auswählen: UTCI verbindet Lufttemperatur, Feuchte, Wind und mittlere Strahlungstemperatur mit einem Modell menschlicher Thermoregulation. Stoffwechsel und Bekleidung sind darin bereits über Referenzannahmen berücksichtigt. Die Referenztätigkeit entspricht Gehen mit etwa 4 km/h und einer metabolischen Leistung von 135 W/m². <a href="https://www.utci.org/resources/utci_poster.pdf">UTCI: Herleitung und Referenzbedingungen</a>.</p>
+<p>Damit können wir Umweltsituationen unter gleichen Personenannahmen vergleichen. Die ältere Frau mit ihrer konkreten Tätigkeit, Kleidung und gesundheitlichen Verfassung ist damit noch nicht individuell beschrieben. Ein UTCI-Wert erklärt keinen Kollaps und bildet individuelle Unterschiede in der Regulation nicht vollständig ab. Die <a href="../pages/exkurs_stationen.html">Vertiefung zu Messdaten und UTCI</a> stellt einen kontrollierten Szenariovergleich bereit.</p>
+<p><strong>Modellkritik:</strong> Was gewinnen Sie gegenüber LST? Was bleibt gegenüber Ihrer Frage zur älteren Frau offen? Könnten Sie im verwendeten UTCI-Rechner den Stoffwechsel ändern? Falls nicht: Wo steckt diese Annahme im Modell, und welche andere Fragestellung lässt sich damit trotzdem bearbeiten?</p>
+</section>
+<section id="welche-räumlichen-einheiten-passen-zur-frage" class="level1">
+<h1>Welche räumlichen Einheiten passen zur Frage?</h1>
+<p>Ein Parkmittel, eine thermisch homogene Region und der konkrete Weg zur Bank beziehen sich auf verschiedene Gegenstände. Ein kühler Flächenmittelwert kann einen besonnten Aufenthaltsort verdecken. Deshalb werden Gebiete aus der Fragestellung begründet: Geht es um Oberflächenmuster, Aufenthaltsorte oder die zeitliche Exposition entlang eines Wegs?</p>
+<p>Eine Segmentierung mit <code>supercells</code> kann thermisch ähnliche Oberflächen zusammenfassen. Sie erzeugt dadurch weder Zonen gleicher menschlicher Beanspruchung noch eine Erklärung der Temperaturunterschiede. Die <a href="../pages/r-werkzeuge.html">R-Referenz</a> ermöglicht den Vergleich mit vorab abgegrenzten Flächen. Prüfen Sie, ob sich Ihre Aussage durch andere Grenzen oder durch die Reihenfolge räumlicher und zeitlicher Aggregation verändert. Eine rechnerisch homogene Region kann für die Frage nach dem Aufenthalt trotzdem ungeeignet sein.</p>
+</section>
+<section id="planungsauftrag" class="level1">
+<h1>Ein eigenes Modell begründen</h1>
+<p><strong>Fragestellung:</strong> Unter welchen Umwelt- und Aufenthaltsbedingungen könnte der als kühl kartierte Park für eine ältere Person dennoch thermisch belastend sein, und welche Beobachtungen würden Ihre Erklärung prüfen?</p>
+<p>Überarbeiten Sie Ihr anfängliches Wirkungsgefüge. Leiten Sie jede Erweiterung aus einer offenen Frage des bisherigen Modells ab. Benennen Sie auch, welche Beobachtung Ihre Erklärung widerlegen oder eine andere Erklärung wahrscheinlicher machen würde.</p>
+<p>Dokumentieren Sie in einer kurzen Argumentation mit Karte oder Skizze:</p>
+<ul>
+<li>Ihre präzise Frage mit Ort, Zeitpunkt, Tätigkeit und betrachteter Personengruppe.</li>
+<li>Die angenommenen Wirkungszusammenhänge und die Rolle von Oberfläche, Luft und Stoffwechsel.</li>
+<li>Warum das DLR-Produkt genügt oder welche eigene Auswertung zusätzliche Erkenntnis verspricht.</li>
+<li>Welche Größen beobachtet, welche modelliert und welche lediglich angenommen sind.</li>
+<li>Einen Vergleich, mit dem sich die entscheidende Annahme prüfen lässt, und die verbleibenden Aussagegrenzen.</li>
+</ul>
+<p>Falls Sie daraus einen Prüfstandort für Hitzeschutz ableiten, begründen Sie ihn über Aufenthaltsbedingungen und Schutzbedarf. Ein hoher Oberflächenwert oder eine Grenze im Segmentierungsraster allein trägt diese Entscheidung nicht. Auch die Wirksamkeit einer Maßnahme wie Verschattung ist eine eigene, zu prüfende Hypothese.</p>
+<p>Beurteilt wird, ob Frage, Wirkungsmodell, Datenwahl und Prüfung zusammenpassen. Eine begründete Revision des ersten Modells gehört zur Leistung. Anzahl der Karten, Menge des Codes und das Abarbeiten sämtlicher Werkzeuge sind keine Qualitätsmaßstäbe.</p>
+</section>
+<section id="diskussion-in-einer-90-minütigen-sitzung" class="level1">
+<h1>Diskussion in einer 90-minütigen Sitzung</h1>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -451,393 +518,40 @@ window.Quarto = {
 <thead>
 <tr class="header">
 <th>Zeit</th>
-<th>Analyseschritt</th>
-<th>Modellierungsfrage</th>
+<th>Denkaufgabe</th>
+<th>Ergebnis für die nächste Diskussion</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0–10 min</td>
-<td>DLR-Mittelwertbild und Luftbild vergleichen</td>
-<td>Welche Zielgröße beobachten wir?</td>
+<td>0–15 min</td>
+<td>Parkfall erklären; erstes Wirkungsgefüge zeichnen</td>
+<td>eigene Hypothese und ihre offenen Fragen</td>
 </tr>
 <tr class="even">
-<td>10–25 min</td>
-<td>Einzeltermine zur Zeitreihe verbinden; Skript lesen</td>
-<td>Welche zeitliche Auswahl bildet die Datengrundlage?</td>
+<td>15–30 min</td>
+<td>Luftbild und DLR-LST mit der Hypothese konfrontieren</td>
+<td>begründete Reichweite der Oberflächenaussage</td>
 </tr>
 <tr class="odd">
-<td>25–40 min</td>
-<td>mean, q90 und q95 vergleichen</td>
-<td>Welche Hotspots entstehen durch die Wahl des Kennwerts?</td>
+<td>30–50 min</td>
+<td>fehlende Austauschprozesse und metabolische Wärmeproduktion herleiten</td>
+<td>erweitertes Wirkungsmodell und präzisierte Frage</td>
 </tr>
 <tr class="even">
-<td>40–55 min</td>
-<td>Flächen aggregieren und zwei Segmentierungen vergleichen</td>
-<td>Welche räumlichen Einheiten bilden wir?</td>
+<td>50–65 min</td>
+<td>Datenprodukt, eigene Zeitreihe oder UTCI-Szenario zur Frage auswählen</td>
+<td>begründete Methodenwahl samt Grenze</td>
 </tr>
 <tr class="odd">
-<td>55–70 min</td>
-<td>Stationsdaten und UTCI-Szenario</td>
-<td>Wie wird aus Temperatur eine Aussage über thermische Belastung?</td>
-</tr>
-<tr class="even">
-<td>70–90 min</td>
-<td>Planungsauftrag bearbeiten und begründen</td>
-<td>Wo treffen Hitze, Aufenthalt und besonderer Schutzbedarf zusammen?</td>
+<td>65–90 min</td>
+<td>Prüfvergleich entwerfen und gegenseitig kritisieren</td>
+<td>überarbeitetes Konzept und offener Erkenntnisbedarf</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Vorbereitung:</strong> QGIS und RStudio sind eingerichtet; Untersuchungsgebiet und Vergleichsflächen liegen vor. Der mehrjährige Datenabruf und die vollständige Rasterberechnung werden vor der Sitzung ausgeführt. In der Sitzung werden ein Termin und die wesentlichen Codezeilen nachvollzogen und vorhandene Ergebnisse verglichen. Die Downloadzeit gehört nicht zu den 90 Minuten.</p>
-<p>Am Ende steht eine begründete räumliche Priorisierung mit dokumentierten Annahmen. Die Schritte 1–5 bilden den technischen und methodischen Hintergrund; der <a href="../pages/exkurs_stationen.html">Exkurs</a> vertieft den Übergang zur thermischen Belastung.</p>
-</section>
-<section id="was-beschreibt-das-mittelwertbild" class="level1">
-<h1>1 · Was beschreibt das Mittelwertbild?</h1>
-<p>Der <a href="../pages/qgis-howto-stadtwaerme-marburg.html">manuelle QGIS-Workflow</a> bleibt der Ausgangspunkt: Das DLR-Sommerprodukt wird für Marburg ausgeschnitten und mit dem Luftbild verglichen. Es fasst die gültigen wolkenfreien Landsat-Beobachtungen der Sommer 2021–2025 zusammen. Jede Rasterzelle erhält einen Mittelwert der an diesem Ort verfügbaren Temperaturen. Das Ergebnis zeigt, welche Oberflächen in dieser Stichprobe im Mittel wärmer oder kühler waren. <a href="https://geoservice.dlr.de/web/datasets/lst_de">Produktbeschreibung des DLR</a>.</p>
-<p>Ein hoher Mittelwert kann beispielsweise zu einem großflächig versiegelten Standort passen. Eine solche Zuordnung ist eine Hypothese über den Zusammenhang zwischen Oberflächenbeschaffenheit und Temperatur. Verschattung, Feuchte, Wetter und Aufnahmezeit beeinflussen die beobachteten Werte ebenfalls.</p>
-<p><strong>Modellierung beginnt mit der Wahl der Aussage:</strong> Soll eine Karte das mittlere Temperaturniveau, wiederkehrende hohe Temperaturen oder Unterschiede zwischen Standorten während einzelner Ereignisse beschreiben? Für diese Fragen benötigen wir unterschiedliche Kennwerte.</p>
-<p>Das Mittelwertbild verdichtet die Zeitdimension zu einer Zahl. Aus ihm lässt sich nicht rekonstruieren, ob ein Ort häufig mäßig warm war oder zwischen kühlen und sehr heißen Zuständen wechselte. Außerdem ist es ein Mittel verfügbarer Satellitenbeobachtungen: Bewölkte Tage sowie die meisten Tages- und Nachtstunden fehlen.</p>
-</section>
-<section id="wofür-brauchen-wir-eine-zeitreihe" class="level1">
-<h1>2 · Wofür brauchen wir eine Zeitreihe?</h1>
-<p>Eine Zeitreihe erhält zunächst die einzelnen Beobachtungen. Für jede Rasterzelle entsteht eine Folge von Temperaturen mit Aufnahmedatum. Für festgelegte Vergleichsflächen lässt sich daraus je Termin ein räumlicher Kennwert berechnen.</p>
-<p>Damit können wir drei Fragen bearbeiten:</p>
-<ul>
-<li>Bleibt die Rangfolge der Standorte über verschiedene Termine erhalten?</li>
-<li>Welche Standorte erreichen bei ähnlichem Mittelwert besonders hohe Temperaturen?</li>
-<li>Wie verändert sich die räumliche Abgrenzung warmer Bereiche, wenn wir Mittelwert, q90 oder q95 verwenden?</li>
-</ul>
-<p>Ein konstruiertes Beispiel verdeutlicht die zweite Frage:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>), <span class="dv">5</span>)  <span class="co"># wechselnd: fünf kühle und fünf heiße Beobachtungen</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">32</span>, <span class="dv">10</span>)       <span class="co"># gleichbleibendes Niveau</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(a), <span class="at">q90 =</span> <span class="fu">quantile</span>(a, <span class="fl">0.90</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)),</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(b), <span class="at">q90 =</span> <span class="fu">quantile</span>(b, <span class="fl">0.90</span>, <span class="at">names =</span> <span class="cn">FALSE</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Im Mittel liegt B mit 32 °C über A mit 30 °C. Beim q90 kehrt sich die Reihenfolge um: A erreicht 40 °C, B weiterhin 32 °C. Die Wahl der Statistik verändert damit die räumliche Bewertung.</p>
-<p>Die Zeitreihe ist weiterhin eine unregelmäßige Beobachtungsfolge. Verbindungslinien im Diagramm dienen der Orientierung; zwischen den Überflügen fehlen Messungen.</p>
-</section>
-<section id="wie-entsteht-die-zeitreihe" class="level1">
-<h1>3 · Wie entsteht die Zeitreihe?</h1>
-<section id="untersuchungsgebiet-und-vergleichsflächen" class="level2">
-<h2 class="anchored" data-anchor-id="untersuchungsgebiet-und-vergleichsflächen">Untersuchungsgebiet und Vergleichsflächen</h2>
-<p>In QGIS werden zwei GeoPackages im Projektordner gespeichert:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Datei</th>
-<th>Inhalt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>data/gebiet.gpkg</code></td>
-<td>ein Polygon des gesamten Untersuchungsgebiets</td>
-</tr>
-<tr class="even">
-<td><code>data/flaechen.gpkg</code></td>
-<td>Vergleichspolygone, etwa Park, Gewerbegebiet und Wohnbebauung; eindeutiges Textfeld <code>area_id</code></td>
-</tr>
-</tbody>
-</table>
-<p>Die Flächen dienen zunächst als vorab definierte Untersuchungseinheiten. Ihre Abgrenzung wird aus Landnutzung und Stadtstruktur begründet. Dafür bleibt der manuelle Vergleich mit dem Luftbild erforderlich.</p>
-</section>
-<section id="einen-termin-nachvollziehen" class="level2">
-<h2 class="anchored" data-anchor-id="einen-termin-nachvollziehen">Einen Termin nachvollziehen</h2>
-<p>Für einen Landsat-8/9-Termin werden das Temperaturband <code>ST_B10</code> und das Qualitätsband <code>QA_PIXEL</code> benötigt. Die Verarbeitung besteht aus vier Schritten:</p>
-<ol type="1">
-<li>Raster auf das Untersuchungsgebiet zuschneiden.</li>
-<li>Als ungültig markierte Werte, Wolken, Wolkenschatten und Schnee ausblenden.</li>
-<li>Die digitalen Werte des Temperaturbands in °C umrechnen.</li>
-<li>Das bereinigte Raster auf demselben Ausgaberaster wie alle anderen Termine ablegen.</li>
-</ol>
-<p>Die Umrechnung lautet:</p>
-<p><span class="math display">\[
-LST_{°C}=DN\cdot0{,}00341802+149-273{,}15.
-\]</span></p>
-<p>Die Skalierung und die Qualitätsbits sind in der <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">USGS-Temperaturdokumentation</a> und der <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands">QA-Dokumentation</a> beschrieben.</p>
-<p>Für die Übung wird ein 100-m-Ausgaberaster verwendet. Das erleichtert die Auswertung größerer Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.</p>
-<p>Für jedes Vergleichspolygon berechnen wir anschließend den Median seiner gültigen Rasterzellen. Das liefert eine Tabellenzeile je Fläche und Termin:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>date</th>
-<th>area_id</th>
-<th style="text-align: right;">lst_c</th>
-<th style="text-align: right;">valid_pixels</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Aufnahmedatum</td>
-<td>Park</td>
-<td style="text-align: right;">Flächenmedian in °C</td>
-<td style="text-align: right;">Zahl gültiger Zellen</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="wiederholung-automatisieren" class="level2">
-<h2 class="anchored" data-anchor-id="wiederholung-automatisieren">Wiederholung automatisieren</h2>
-<p>Die Verarbeitung eines Termins wird für sämtliche ausgewählten Sommertermine wiederholt. Es werden keine besonders heißen Szenen vorab ausgewählt: Sonst beschriebe bereits der Mittelwert eine vorselektierte Hitzestichprobe.</p>
-<p>Die Skripte sind absichtlich linear aufgebaut. Tabellen, Schleifen, Diagramme und Kennwerte verwenden Base R; die räumlichen Aufgaben übernehmen <code>terra</code>, <code>sf</code> und später <code>supercells</code>. <code>rstac</code> übernimmt die Suche im öffentlichen Szenenkatalog.</p>
-<p>Einmalig in der R-Konsole:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"sf"</span>, <span class="st">"rstac"</span>, <span class="st">"supercells"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Das RStudio-Projekt liegt im Ordner mit dieser Struktur:</p>
-<pre class="text"><code>stadtwaerme/
-├── data/
-│   ├── gebiet.gpkg
-│   └── flaechen.gpkg
-├── scripts/
-│   ├── lst_abruf.R
-│   ├── lst_zeitreihe.R
-│   └── lst_regionen.R
-└── output/</code></pre>
-<p>Die drei verlinkten Skripte werden unter <code>scripts/</code> gespeichert. Alle Pfade beziehen sich auf den Projektordner.</p>
-<p><strong>Szenen abrufen:</strong> <a href="../scripts/lst_abruf.R">lst_abruf.R</a> sucht Landsat-8/9-Oberflächentemperaturprodukte am <a href="https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2">Microsoft Planetary Computer</a>, beschränkt die Auswahl auf Juni bis August 2021–2025 und speichert nur Temperatur- und Qualitätsband im Gebiet.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/lst_abruf.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Im Skript stehen Gebiet, Zeitraum und Wolkengrenze am Anfang. Die Wolkengrenze ist eine Vorauswahl für ganze Szenen. Die lokale QA-Maske folgt im nächsten Skript. Bei mehreren Szenen am selben Tag wird für diesen Einstieg die Szene mit dem geringsten Gesamtwolkenanteil verwendet; dadurch können an den Rändern Beobachtungen fehlen. <code>data/szenen.csv</code> hält Auswahl, Aufnahmezeit und Dateipfade fest.</p>
-<p><strong>Zeitreihe und Kennwerte berechnen:</strong> <a href="../scripts/lst_zeitreihe.R">lst_zeitreihe.R</a> bereinigt die einzelnen Termine, vereinheitlicht ihr Raster und erzeugt die Flächentabelle sowie die zeitlichen Rasterkennwerte.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/lst_zeitreihe.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Ausgabe unter <code>output/</code></th>
-<th>Bedeutung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>lst_stapel.tif</code></td>
-<td>ein Rasterband je Termin: die räumliche Zeitreihe</td>
-</tr>
-<tr class="even">
-<td><code>termine.csv</code></td>
-<td>Zuordnung der Rasterbänder zu den Aufnahmen</td>
-</tr>
-<tr class="odd">
-<td><code>lst_zeitreihe.csv</code>, <code>lst_zeitreihe.png</code></td>
-<td>Flächenmediane je Termin und Diagramm</td>
-</tr>
-<tr class="even">
-<td><code>lst_kennwerte.tif</code></td>
-<td>drei Bänder: mean, q90 und q95 pro Rasterzelle</td>
-</tr>
-<tr class="odd">
-<td><code>lst_anzahl.tif</code></td>
-<td>Zahl gültiger Beobachtungen pro Rasterzelle</td>
-</tr>
-<tr class="even">
-<td><code>lst_q95_minus_mean.tif</code></td>
-<td>Differenz zwischen q95 und Mittelwert</td>
-</tr>
-<tr class="odd">
-<td><code>lst_kennwerte.png</code></td>
-<td>Kennwertkarten mit gemeinsamer Temperaturskala</td>
-</tr>
-</tbody>
-</table>
-<p>Die Zahl gültiger Beobachtungen gehört zur Interpretation. Im Skript werden Zellen mit weniger als zehn Beobachtungen für die Kennwertkarten ausgeblendet. Dieser Arbeitswert garantiert keine stabile Schätzung: Insbesondere q95 ist bei kleinen Stichproben stark von wenigen hohen Werten abhängig. Bei ungleich verteilten Aufnahmeterminen erhalten häufig beobachtete Sommer mehr Gewicht.</p>
-</section>
-</section>
-<section id="mittelwert-q90-und-q95-räumlich-vergleichen" class="level1">
-<h1>4 · Mittelwert, q90 und q95 räumlich vergleichen</h1>
-<p>Der Mittelwert berücksichtigt alle gültigen Beobachtungen einer Rasterzelle. q90 bezeichnet deren 90. Perzentil, q95 deren 95. Perzentil. Die oberen Quantile charakterisieren den hohen Temperaturbereich dieser Stichprobe. Sie sind weder ein einzelnes Ereignisbild noch eine Wiederkehrperiode.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Karte</th>
-<th>Räumliche Fragestellung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Mittelwert</td>
-<td>Wo liegt das Temperaturniveau über die verfügbaren Sommerbeobachtungen hoch?</td>
-</tr>
-<tr class="even">
-<td>q90</td>
-<td>Wo liegen die oberen Temperaturen der Beobachtungsreihe hoch?</td>
-</tr>
-<tr class="odd">
-<td>q95</td>
-<td>Welche Bereiche fallen im äußersten oberen Teil der Stichprobe auf?</td>
-</tr>
-<tr class="even">
-<td>q95 − Mittelwert</td>
-<td>Wo ist der Abstand zwischen mittlerem Niveau und hohem Temperaturbereich groß?</td>
-</tr>
-<tr class="odd">
-<td>Beobachtungszahl</td>
-<td>Auf welcher Datengrundlage beruht der Vergleich?</td>
-</tr>
-</tbody>
-</table>
-<p>Ein Pixel mit hohem Mittelwert und geringer Differenz kann über die Stichprobe relativ gleichmäßig warm sein. Ein Pixel mit geringerem Mittelwert und großer Differenz reagiert möglicherweise stärker auf trockene, sonnige Bedingungen. Das sind zunächst Interpretationshypothesen, die am Luftbild und an einzelnen Terminen überprüft werden.</p>
-<p>Für den Kartenvergleich werden derselbe Ausschnitt, dieselbe Temperaturlegende und dieselbe NoData-Behandlung verwendet. Separate Quantilklassierungen jeder Karte würden in jeder Darstellung einen ähnlichen Anteil als „warm“ hervorheben und absolute Unterschiede verdecken.</p>
-<p><strong>Arbeitsauftrag:</strong> Vergleichen Sie die Rangfolge der fünf Flächen und die räumliche Ausdehnung hoher Werte. Prüfen Sie, ob etwa trockene Offenflächen unter q95 stärker hervortreten als unter dem Mittelwert. Kontrollieren Sie auffällige Bereiche anhand der Originaltermine und der Beobachtungszahl.</p>
-<p>Das selbst berechnete Mittelwertbild dient auch zum Vergleich mit dem DLR-Produkt. Eine exakte Reproduktion ist wegen Szenenauswahl, Maskierung und Ausgaberaster nicht zu erwarten. Für den Einstieg werden Muster und Größenordnung verglichen; eine Differenzkarte erfordert zusätzlich dieselbe Rastergeometrie und eine klar abgegrenzte gemeinsame Datenbasis.</p>
-</section>
-<section id="von-rasterzellen-zu-flächen-und-regionen" class="level1">
-<h1>5 · Von Rasterzellen zu Flächen und Regionen</h1>
-<section id="vorgegebene-gebiete-aggregieren" class="level2">
-<h2 class="anchored" data-anchor-id="vorgegebene-gebiete-aggregieren">Vorgegebene Gebiete aggregieren</h2>
-<p>Stadtquartiere, Landnutzungseinheiten oder regelmäßige Rasterquadrate können als räumliche Bezugseinheiten dienen. Dafür wird pro Gebiet und Termin ein Flächenwert berechnet. Die Wahl der Einheit bestimmt, welche Unterschiede erhalten bleiben: Große Quartiere mitteln kleine heiße Standorte stärker aus als kleine Vergleichspolygone.</p>
-<p>Zeitliche und räumliche Aggregation müssen dabei ausdrücklich benannt werden:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Reihenfolge</th>
-<th>Aussage</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Pro Pixel q90 über die Zeit, anschließend räumlicher Mittelwert im Quartier</td>
-<td>mittleres Niveau der lokalen oberen Temperaturen</td>
-</tr>
-<tr class="even">
-<td>Pro Termin räumlicher Mittelwert im Quartier, anschließend q90 dieser Folge</td>
-<td>oberer Temperaturbereich des Quartiers als Gesamteinheit</td>
-</tr>
-</tbody>
-</table>
-<p>Beide Größen unterscheiden sich. Die höchsten Temperaturen benachbarter Pixel können an verschiedenen Tagen auftreten. Das Quartier erreicht deshalb nicht zwangsläufig gleichzeitig das in der Quantilkarte dargestellte Temperaturniveau.</p>
-<p>Ein Quartiermittel lässt sich in R unmittelbar berechnen:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>quartiere <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"data/quartiere.gpkg"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>kennwerte <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"output/lst_kennwerte.tif"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>quartiere <span class="ot">&lt;-</span> <span class="fu">project</span>(quartiere, <span class="fu">crs</span>(kennwerte))</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">extract</span>(kennwerte, quartiere, <span class="at">fun =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Dieses Beispiel verwendet Zellen nach ihrer Lage im Polygon. Für den Einstieg werden ausreichend große Gebiete gewählt; Randzellen werden nicht nach Flächenanteil gewichtet.</p>
-</section>
-<section id="temperaturbasierte-regionen-ableiten" class="level2">
-<h2 class="anchored" data-anchor-id="temperaturbasierte-regionen-ableiten">Temperaturbasierte Regionen ableiten</h2>
-<p>Wenn passende Gebietseinheiten fehlen, können benachbarte Rasterzellen nach thermischer Ähnlichkeit zusammengefasst werden. Jakub Nowosads R-Paket <a href="https://jakubnowosad.com/supercells/">supercells</a> bildet zusammenhängende Segmente. Für diese Fallstudie verwenden wir zwei Merkmale: mittlere LST und den Abstand q95 − Mittelwert. Die Standardisierung gibt beiden Merkmalen eine vergleichbare Gewichtung.</p>
-<p>Das Skript <a href="../scripts/lst_regionen.R">lst_regionen.R</a> setzt diese Regionalisierung um:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/lst_regionen.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Die Funktion <a href="https://jakubnowosad.com/supercells/reference/supercells.html">supercells()</a> verbindet Merkmalsähnlichkeit und räumliche Nähe. <code>k</code> steuert die angestrebte Zahl der Regionen, <code>compactness</code> deren räumliche Kompaktheit. Das Skript speichert die Polygone als <code>regionen.gpkg</code>, ihre Kennwerte und die erneut aggregierten ursprünglichen Zeitreihen.</p>
-<p>Damit lassen sich die beiden Aggregationsreihenfolgen für Region 1 direkt vergleichen:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reihe <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"output/regionen_zeitreihe.csv"</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>karte <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"output/regionen_kennwerte.csv"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(reihe<span class="sc">$</span>lst_c[reihe<span class="sc">$</span>region_id <span class="sc">==</span> <span class="dv">1</span>], <span class="fl">0.90</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>karte<span class="sc">$</span>q90[karte<span class="sc">$</span>region_id <span class="sc">==</span> <span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Der erste Wert ist q90 der regionalen Mitteltemperaturen über die Zeit. Der zweite ist der räumliche Mittelwert der pixelweisen q90-Werte.</p>
-<p><strong>Arbeitsauftrag:</strong> Wiederholen Sie die Berechnung zunächst mit <code>k &lt;- 15</code>, dann mit <code>k &lt;- 60</code>. Verändern Sie anschließend bei gleicher Segmentzahl die Kompaktheit. Speichern Sie jede Variante unter eigenem Namen. Vergleichen Sie Grenzlage, innere Temperaturstreuung und Unterschiede benachbarter Regionen.</p>
-<p>Die Segmente sind thermisch begründete Analysegebiete. Ob ihre Grenzen mit Stadtquartieren zusammenfallen, wird anschließend anhand von Bebauung, Nutzung und Topografie untersucht. Die Wahl von Merkmalen, Segmentzahl und Kompaktheit ist Teil des räumlichen Modells. Durch Vergleich mehrerer Varianten wird sichtbar, welche Strukturen über Maßstäbe hinweg bestehen.</p>
-<p>Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads <a href="https://jakubnowosad.com/motif/">motif</a> weitere Methoden. Es beschreibt Muster kategorialer Raster; in dieser Einheit werden zunächst kontinuierliche Temperaturmerkmale mit <code>supercells</code> regionalisiert.</p>
-</section>
-</section>
-<section id="einordnung-als-geographische-modellierung" class="level1">
-<h1>6 · Einordnung als geographische Modellierung</h1>
-<p>Die Verarbeitungskette umfasst mehrere Modellentscheidungen: LST als Zielgröße, Auswahl der Beobachtungen, gemeinsames Raster, zeitliche Statistik und räumliche Bezugseinheit. Jede Entscheidung verändert, welche Unterschiede sichtbar werden.</p>
-<p>Die automatisierte Berechnung macht diese Entscheidungen wiederholbar. Die fachliche Prüfung fragt anschließend, ob die resultierenden Muster zur Forschungsfrage passen und gegenüber anderen Kennwerten oder Gebietseinteilungen Bestand haben. Eine Segmentgrenze allein erklärt noch keinen Prozess; Oberflächenbeschaffenheit, Feuchte und Verschattung liefern mögliche Erklärungen.</p>
-<p>Die Beziehung zu gemessener Lufttemperatur wird gesondert behandelt: <a href="../pages/exkurs_stationen.html">Exkurs: Stationsmessungen in Mittelhessen</a>.</p>
-</section>
-<section id="vom-oberflächenhotspot-zur-thermischen-belastung" class="level1">
-<h1>7 · Vom Oberflächenhotspot zur thermischen Belastung</h1>
-<p>Die Planung richtet sich auf Aufenthaltsbedingungen für Menschen. Deshalb wird nach der Satellitenanalyse die Lufttemperatur ergänzt: Sie beschreibt einen Teil des Wärmeaustauschs mit der Umgebung. Für die Belastung im Freien sind zusätzlich Feuchte, Wind und Strahlung erforderlich.</p>
-<p>Der <a href="../pages/exkurs_stationen.html">Exkurs zu Stationsdaten und UTCI</a> erläutert diese Beziehung, verlinkt Stationen in Mittelhessen und enthält ein kurzes Szenarioskript. Bei gleicher Lufttemperatur wird eine besonnte mit einer verschatteten Situation verglichen. So wird deutlich, warum eine Maßnahme wie Verschattung die thermische Belastung verändern kann, ohne dass die Lufttemperatur im gleichen Maß sinkt.</p>
-<p>Ein LST-Raster lässt sich allein nicht in UTCI umrechnen. Die zusätzlich benötigten Größen müssen gemessen, räumlich modelliert oder als Szenarioannahmen ausgewiesen werden. Damit wechselt die Analyse von der Beobachtung der Oberfläche zu einem Modell des menschlichen Wärmehaushalts.</p>
-</section>
-<section id="planungsauftrag" class="level1">
-<h1>8 · Planungsauftrag: räumliche Prioritäten begründen</h1>
-<p><strong>Fragestellung:</strong> Für welche zwei Standorte im Untersuchungsgebiet sollte die Kommune eine vertiefte Prüfung von Hitzeschutzmaßnahmen priorisieren?</p>
-<p>Die thermischen Regionen werden mit Aufenthaltsorten und Nutzungen überlagert. Geeignete Bezugspunkte sind beispielsweise Pflegeeinrichtungen, Schulen, Spielplätze, Haltestellen und häufig genutzte Fußwege. Bevölkerungsdaten werden auf der verfügbaren Gebietsebene verwendet; Angaben zu einer Region lassen keine unmittelbare Aussage über einzelne Personen zu.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Dimension</th>
-<th>Räumliche Information</th>
-<th>Bedeutung für die Entscheidung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Thermische Situation</td>
-<td>LST-Mittelwert, q90/q95 und bei ausreichender Datengrundlage UTCI</td>
-<td>Welche Belastungshinweise liegen vor?</td>
-</tr>
-<tr class="even">
-<td>Exposition</td>
-<td>Aufenthaltsorte, Nutzungszeiten und Wege</td>
-<td>Wo und wann halten sich Menschen auf?</td>
-</tr>
-<tr class="odd">
-<td>Vulnerabilität</td>
-<td>Einrichtungen und verfügbare Bevölkerungsinformationen</td>
-<td>Wo besteht besonderer Schutzbedarf?</td>
-</tr>
-<tr class="even">
-<td>Anpassungsmöglichkeiten</td>
-<td>Schatten, erreichbare Grünräume, nutzbare kühle Innenräume</td>
-<td>Welche Entlastung steht bereits zur Verfügung?</td>
-</tr>
-</tbody>
-</table>
-<p>Der Schutzbedarf unter anderem älterer Menschen und kleiner Kinder wird im <a href="https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze">UBA-Hintergrund zu Hitze</a> erläutert. Ein Beispiel für die Verbindung räumlicher Klimamodelle und soziodemographischer Daten ist das <a href="https://www.umweltbundesamt.de/themen/klima-energie/klimafolgen-anpassung/werkzeuge-der-anpassung/tatenbank/hitzerisikomanagement-in-der-stadt-heats">Projekt HEATS</a>.</p>
-<p>Ein konstruiertes Vergleichsbeispiel zeigt die Entscheidung:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Standort</th>
-<th>Thermischer Hinweis</th>
-<th>Nutzung und Schutzbedarf</th>
-<th>Folgerung für die Prüfung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Gewerbedach</td>
-<td>sehr hohe q95-LST</td>
-<td>kaum Aufenthalt im Freien</td>
-<td>hoher Oberflächenwert allein begründet keine erste Priorität</td>
-</tr>
-<tr class="even">
-<td>Vorplatz einer Pflegeeinrichtung</td>
-<td>mäßig hohe LST, wenig Schatten</td>
-<td>besonders empfindliche Nutzergruppe</td>
-<td>lokale Strahlungssituation und Aufenthaltsbedingungen prüfen</td>
-</tr>
-<tr class="odd">
-<td>Schulweg an einer Haltestelle</td>
-<td>hohe LST und besonnte Wartefläche</td>
-<td>wiederkehrender Aufenthalt, darunter Kinder</td>
-<td>Verschattung und erreichbare Ausweichflächen prüfen</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Ergebnis:</strong> Eine Karte markiert zwei reale Prüfstandorte. Für jeden Standort wird in wenigen Sätzen dokumentiert: thermischer Befund, genutzte räumliche Einheit, Nutzung und Schutzbedarf, fehlende Information und eine zu prüfende Maßnahme. Ein UTCI-Wert aus angenommenen Eingaben wird als Szenario ausgewiesen.</p>
-<p>Zum Abschluss wird geprüft, ob sich die Priorisierung beim Wechsel von mean zu q95 oder bei einer anderen Segmentierung verändert. Besteht sie nur unter einer bestimmten Parametrisierung, gehört diese Abhängigkeit in die Begründung. Die Karten dienen damit einer nachvollziehbaren Auswahl von Prüfgebieten.</p>
-<p>Grundlage der Fallstudie ist das Material <a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city">Summer in the City</a>. Der Kurs übernimmt die stadtklimatische Fragestellung und entwickelt daraus einen Analyseweg für Geographiestudierende.</p>
+<p>Vorbereitete Karten und Szenarien dienen als Diskussionsmaterial. Die Sitzung verlangt keinen vollständigen mehrjährigen Datenabruf. Welche Berechnung vertieft wird, ergibt sich aus den formulierten Fragen.</p>
+<p>Materialanregung: <a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city">Summer in the City, KlimaResilienzSchule</a>.</p>
 
 
 </section>
@@ -1265,8 +979,8 @@ LST_{°C}=DN\cdot0{,}00341802+149-273{,}15.
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Exkurs: Messdaten und UTCI">
-        <span class="nav-page-text">Exkurs: Messdaten und UTCI</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Modellkritik: Messdaten und UTCI">
+        <span class="nav-page-text">Modellkritik: Messdaten und UTCI</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

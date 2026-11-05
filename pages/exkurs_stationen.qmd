@@ -1,6 +1,6 @@
 ---
-title: "Von Oberflächentemperatur zu thermischer Belastung"
-subtitle: "Stationsdaten aus Mittelhessen und ein UTCI-Szenario"
+title: "Umwelt und Körper: Was bildet UTCI ab?"
+subtitle: "Luftbedingungen, Wärmehaushalt und physiologische Referenzannahmen"
 format:
   html:
     toc: true
@@ -11,17 +11,27 @@ execute:
 
 # Warum Lufttemperatur in dieser Fallstudie?
 
-Die Hotspot-Karten zeigen Temperaturmuster der Oberflächen. Die anschließende Planungsfrage betrifft Menschen: Wie belastend ist ein Aufenthalt an einer Haltestelle, auf einem Schulhof oder auf einem Weg zur Pflegeeinrichtung?
+Im [Parkfall](modellierung_luftbild_lst.qmd) erklärt eine kühle Oberflächenkarte die Beanspruchung der älteren Person nicht. Daraus entsteht eine neue Frage: Unter welchen Bedingungen kann ihr Körper die eigene metabolische Wärme und aufgenommene Umweltwärme wieder abgeben? Diese Vertiefung untersucht den Beitrag der Luftbedingungen und prüft, wie ein Index die Umwelt mit einem physiologischen Modell verbindet.
 
 Warme Oberflächen beeinflussen die Umgebung durch langwellige Wärmestrahlung und den Austausch fühlbarer Wärme mit der Luft. Wie stark sich die Luft erwärmt, hängt zusätzlich von Wind, Durchmischung und der Umgebung ab. Aus 45 °C Oberflächentemperatur folgt deshalb kein fester Wert der Lufttemperatur. Im Schatten eines Baumes kann die Strahlungsbelastung deutlich geringer sein, obwohl die Lufttemperatur nur wenig von der benachbarten besonnten Fläche abweicht.
 
 Eine Station ergänzt die räumliche Momentaufnahme um die Wetterentwicklung. Sie zeigt etwa, ob der Überflug an einem außergewöhnlich warmen Tag stattfand und wie sich die Lufttemperatur danach entwickelte. Die Stationsumgebung muss zur Fragestellung passen: Eine Freilandstation beschreibt andere Bedingungen als ein dicht bebauter Straßenraum.
 
-# Was ist mit „Wohlfühltemperatur“ gemeint?
+# Welche Zielgröße brauchen wir?
 
 Für die Bewertung im Freien wird das Zusammenwirken von Lufttemperatur, Feuchte, Wind und Strahlung betrachtet. UTCI und PET bilden diese Einflüsse über Modelle des menschlichen Wärmehaushalts ab und drücken das Ergebnis als äquivalente Temperatur in °C aus. Individuelles Wohlbefinden und die Empfindlichkeit bestimmter Personengruppen gehen darüber hinaus.
 
-In dieser Sitzung verwenden wir **UTCI (Universal Thermal Climate Index)**. Er beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. [ECMWF: Definition und Referenzbedingungen](https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature).
+Für einen Vergleich der Umweltsituationen untersuchen wir **UTCI (Universal Thermal Climate Index)**. Er beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. [ECMWF: Definition und Referenzbedingungen](https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature).
+
+# Wo bleibt der Stoffwechsel im UTCI?
+
+Der Körper produziert durch den Stoffwechsel Wärme. Tätigkeit und äußere mechanische Arbeit bestimmen mit, wie viel davon abgegeben werden muss. Lufttemperatur allein kann diese innere Wärmequelle nicht beschreiben. Kleidung und körperliche Regulation beeinflussen den Austausch mit der Umgebung; dieselbe Umwelt kann deshalb bei verschiedenen Personen oder Tätigkeiten zu unterschiedlicher Beanspruchung führen.
+
+UTCI berücksichtigt diese Prozesse über ein thermophysiologisches Modell mit festgelegten Referenzannahmen. Dazu gehört eine Tätigkeit entsprechend Gehen mit etwa 4 km/h und einer metabolischen Leistung von 135 W/m². Die Bekleidung folgt einer modellierten Anpassung an die Umgebungstemperatur. [UTCI: Referenzbedingungen und Modellkonzept](https://www.utci.org/resources/utci_poster.pdf).
+
+Im hier verwendeten Rechner ist der Stoffwechsel deshalb kein frei veränderbarer Eingabewert. Zwei Personen mit verschiedenen tatsächlichen Tätigkeiten erhalten bei denselben vier Umwelteingaben denselben UTCI-Wert. Das ist eine Eigenschaft des standardisierten Umweltvergleichs. Ihre individuelle Beanspruchung muss damit nicht gleich sein.
+
+**Auftrag vor der Berechnung:** Stellen Sie die Frage „Welche Bank bietet günstigere Umweltbedingungen?“ der Frage „Warum kollabiert diese Person?“ gegenüber. Für welche kann UTCI unter seinen Referenzannahmen einen Beitrag leisten? Welche Informationen über Tätigkeit, Dauer, Bekleidung und physiologische Voraussetzungen fehlen bei der anderen?
 
 # Können wir LST in UTCI umrechnen?
 
@@ -36,7 +46,7 @@ Eine direkte Umrechnung aus dem Satellitenraster ist nicht möglich. Für UTCI b
 
 Die mittlere Strahlungstemperatur ist keine Oberflächentemperatur. Sie berücksichtigt kurz- und langwellige Strahlung aus unterschiedlichen Richtungen. Die LST liefert hierfür einen Teil der Information über die Oberflächen; für eine Berechnung fehlen weiterhin unter anderem Strahlungsgeometrie und direkte Sonneneinstrahlung.
 
-Der Rechenweg lautet daher: **Stations- oder lokale Messdaten ergänzen → Strahlungssituation messen oder modellieren → UTCI berechnen.** Für die Sitzung setzen wir plausible Szenarien an und kennzeichnen sie als Annahmen. So wird der Einfluss einer Planungsentscheidung sichtbar, ohne eine gemessene Belastung vorzutäuschen. Die Eingangsgrößen und deren Gültigkeitsbereiche sind im [UTCI-Leitfaden des ECMWF](https://confluence.ecmwf.int/spaces/CKB/pages/650383669/UTCI+Timeseries+User+Guide) erläutert.
+Eine UTCI-Berechnung ist erst begründet, wenn die Frage einen Umweltvergleich unter den Referenzannahmen verlangt. Dafür müssen die vier Eingangsgrößen zeitlich und räumlich zusammenpassen. Für die Diskussion verwenden wir ein angenommenes Szenario. Es zeigt die Reaktion des Modells auf eine veränderte Eingabe; die Wirkung einer realen Maßnahme muss zusätzlich beobachtet oder modelliert werden. Die Eingangsgrößen und deren Gültigkeitsbereiche sind im [UTCI-Leitfaden des ECMWF](https://confluence.ecmwf.int/spaces/CKB/pages/650383669/UTCI+Timeseries+User+Guide) erläutert.
 
 # Einfaches Rechenbeispiel: Verschattung
 
@@ -56,7 +66,7 @@ Die angenommenen Szenarien sind:
 | besonnter Standort | 30 °C | 40 °C | 1 m/s | 50 % |
 | verschatteter Standort | 30 °C | 32 °C | 1 m/s | 50 % |
 
-Das Skript liefert für diese Annahmen 32,9 °C UTCI am besonnten und 30,9 °C am verschatteten Standort und zeichnet den Vergleich. **Arbeitsauftrag:** Verändern Sie anschließend nur die Windgeschwindigkeit oder nur die Lufttemperatur. Erläutern Sie, welche Größe verändert wurde, welche konstant blieb und wie belastbar die Annahme für den gewählten Standort ist.
+Das Skript liefert für diese Annahmen 32,9 °C UTCI am besonnten und 30,9 °C am verschatteten Standort und zeichnet den Vergleich. **Arbeitsauftrag:** Formulieren Sie zunächst, welche Änderung der Wärmeflüsse Sie bei mehr Wind oder höherer Lufttemperatur erwarten. Variieren Sie dann eine Größe innerhalb des dokumentierten Gültigkeitsbereichs und vergleichen Sie Modellantwort und Erwartung. Begründen Sie die konstant gehaltenen Größen. Kann der Vergleich auch erklären, wie sich ein anstrengender Weg gegenüber ruhigem Sitzen auswirkt? Benennen Sie die dafür festgelegte Modellannahme.
 
 Für eine reale räumliche UTCI-Karte müssen die vier Größen für denselben Zeitpunkt und die jeweiligen Aufenthaltsorte vorliegen. Eine einzelne Station liefert keine vollständige räumliche Verteilung dieser Größen. Eine empirische Beziehung zwischen LST und Lufttemperatur wäre ebenfalls ein eigenes, lokal zu prüfendes Modell.
 
@@ -80,8 +90,10 @@ Für einen einfachen Vergleich werden der nächstgelegene Stundenwert der Luftte
 
 Das Stationspixel beantwortet eine andere räumliche Frage als der Median eines Stadtquartiers. Beide können verglichen werden, wenn der Unterschied der Bezugseinheiten ausdrücklich benannt wird. Ein Tagesmaximum der Lufttemperatur gehört ebenfalls zu einer anderen Zeitbasis als eine einzelne Überflugaufnahme.
 
-# Von thermischer Belastung zu Planungsbedarf
+# Was bleibt für die konkrete Person offen?
 
-Die Wahl des Index beendet die Modellierung nicht. Für die Planung kommen Aufenthaltsorte, Aufenthaltsdauer, erreichbare kühle Räume und empfindliche Personengruppen hinzu. Ältere und vorerkrankte Menschen sowie kleine Kinder gehören zu Gruppen mit erhöhtem Hitzeschutzbedarf. Zusätzlich können Arbeitsbedingungen oder fehlende Ausweichmöglichkeiten die Exposition erhöhen. [UBA: Hitze und vulnerable Gruppen](https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze).
+Ein Umweltindex liefert keine individuelle Erklärung des Kollapses. Dafür fehlen unter anderem der Verlauf der Exposition, die tatsächliche Tätigkeit und die körperlichen Voraussetzungen. Alter allein ersetzt diese Informationen nicht.
 
-UTCI beschreibt dabei die Umweltsituation unter Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum [Planungsauftrag der Sitzung](modellierung_luftbild_lst.qmd#planungsauftrag).
+Die Wahl des Index beendet auch die räumliche Bewertung nicht. Für die Planung kommen Aufenthaltsorte, Aufenthaltsdauer, erreichbare kühle Räume und empfindliche Personengruppen hinzu. Ältere und vorerkrankte Menschen sowie kleine Kinder gehören zu Gruppen mit erhöhtem Hitzeschutzbedarf. Zusätzlich können Arbeitsbedingungen oder fehlende Ausweichmöglichkeiten die Exposition erhöhen. [UBA: Hitze und vulnerable Gruppen](https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze).
+
+UTCI beschreibt dabei die Umweltsituation unter Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum [Auftrag: ein eigenes Modell begründen](modellierung_luftbild_lst.qmd#planungsauftrag).

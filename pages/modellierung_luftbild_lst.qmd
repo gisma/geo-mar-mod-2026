@@ -1,6 +1,6 @@
 ---
-title: "Modellierung städtischer Hitze"
-subtitle: "Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen"
+title: "Stadtwärme: Was muss unser Modell erklären?"
+subtitle: "Vom Oberflächenbild zur Wärmebilanz des Menschen"
 format:
   html:
     toc: true
@@ -9,268 +9,115 @@ execute:
   echo: true
 ---
 
-# Lehrpfad für eine Kurssitzung
+# Der Fall, an dem das erste Modell scheitert
 
-Die Sitzung untersucht, wie aus einer Temperaturbeobachtung eine räumliche Planungsgrundlage entsteht. Ausgangspunkt sind Oberflächenhotspots im Satellitenbild. Anschließend werden die zeitliche Statistik, die räumliche Gebietseinteilung und die menschliche Exposition als aufeinander aufbauende Modellentscheidungen behandelt.
+Eine ältere Frau kollabiert an einem heißen Tag in einem Park. Im Satellitenbild erscheint der Park gegenüber den umliegenden Straßen kühl. **Wie kann das zusammenpassen?**
 
-| Zeit | Analyseschritt | Modellierungsfrage |
+Das ist der Ausgangspunkt der Fallstudie. Zunächst formulieren die Studierenden eigene Erklärungen und benennen, was sie dafür wissen müssten. Die Frage „Welche Oberflächen sind warm?“ erfasst einen anderen Gegenstand als „Unter welchen Bedingungen kann diese Person ihre Körperwärme noch abgeben?“. Eine Karte kühler Vegetation beantwortet die zweite Frage noch nicht. Der geschilderte Fall dient der Modellbildung; seine individuelle Ursache ist mit den Kursdaten nicht feststellbar.
+
+**Erster Auftrag:** Skizzieren Sie ein Wirkungsgefüge für den Fall, bevor Sie Daten laden. Verbinden Sie Oberfläche, Luft, Strahlung, Wind, Feuchte, Tätigkeit und Körper. Kennzeichnen Sie jede Verbindung, die eine LST-Karte tatsächlich beobachten kann, und jede, für die Sie eine zusätzliche Annahme benötigen.
+
+# Das erste Modell: Oberfläche als Hinweis auf Hitze
+
+Die Aussage „Grünflächen sind kühl, dort sind Menschen vor Hitze geschützt“ enthält bereits ein Modell. Es überträgt eine Eigenschaft der Oberfläche auf die Beanspruchung eines Menschen. Dafür müssten mehrere Zusammenhänge gelten: Die beobachtete Oberfläche müsste die Aufenthaltsumgebung repräsentieren, der zeitliche Bezug müsste passen, und die Wärmeabgabe des Körpers müsste dort ausreichend möglich sein.
+
+Das Luftbild erlaubt Hypothesen zu Vegetation, Versiegelung und Schatten. LST beschreibt den thermischen Zustand der vom Sensor erfassten Oberflächen. Beides hilft, die Umgebung zu charakterisieren. Ob die ältere Frau gerade einen besonnten Weg hinaufgeht, wie warm und feucht die Luft ist oder wie ihr Körper Wärme reguliert, ist daraus nicht abzulesen.
+
+**Prüffrage:** Welche Beobachtung würde Ihre erste Erklärung erschüttern? Ein kühles Parkmittel bei hoher Beanspruchung auf einem besonnten Weg? Gleiche LST bei unterschiedlicher Lufttemperatur? Zwei Personen mit unterschiedlicher Anstrengung am selben Ort? Formulieren Sie eine prüfbare Gegenüberstellung.
+
+# Warum das DLR-LST-Produkt?
+
+Das DLR-Sommermittel bietet eine vorhandene, räumlich zusammenhängende Beschreibung von Oberflächentemperaturmustern. Es eignet sich, um eine erste Hypothese zu prüfen: Sind die aus dem Luftbild als warm oder kühl eingeschätzten größeren Flächen auch in den verfügbaren Satellitenbeobachtungen entsprechend auffällig? Die eigene Herstellung eines solchen Mittelwertbilds hätte für diese Frage zunächst keinen notwendigen Erkenntnisgewinn.
+
+Das Produkt mittelt gültige wolkenfreie Landsat-Beobachtungen der Sommer 2021–2025. Es beschreibt weder die Temperatur am Tag des Kollapses noch das gesamte Tagesgeschehen. Das ergänzende Beobachtungszahlraster hilft, die räumlich unterschiedliche Datengrundlage zu prüfen. [DLR-Produktbeschreibung](https://geoservice.dlr.de/web/datasets/lst_de) und [Produktmetadaten](https://download.geoservice.dlr.de/LST_DE/files/LST_README.txt).
+
+**Entscheidung:** Für eine Frage nach mittleren Oberflächenmustern kann dieses Produkt ausreichen. Für die Situation einer Person an einem bestimmten Nachmittag reicht es nicht. Begründen Sie die Eignung anhand von Zielgröße, Zeitpunkt und räumlichem Bezug. Die [QGIS-Referenz](qgis-howto-stadtwaerme-marburg.qmd) unterstützt diesen Vergleich.
+
+# Warum eine eigene LST-Auswertung – und wann hilft sie nicht weiter?
+
+Eine eigene Zeitreihe wird sinnvoll, sobald die Fragestellung die im Mittelwert verlorene zeitliche Information benötigt. Etwa: Bleibt der Park an besonders warmen Aufnahmeterminen gegenüber dem Umfeld kühler? Wird der Unterschied auf dem Weg und im Park an denselben Terminen beobachtet? Welche Rolle spielt die Auswahl wolkenfreier Tage?
+
+| Offene Frage | Begründete Untersuchung | Grenze der Aussage |
 |---|---|---|
-| 0–10 min | DLR-Mittelwertbild und Luftbild vergleichen | Welche Zielgröße beobachten wir? |
-| 10–25 min | Einzeltermine zur Zeitreihe verbinden; Skript lesen | Welche zeitliche Auswahl bildet die Datengrundlage? |
-| 25–40 min | mean, q90 und q95 vergleichen | Welche Hotspots entstehen durch die Wahl des Kennwerts? |
-| 40–55 min | Flächen aggregieren und zwei Segmentierungen vergleichen | Welche räumlichen Einheiten bilden wir? |
-| 55–70 min | Stationsdaten und UTCI-Szenario | Wie wird aus Temperatur eine Aussage über thermische Belastung? |
-| 70–90 min | Planungsauftrag bearbeiten und begründen | Wo treffen Hitze, Aufenthalt und besonderer Schutzbedarf zusammen? |
+| Wie unterscheiden sich mittlere Oberflächenmuster? | DLR-Mittelwert und Beobachtungszahl prüfen | kein bestimmter Ereignistag |
+| Bleibt eine Rangfolge über die Aufnahmetermine bestehen? | eigene Zeitreihe mit vergleichbaren Terminen auswerten | Lücken zwischen den Überflügen bleiben |
+| Wie unterscheiden sich mittleres Niveau und obere Temperaturen? | Mittelwert und q90/q95 derselben Stichprobe vergleichen | obere Quantile sind keine gemessenen Tagesmaxima |
+| Welche Luftbedingungen herrschen am Aufenthaltsort? | zeitlich passende lokale Messungen oder ein geprüftes räumliches Modell nutzen | zusätzliche LST-Kennwerte beantworten diese Frage nicht |
 
-**Vorbereitung:** QGIS und RStudio sind eingerichtet; Untersuchungsgebiet und Vergleichsflächen liegen vor. Der mehrjährige Datenabruf und die vollständige Rasterberechnung werden vor der Sitzung ausgeführt. In der Sitzung werden ein Termin und die wesentlichen Codezeilen nachvollzogen und vorhandene Ergebnisse verglichen. Die Downloadzeit gehört nicht zu den 90 Minuten.
+Ein einfaches Gegenbeispiel: Oberfläche A hat fünf Beobachtungen mit 20 °C und fünf mit 40 °C; Oberfläche B hat zehnmal 32 °C. Im Mittel ist B wärmer (32 gegenüber 30 °C), beim q90 ist A wärmer (40 gegenüber 32 °C). **Welcher Kennwert passt zu welcher Frage?** Die Wahl verändert die Bewertung, ohne neue Beobachtungen hinzuzufügen.
 
-Am Ende steht eine begründete räumliche Priorisierung mit dokumentierten Annahmen. Die Schritte 1–5 bilden den technischen und methodischen Hintergrund; der [Exkurs](exkurs_stationen.qmd) vertieft den Übergang zur thermischen Belastung.
+Eine eigene Berechnung legt Entscheidungen über Zeitraum, Wolkenmaske, Raster und Statistik offen. Sie ist deshalb eine Möglichkeit, Annahmen zu untersuchen. Sie ist keine unabhängige Bestätigung des DLR-Produkts, wenn beide auf denselben Landsat-Beobachtungen beruhen. Unterschiede müssen zunächst aus Auswahl und Verarbeitung erklärt werden. Die [R-Referenz](r-werkzeuge.qmd) stellt die Berechnungen bereit.
 
-# 1 · Was beschreibt das Mittelwertbild?
+**Auftrag:** Entscheiden Sie, ob Ihre Frage eine eigene LST-Auswertung verlangt. Nennen Sie den erwarteten Erkenntnisgewinn und eine Frage zum Fall der älteren Frau, die auch danach offenbleibt. Die begründete Entscheidung, mit dem vorhandenen Produkt weiterzuarbeiten, ist ein vollständiges Ergebnis.
 
-Der [manuelle QGIS-Workflow](qgis-howto-stadtwaerme-marburg.qmd) bleibt der Ausgangspunkt: Das DLR-Sommerprodukt wird für Marburg ausgeschnitten und mit dem Luftbild verglichen. Es fasst die gültigen wolkenfreien Landsat-Beobachtungen der Sommer 2021–2025 zusammen. Jede Rasterzelle erhält einen Mittelwert der an diesem Ort verfügbaren Temperaturen. Das Ergebnis zeigt, welche Oberflächen in dieser Stichprobe im Mittel wärmer oder kühler waren. [Produktbeschreibung des DLR](https://geoservice.dlr.de/web/datasets/lst_de).
+# Warum die Luft dazugehört
 
-Ein hoher Mittelwert kann beispielsweise zu einem großflächig versiegelten Standort passen. Eine solche Zuordnung ist eine Hypothese über den Zusammenhang zwischen Oberflächenbeschaffenheit und Temperatur. Verschattung, Feuchte, Wetter und Aufnahmezeit beeinflussen die beobachteten Werte ebenfalls.
+Der Körper tauscht Wärme mit der umgebenden Luft aus. Dieser Austausch hängt unter anderem vom Temperaturunterschied zwischen Haut und Luft sowie von der Luftbewegung ab. Eine kühle Oberfläche garantiert keine ausreichend kühle Luft am Aufenthaltsort. Umgekehrt kann Schatten die Strahlung auf den Menschen verringern, während die Lufttemperatur ähnlich bleibt.
 
-**Modellierung beginnt mit der Wahl der Aussage:** Soll eine Karte das mittlere Temperaturniveau, wiederkehrende hohe Temperaturen oder Unterschiede zwischen Standorten während einzelner Ereignisse beschreiben? Für diese Fragen benötigen wir unterschiedliche Kennwerte.
+Wir benötigen daher eine präzisere Frage: **Welche Wärme kann der Körper an diesem Ort und zu diesem Zeitpunkt abgeben oder aus der Umgebung aufnehmen?** Dazu gehören Lufttemperatur, Wind, Feuchte und kurz- sowie langwellige Strahlung. Luftfeuchte beeinflusst die Möglichkeit, über Verdunstung von Schweiß Wärme abzugeben. Wind beeinflusst sowohl den konvektiven als auch den verdunstungsbedingten Austausch.
 
-Das Mittelwertbild verdichtet die Zeitdimension zu einer Zahl. Aus ihm lässt sich nicht rekonstruieren, ob ein Ort häufig mäßig warm war oder zwischen kühlen und sehr heißen Zuständen wechselte. Außerdem ist es ein Mittel verfügbarer Satellitenbeobachtungen: Bewölkte Tage sowie die meisten Tages- und Nachtstunden fehlen.
+Eine Wetterstation liefert einen zeitlichen Bezug. Ob sie die Luft im Park, auf dem Weg oder an einer Bank repräsentiert, ist eine eigene Modellannahme. Die Übertragung von Stationsdaten in den Stadtraum muss geprüft werden. Die mittlere Strahlungstemperatur beschreibt die Strahlungsumgebung des Körpers; sie kann nicht durch die LST eines einzelnen Pixels ersetzt werden.
 
-# 2 · Wofür brauchen wir eine Zeitreihe?
+**Auftrag:** Entwerfen Sie einen Vergleich zwischen einer besonnten und einer verschatteten Bank. Welche Größen müssen zeitgleich beobachtet werden, um die Hypothese „Schatten verringert die Beanspruchung“ zu untersuchen? Welche Alternativerklärung bleibt bei einer bloßen Messung der Lufttemperatur bestehen?
 
-Eine Zeitreihe erhält zunächst die einzelnen Beobachtungen. Für jede Rasterzelle entsteht eine Folge von Temperaturen mit Aufnahmedatum. Für festgelegte Vergleichsflächen lässt sich daraus je Termin ein räumlicher Kennwert berechnen.
+# Warum der Stoffwechsel dazugehört
 
-Damit können wir drei Fragen bearbeiten:
+Auch in einer kühlen Umgebung erzeugt der Körper durch den Stoffwechsel Wärme. Beim Gehen, Treppensteigen oder Tragen steigt die Wärmeproduktion gegenüber dem ruhigen Sitzen. Ob der Körper Wärme speichert, ergibt sich aus dem Zusammenwirken dieser inneren Produktion mit den Austauschprozessen zur Umgebung.
 
-- Bleibt die Rangfolge der Standorte über verschiedene Termine erhalten?
-- Welche Standorte erreichen bei ähnlichem Mittelwert besonders hohe Temperaturen?
-- Wie verändert sich die räumliche Abgrenzung warmer Bereiche, wenn wir Mittelwert, q90 oder q95 verwenden?
-
-Ein konstruiertes Beispiel verdeutlicht die zweite Frage:
-
-```r
-a <- rep(c(20, 40), 5)  # wechselnd: fünf kühle und fünf heiße Beobachtungen
-b <- rep(32, 10)       # gleichbleibendes Niveau
-
-rbind(
-  A = c(mean = mean(a), q90 = quantile(a, 0.90, names = FALSE)),
-  B = c(mean = mean(b), q90 = quantile(b, 0.90, names = FALSE))
-)
-```
-
-Im Mittel liegt B mit 32 °C über A mit 30 °C. Beim q90 kehrt sich die Reihenfolge um: A erreicht 40 °C, B weiterhin 32 °C. Die Wahl der Statistik verändert damit die räumliche Bewertung.
-
-Die Zeitreihe ist weiterhin eine unregelmäßige Beobachtungsfolge. Verbindungslinien im Diagramm dienen der Orientierung; zwischen den Überflügen fehlen Messungen.
-
-# 3 · Wie entsteht die Zeitreihe?
-
-## Untersuchungsgebiet und Vergleichsflächen
-
-In QGIS werden zwei GeoPackages im Projektordner gespeichert:
-
-| Datei | Inhalt |
-|---|---|
-| `data/gebiet.gpkg` | ein Polygon des gesamten Untersuchungsgebiets |
-| `data/flaechen.gpkg` | Vergleichspolygone, etwa Park, Gewerbegebiet und Wohnbebauung; eindeutiges Textfeld `area_id` |
-
-Die Flächen dienen zunächst als vorab definierte Untersuchungseinheiten. Ihre Abgrenzung wird aus Landnutzung und Stadtstruktur begründet. Dafür bleibt der manuelle Vergleich mit dem Luftbild erforderlich.
-
-## Einen Termin nachvollziehen
-
-Für einen Landsat-8/9-Termin werden das Temperaturband `ST_B10` und das Qualitätsband `QA_PIXEL` benötigt. Die Verarbeitung besteht aus vier Schritten:
-
-1. Raster auf das Untersuchungsgebiet zuschneiden.
-2. Als ungültig markierte Werte, Wolken, Wolkenschatten und Schnee ausblenden.
-3. Die digitalen Werte des Temperaturbands in °C umrechnen.
-4. Das bereinigte Raster auf demselben Ausgaberaster wie alle anderen Termine ablegen.
-
-Die Umrechnung lautet:
+Als vereinfachtes Denkmodell schreiben wir alle Beiträge als Leistungen pro Körperoberfläche:
 
 $$
-LST_{°C}=DN\cdot0{,}00341802+149-273{,}15.
+S = M - W + R + C + K - E.
 $$
 
-Die Skalierung und die Qualitätsbits sind in der [USGS-Temperaturdokumentation](https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature) und der [QA-Dokumentation](https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands) beschrieben.
+Dabei ist $S$ die Wärmespeicherung pro Zeit, $M$ die metabolische Leistung, $W$ die nach außen verrichtete mechanische Arbeit und $E$ die Wärmeabgabe durch Verdunstung. $R$, $C$ und $K$ sind die Nettoflüsse durch Strahlung, Konvektion und Wärmeleitung; sie sind hier bei Wärmegewinn positiv und bei Verlust negativ. Bei $S>0$ wird Wärme im Körper gespeichert. Atmungswärme und einzelne Regulationsprozesse sind in dieser vereinfachten Bilanz nicht gesondert aufgelöst.
 
-Für die Übung wird ein 100-m-Ausgaberaster verwendet. Das erleichtert die Auswertung größerer Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.
+Die Bilanz ordnet die Erklärungen: LST liefert Hinweise für einen Teil der Umgebung; Lufttemperatur und Wind beeinflussen $C$, die Strahlungsumgebung beeinflusst $R$, Feuchte und Schweißverdunstung beeinflussen $E$, die Tätigkeit beeinflusst $M-W$. Kleidung verändert den Austausch. Physiologische Regulation und gesundheitliche Voraussetzungen beeinflussen, wie der Körper mit der Situation umgehen kann. Grundlagen erläutert [Health Canada zur menschlichen Thermoregulation](https://www.canada.ca/en/health-canada/services/environmental-workplace-health/reports-publications/climate-change-health/extreme-heat-events-guidelines-technical-guide-health-care-workers.html).
 
-Für jedes Vergleichspolygon berechnen wir anschließend den Median seiner gültigen Rasterzellen. Das liefert eine Tabellenzeile je Fläche und Termin:
+**Gedankenexperiment:** Zwei Personen befinden sich bei denselben Umweltbedingungen im Park. Eine sitzt, die andere kommt nach einem anstrengenden Anstieg an. Welche Bilanzgröße unterscheidet sich bereits durch die Tätigkeit? Was müssten Sie zusätzlich wissen, um ihre jeweilige Beanspruchung zu beurteilen? Begründen Sie auch, weshalb das Lebensalter allein dafür nicht genügt.
 
-| date | area_id | lst_c | valid_pixels |
-|---|---|---:|---:|
-| Aufnahmedatum | Park | Flächenmedian in °C | Zahl gültiger Zellen |
+# Was leistet UTCI in diesem Konzept?
 
-## Wiederholung automatisieren
+Nun lässt sich ein Index gezielt auswählen: UTCI verbindet Lufttemperatur, Feuchte, Wind und mittlere Strahlungstemperatur mit einem Modell menschlicher Thermoregulation. Stoffwechsel und Bekleidung sind darin bereits über Referenzannahmen berücksichtigt. Die Referenztätigkeit entspricht Gehen mit etwa 4 km/h und einer metabolischen Leistung von 135 W/m². [UTCI: Herleitung und Referenzbedingungen](https://www.utci.org/resources/utci_poster.pdf).
 
-Die Verarbeitung eines Termins wird für sämtliche ausgewählten Sommertermine wiederholt. Es werden keine besonders heißen Szenen vorab ausgewählt: Sonst beschriebe bereits der Mittelwert eine vorselektierte Hitzestichprobe.
+Damit können wir Umweltsituationen unter gleichen Personenannahmen vergleichen. Die ältere Frau mit ihrer konkreten Tätigkeit, Kleidung und gesundheitlichen Verfassung ist damit noch nicht individuell beschrieben. Ein UTCI-Wert erklärt keinen Kollaps und bildet individuelle Unterschiede in der Regulation nicht vollständig ab. Die [Vertiefung zu Messdaten und UTCI](exkurs_stationen.qmd) stellt einen kontrollierten Szenariovergleich bereit.
 
-Die Skripte sind absichtlich linear aufgebaut. Tabellen, Schleifen, Diagramme und Kennwerte verwenden Base R; die räumlichen Aufgaben übernehmen `terra`, `sf` und später `supercells`. `rstac` übernimmt die Suche im öffentlichen Szenenkatalog.
+**Modellkritik:** Was gewinnen Sie gegenüber LST? Was bleibt gegenüber Ihrer Frage zur älteren Frau offen? Könnten Sie im verwendeten UTCI-Rechner den Stoffwechsel ändern? Falls nicht: Wo steckt diese Annahme im Modell, und welche andere Fragestellung lässt sich damit trotzdem bearbeiten?
 
-Einmalig in der R-Konsole:
+# Welche räumlichen Einheiten passen zur Frage?
 
-```r
-install.packages(c("terra", "sf", "rstac", "supercells"))
-```
+Ein Parkmittel, eine thermisch homogene Region und der konkrete Weg zur Bank beziehen sich auf verschiedene Gegenstände. Ein kühler Flächenmittelwert kann einen besonnten Aufenthaltsort verdecken. Deshalb werden Gebiete aus der Fragestellung begründet: Geht es um Oberflächenmuster, Aufenthaltsorte oder die zeitliche Exposition entlang eines Wegs?
 
-Das RStudio-Projekt liegt im Ordner mit dieser Struktur:
+Eine Segmentierung mit `supercells` kann thermisch ähnliche Oberflächen zusammenfassen. Sie erzeugt dadurch weder Zonen gleicher menschlicher Beanspruchung noch eine Erklärung der Temperaturunterschiede. Die [R-Referenz](r-werkzeuge.qmd) ermöglicht den Vergleich mit vorab abgegrenzten Flächen. Prüfen Sie, ob sich Ihre Aussage durch andere Grenzen oder durch die Reihenfolge räumlicher und zeitlicher Aggregation verändert. Eine rechnerisch homogene Region kann für die Frage nach dem Aufenthalt trotzdem ungeeignet sein.
 
-```text
-stadtwaerme/
-├── data/
-│   ├── gebiet.gpkg
-│   └── flaechen.gpkg
-├── scripts/
-│   ├── lst_abruf.R
-│   ├── lst_zeitreihe.R
-│   └── lst_regionen.R
-└── output/
-```
+# Ein eigenes Modell begründen {#planungsauftrag}
 
-Die drei verlinkten Skripte werden unter `scripts/` gespeichert. Alle Pfade beziehen sich auf den Projektordner.
+**Fragestellung:** Unter welchen Umwelt- und Aufenthaltsbedingungen könnte der als kühl kartierte Park für eine ältere Person dennoch thermisch belastend sein, und welche Beobachtungen würden Ihre Erklärung prüfen?
 
-**Szenen abrufen:** [lst_abruf.R](../scripts/lst_abruf.R) sucht Landsat-8/9-Oberflächentemperaturprodukte am [Microsoft Planetary Computer](https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2), beschränkt die Auswahl auf Juni bis August 2021–2025 und speichert nur Temperatur- und Qualitätsband im Gebiet.
+Überarbeiten Sie Ihr anfängliches Wirkungsgefüge. Leiten Sie jede Erweiterung aus einer offenen Frage des bisherigen Modells ab. Benennen Sie auch, welche Beobachtung Ihre Erklärung widerlegen oder eine andere Erklärung wahrscheinlicher machen würde.
 
-```r
-source("scripts/lst_abruf.R")
-```
+Dokumentieren Sie in einer kurzen Argumentation mit Karte oder Skizze:
 
-Im Skript stehen Gebiet, Zeitraum und Wolkengrenze am Anfang. Die Wolkengrenze ist eine Vorauswahl für ganze Szenen. Die lokale QA-Maske folgt im nächsten Skript. Bei mehreren Szenen am selben Tag wird für diesen Einstieg die Szene mit dem geringsten Gesamtwolkenanteil verwendet; dadurch können an den Rändern Beobachtungen fehlen. `data/szenen.csv` hält Auswahl, Aufnahmezeit und Dateipfade fest.
+- Ihre präzise Frage mit Ort, Zeitpunkt, Tätigkeit und betrachteter Personengruppe.
+- Die angenommenen Wirkungszusammenhänge und die Rolle von Oberfläche, Luft und Stoffwechsel.
+- Warum das DLR-Produkt genügt oder welche eigene Auswertung zusätzliche Erkenntnis verspricht.
+- Welche Größen beobachtet, welche modelliert und welche lediglich angenommen sind.
+- Einen Vergleich, mit dem sich die entscheidende Annahme prüfen lässt, und die verbleibenden Aussagegrenzen.
 
-**Zeitreihe und Kennwerte berechnen:** [lst_zeitreihe.R](../scripts/lst_zeitreihe.R) bereinigt die einzelnen Termine, vereinheitlicht ihr Raster und erzeugt die Flächentabelle sowie die zeitlichen Rasterkennwerte.
+Falls Sie daraus einen Prüfstandort für Hitzeschutz ableiten, begründen Sie ihn über Aufenthaltsbedingungen und Schutzbedarf. Ein hoher Oberflächenwert oder eine Grenze im Segmentierungsraster allein trägt diese Entscheidung nicht. Auch die Wirksamkeit einer Maßnahme wie Verschattung ist eine eigene, zu prüfende Hypothese.
 
-```r
-source("scripts/lst_zeitreihe.R")
-```
+Beurteilt wird, ob Frage, Wirkungsmodell, Datenwahl und Prüfung zusammenpassen. Eine begründete Revision des ersten Modells gehört zur Leistung. Anzahl der Karten, Menge des Codes und das Abarbeiten sämtlicher Werkzeuge sind keine Qualitätsmaßstäbe.
 
-| Ausgabe unter `output/` | Bedeutung |
-|---|---|
-| `lst_stapel.tif` | ein Rasterband je Termin: die räumliche Zeitreihe |
-| `termine.csv` | Zuordnung der Rasterbänder zu den Aufnahmen |
-| `lst_zeitreihe.csv`, `lst_zeitreihe.png` | Flächenmediane je Termin und Diagramm |
-| `lst_kennwerte.tif` | drei Bänder: mean, q90 und q95 pro Rasterzelle |
-| `lst_anzahl.tif` | Zahl gültiger Beobachtungen pro Rasterzelle |
-| `lst_q95_minus_mean.tif` | Differenz zwischen q95 und Mittelwert |
-| `lst_kennwerte.png` | Kennwertkarten mit gemeinsamer Temperaturskala |
+# Diskussion in einer 90-minütigen Sitzung
 
-Die Zahl gültiger Beobachtungen gehört zur Interpretation. Im Skript werden Zellen mit weniger als zehn Beobachtungen für die Kennwertkarten ausgeblendet. Dieser Arbeitswert garantiert keine stabile Schätzung: Insbesondere q95 ist bei kleinen Stichproben stark von wenigen hohen Werten abhängig. Bei ungleich verteilten Aufnahmeterminen erhalten häufig beobachtete Sommer mehr Gewicht.
-
-# 4 · Mittelwert, q90 und q95 räumlich vergleichen
-
-Der Mittelwert berücksichtigt alle gültigen Beobachtungen einer Rasterzelle. q90 bezeichnet deren 90. Perzentil, q95 deren 95. Perzentil. Die oberen Quantile charakterisieren den hohen Temperaturbereich dieser Stichprobe. Sie sind weder ein einzelnes Ereignisbild noch eine Wiederkehrperiode.
-
-| Karte | Räumliche Fragestellung |
-|---|---|
-| Mittelwert | Wo liegt das Temperaturniveau über die verfügbaren Sommerbeobachtungen hoch? |
-| q90 | Wo liegen die oberen Temperaturen der Beobachtungsreihe hoch? |
-| q95 | Welche Bereiche fallen im äußersten oberen Teil der Stichprobe auf? |
-| q95 − Mittelwert | Wo ist der Abstand zwischen mittlerem Niveau und hohem Temperaturbereich groß? |
-| Beobachtungszahl | Auf welcher Datengrundlage beruht der Vergleich? |
-
-Ein Pixel mit hohem Mittelwert und geringer Differenz kann über die Stichprobe relativ gleichmäßig warm sein. Ein Pixel mit geringerem Mittelwert und großer Differenz reagiert möglicherweise stärker auf trockene, sonnige Bedingungen. Das sind zunächst Interpretationshypothesen, die am Luftbild und an einzelnen Terminen überprüft werden.
-
-Für den Kartenvergleich werden derselbe Ausschnitt, dieselbe Temperaturlegende und dieselbe NoData-Behandlung verwendet. Separate Quantilklassierungen jeder Karte würden in jeder Darstellung einen ähnlichen Anteil als „warm“ hervorheben und absolute Unterschiede verdecken.
-
-**Arbeitsauftrag:** Vergleichen Sie die Rangfolge der fünf Flächen und die räumliche Ausdehnung hoher Werte. Prüfen Sie, ob etwa trockene Offenflächen unter q95 stärker hervortreten als unter dem Mittelwert. Kontrollieren Sie auffällige Bereiche anhand der Originaltermine und der Beobachtungszahl.
-
-Das selbst berechnete Mittelwertbild dient auch zum Vergleich mit dem DLR-Produkt. Eine exakte Reproduktion ist wegen Szenenauswahl, Maskierung und Ausgaberaster nicht zu erwarten. Für den Einstieg werden Muster und Größenordnung verglichen; eine Differenzkarte erfordert zusätzlich dieselbe Rastergeometrie und eine klar abgegrenzte gemeinsame Datenbasis.
-
-# 5 · Von Rasterzellen zu Flächen und Regionen
-
-## Vorgegebene Gebiete aggregieren
-
-Stadtquartiere, Landnutzungseinheiten oder regelmäßige Rasterquadrate können als räumliche Bezugseinheiten dienen. Dafür wird pro Gebiet und Termin ein Flächenwert berechnet. Die Wahl der Einheit bestimmt, welche Unterschiede erhalten bleiben: Große Quartiere mitteln kleine heiße Standorte stärker aus als kleine Vergleichspolygone.
-
-Zeitliche und räumliche Aggregation müssen dabei ausdrücklich benannt werden:
-
-| Reihenfolge | Aussage |
-|---|---|
-| Pro Pixel q90 über die Zeit, anschließend räumlicher Mittelwert im Quartier | mittleres Niveau der lokalen oberen Temperaturen |
-| Pro Termin räumlicher Mittelwert im Quartier, anschließend q90 dieser Folge | oberer Temperaturbereich des Quartiers als Gesamteinheit |
-
-Beide Größen unterscheiden sich. Die höchsten Temperaturen benachbarter Pixel können an verschiedenen Tagen auftreten. Das Quartier erreicht deshalb nicht zwangsläufig gleichzeitig das in der Quantilkarte dargestellte Temperaturniveau.
-
-Ein Quartiermittel lässt sich in R unmittelbar berechnen:
-
-```r
-library(terra)
-quartiere <- vect("data/quartiere.gpkg")
-kennwerte <- rast("output/lst_kennwerte.tif")
-quartiere <- project(quartiere, crs(kennwerte))
-extract(kennwerte, quartiere, fun = mean, na.rm = TRUE)
-```
-
-Dieses Beispiel verwendet Zellen nach ihrer Lage im Polygon. Für den Einstieg werden ausreichend große Gebiete gewählt; Randzellen werden nicht nach Flächenanteil gewichtet.
-
-## Temperaturbasierte Regionen ableiten
-
-Wenn passende Gebietseinheiten fehlen, können benachbarte Rasterzellen nach thermischer Ähnlichkeit zusammengefasst werden. Jakub Nowosads R-Paket [supercells](https://jakubnowosad.com/supercells/) bildet zusammenhängende Segmente. Für diese Fallstudie verwenden wir zwei Merkmale: mittlere LST und den Abstand q95 − Mittelwert. Die Standardisierung gibt beiden Merkmalen eine vergleichbare Gewichtung.
-
-Das Skript [lst_regionen.R](../scripts/lst_regionen.R) setzt diese Regionalisierung um:
-
-```r
-source("scripts/lst_regionen.R")
-```
-
-Die Funktion [supercells()](https://jakubnowosad.com/supercells/reference/supercells.html) verbindet Merkmalsähnlichkeit und räumliche Nähe. `k` steuert die angestrebte Zahl der Regionen, `compactness` deren räumliche Kompaktheit. Das Skript speichert die Polygone als `regionen.gpkg`, ihre Kennwerte und die erneut aggregierten ursprünglichen Zeitreihen.
-
-Damit lassen sich die beiden Aggregationsreihenfolgen für Region 1 direkt vergleichen:
-
-```r
-reihe <- read.csv("output/regionen_zeitreihe.csv")
-karte <- read.csv("output/regionen_kennwerte.csv")
-quantile(reihe$lst_c[reihe$region_id == 1], 0.90, na.rm = TRUE)
-karte$q90[karte$region_id == 1]
-```
-
-Der erste Wert ist q90 der regionalen Mitteltemperaturen über die Zeit. Der zweite ist der räumliche Mittelwert der pixelweisen q90-Werte.
-
-**Arbeitsauftrag:** Wiederholen Sie die Berechnung zunächst mit `k <- 15`, dann mit `k <- 60`. Verändern Sie anschließend bei gleicher Segmentzahl die Kompaktheit. Speichern Sie jede Variante unter eigenem Namen. Vergleichen Sie Grenzlage, innere Temperaturstreuung und Unterschiede benachbarter Regionen.
-
-Die Segmente sind thermisch begründete Analysegebiete. Ob ihre Grenzen mit Stadtquartieren zusammenfallen, wird anschließend anhand von Bebauung, Nutzung und Topografie untersucht. Die Wahl von Merkmalen, Segmentzahl und Kompaktheit ist Teil des räumlichen Modells. Durch Vergleich mehrerer Varianten wird sichtbar, welche Strukturen über Maßstäbe hinweg bestehen.
-
-Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads [motif](https://jakubnowosad.com/motif/) weitere Methoden. Es beschreibt Muster kategorialer Raster; in dieser Einheit werden zunächst kontinuierliche Temperaturmerkmale mit `supercells` regionalisiert.
-
-# 6 · Einordnung als geographische Modellierung
-
-Die Verarbeitungskette umfasst mehrere Modellentscheidungen: LST als Zielgröße, Auswahl der Beobachtungen, gemeinsames Raster, zeitliche Statistik und räumliche Bezugseinheit. Jede Entscheidung verändert, welche Unterschiede sichtbar werden.
-
-Die automatisierte Berechnung macht diese Entscheidungen wiederholbar. Die fachliche Prüfung fragt anschließend, ob die resultierenden Muster zur Forschungsfrage passen und gegenüber anderen Kennwerten oder Gebietseinteilungen Bestand haben. Eine Segmentgrenze allein erklärt noch keinen Prozess; Oberflächenbeschaffenheit, Feuchte und Verschattung liefern mögliche Erklärungen.
-
-Die Beziehung zu gemessener Lufttemperatur wird gesondert behandelt: [Exkurs: Stationsmessungen in Mittelhessen](exkurs_stationen.qmd).
-
-# 7 · Vom Oberflächenhotspot zur thermischen Belastung
-
-Die Planung richtet sich auf Aufenthaltsbedingungen für Menschen. Deshalb wird nach der Satellitenanalyse die Lufttemperatur ergänzt: Sie beschreibt einen Teil des Wärmeaustauschs mit der Umgebung. Für die Belastung im Freien sind zusätzlich Feuchte, Wind und Strahlung erforderlich.
-
-Der [Exkurs zu Stationsdaten und UTCI](exkurs_stationen.qmd) erläutert diese Beziehung, verlinkt Stationen in Mittelhessen und enthält ein kurzes Szenarioskript. Bei gleicher Lufttemperatur wird eine besonnte mit einer verschatteten Situation verglichen. So wird deutlich, warum eine Maßnahme wie Verschattung die thermische Belastung verändern kann, ohne dass die Lufttemperatur im gleichen Maß sinkt.
-
-Ein LST-Raster lässt sich allein nicht in UTCI umrechnen. Die zusätzlich benötigten Größen müssen gemessen, räumlich modelliert oder als Szenarioannahmen ausgewiesen werden. Damit wechselt die Analyse von der Beobachtung der Oberfläche zu einem Modell des menschlichen Wärmehaushalts.
-
-# 8 · Planungsauftrag: räumliche Prioritäten begründen {#planungsauftrag}
-
-**Fragestellung:** Für welche zwei Standorte im Untersuchungsgebiet sollte die Kommune eine vertiefte Prüfung von Hitzeschutzmaßnahmen priorisieren?
-
-Die thermischen Regionen werden mit Aufenthaltsorten und Nutzungen überlagert. Geeignete Bezugspunkte sind beispielsweise Pflegeeinrichtungen, Schulen, Spielplätze, Haltestellen und häufig genutzte Fußwege. Bevölkerungsdaten werden auf der verfügbaren Gebietsebene verwendet; Angaben zu einer Region lassen keine unmittelbare Aussage über einzelne Personen zu.
-
-| Dimension | Räumliche Information | Bedeutung für die Entscheidung |
+| Zeit | Denkaufgabe | Ergebnis für die nächste Diskussion |
 |---|---|---|
-| Thermische Situation | LST-Mittelwert, q90/q95 und bei ausreichender Datengrundlage UTCI | Welche Belastungshinweise liegen vor? |
-| Exposition | Aufenthaltsorte, Nutzungszeiten und Wege | Wo und wann halten sich Menschen auf? |
-| Vulnerabilität | Einrichtungen und verfügbare Bevölkerungsinformationen | Wo besteht besonderer Schutzbedarf? |
-| Anpassungsmöglichkeiten | Schatten, erreichbare Grünräume, nutzbare kühle Innenräume | Welche Entlastung steht bereits zur Verfügung? |
+| 0–15 min | Parkfall erklären; erstes Wirkungsgefüge zeichnen | eigene Hypothese und ihre offenen Fragen |
+| 15–30 min | Luftbild und DLR-LST mit der Hypothese konfrontieren | begründete Reichweite der Oberflächenaussage |
+| 30–50 min | fehlende Austauschprozesse und metabolische Wärmeproduktion herleiten | erweitertes Wirkungsmodell und präzisierte Frage |
+| 50–65 min | Datenprodukt, eigene Zeitreihe oder UTCI-Szenario zur Frage auswählen | begründete Methodenwahl samt Grenze |
+| 65–90 min | Prüfvergleich entwerfen und gegenseitig kritisieren | überarbeitetes Konzept und offener Erkenntnisbedarf |
 
-Der Schutzbedarf unter anderem älterer Menschen und kleiner Kinder wird im [UBA-Hintergrund zu Hitze](https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze) erläutert. Ein Beispiel für die Verbindung räumlicher Klimamodelle und soziodemographischer Daten ist das [Projekt HEATS](https://www.umweltbundesamt.de/themen/klima-energie/klimafolgen-anpassung/werkzeuge-der-anpassung/tatenbank/hitzerisikomanagement-in-der-stadt-heats).
+Vorbereitete Karten und Szenarien dienen als Diskussionsmaterial. Die Sitzung verlangt keinen vollständigen mehrjährigen Datenabruf. Welche Berechnung vertieft wird, ergibt sich aus den formulierten Fragen.
 
-Ein konstruiertes Vergleichsbeispiel zeigt die Entscheidung:
-
-| Standort | Thermischer Hinweis | Nutzung und Schutzbedarf | Folgerung für die Prüfung |
-|---|---|---|---|
-| Gewerbedach | sehr hohe q95-LST | kaum Aufenthalt im Freien | hoher Oberflächenwert allein begründet keine erste Priorität |
-| Vorplatz einer Pflegeeinrichtung | mäßig hohe LST, wenig Schatten | besonders empfindliche Nutzergruppe | lokale Strahlungssituation und Aufenthaltsbedingungen prüfen |
-| Schulweg an einer Haltestelle | hohe LST und besonnte Wartefläche | wiederkehrender Aufenthalt, darunter Kinder | Verschattung und erreichbare Ausweichflächen prüfen |
-
-**Ergebnis:** Eine Karte markiert zwei reale Prüfstandorte. Für jeden Standort wird in wenigen Sätzen dokumentiert: thermischer Befund, genutzte räumliche Einheit, Nutzung und Schutzbedarf, fehlende Information und eine zu prüfende Maßnahme. Ein UTCI-Wert aus angenommenen Eingaben wird als Szenario ausgewiesen.
-
-Zum Abschluss wird geprüft, ob sich die Priorisierung beim Wechsel von mean zu q95 oder bei einer anderen Segmentierung verändert. Besteht sie nur unter einer bestimmten Parametrisierung, gehört diese Abhängigkeit in die Begründung. Die Karten dienen damit einer nachvollziehbaren Auswahl von Prüfgebieten.
-
-Grundlage der Fallstudie ist das Material [Summer in the City](https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city). Der Kurs übernimmt die stadtklimatische Fragestellung und entwickelt daraus einen Analyseweg für Geographiestudierende.
+Materialanregung: [Summer in the City, KlimaResilienzSchule](https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city).

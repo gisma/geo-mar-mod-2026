@@ -18,17 +18,17 @@ execute:
   message: false
 ---
 
-# Live-Ziel
+# Welche Annahme füllt den Raum?
 
-Ein kurzes R-Skript wird im Vortrag gemeinsam gelesen und ausgeführt.
+Wir haben Temperaturmessungen an einzelnen Stationen.
 
-Dabei soll sichtbar werden:
+Welche Beziehung dürfen wir auf unbeobachtete Orte übertragen?
 
-```text
-Punktmessung -> räumlicher Ergebnisdatensatz
-```
+Vor der Berechnung:
 
-Nicht die Darstellung ist der Kern, sondern die Modellannahme dahinter.
+- Ein erwartetes räumliches Muster skizzieren und begründen.
+- Einen möglichen Gegenbefund benennen.
+- Überlegen, wo eine zusätzliche Messung die Annahme prüfen könnte.
 
 ## Technischer Einstieg
 
@@ -54,9 +54,9 @@ Skript separat:
 
 [**R-Skript herunterladen**](../scripts/microclimate_warmup_minimal_kommentiert.R){download="microclimate_warmup_minimal_kommentiert.R"}
 
-# Warum Skripte?
+# Welche Entscheidung legt der Code offen?
 
-Skripte machen räumliche Analysen reproduzierbar.
+Eine Berechnung hält Modellentscheidungen fest und macht Varianten vergleichbar.
 
 Sie halten fest:
 
@@ -68,7 +68,7 @@ Modellannahme
 Ergebnis
 ```
 
-Das ist bei Massendaten, Wiederholungen und späteren Korrekturen entscheidend.
+Wiederholbarkeit erlaubt die Prüfung einer Annahme. Ob die Annahme zur Frage passt, muss fachlich begründet werden.
 
 # Ausgangsproblem
 
@@ -476,20 +476,20 @@ LM altitude  Höhenbezug
 RF warning   datengetriebene Partition
 ```
 
-Die Darstellung ist nur die Oberfläche.
+Welche dieser Strukturen erwarten Sie aus den örtlichen Prozessen?
 
-Die Aussage steckt in der Modellannahme.
+Wo würde eine zusätzliche Messung zwischen den Erklärungen unterscheiden?
 
 # Diskussion
 
 Leitfragen:
 
 ```text
-Welches Ergebnis zeigt harte Zuständigkeit?
-Welches Ergebnis zeigt lokale Nähe?
-Welches Ergebnis folgt der Höhe?
-Welches Ergebnis wirkt gut, bleibt aber riskant?
-Warum reicht RMSE allein nicht?
+Welche Übertragungsannahme passt zur Frage?
+Welche Beobachtung spricht gegen Ihre Wahl?
+Wo wäre eine zusätzliche Station besonders aufschlussreich?
+Wie verändert die Aussagefläche Ihre Schlussfolgerung?
+Was bleibt auch bei kleinem RMSE ungeprüft?
 ```
 
 # Schluss
@@ -506,4 +506,4 @@ Validierung
 fachliche Plausibilität
 ```
 
-Das Skript macht diese Kette minimal sichtbar.
+Begründen Sie die gewählte Übertragungsannahme und nennen Sie den Befund, an dem sie scheitern würde.

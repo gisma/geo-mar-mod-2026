@@ -2,6 +2,10 @@
 library(comf)
 
 # Alle Werte sind Szenarioannahmen, keine Messdaten aus Marburg.
+# UTCI hält Tätigkeit/Stoffwechsel über die Referenzperson fest
+# (Gehen mit ca. 4 km/h; 135 W/m²). Diese vier Eingaben erlauben
+# einen Umweltvergleich, keine Variation der individuellen Tätigkeit.
+# Die berechnete Differenz erklärt keinen individuellen Kollaps.
 szenarien <- data.frame(
   ort = c("besonnt", "verschattet"),
   luft = c(30, 30),

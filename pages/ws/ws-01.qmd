@@ -24,7 +24,7 @@ execute:
 
 Sie richten ein kleines R-Projekt ein, trennen Eingangsdaten, Skripte und Ergebnisse und führen einen überschaubaren Analyseablauf aus. Anschließend verändern Sie einen Parameter und prüfen die Wirkung. Sie nutzen dabei relative Pfade, einen aussagekräftigen Skriptkopf und kurze Kommentare.
 
-**Beispiel:** Sie laden die Gebietsgrenze des Burgwalds, erzeugen einen Puffer und speichern eine Karte sowie die berechnete Geometrie. Die Daten stammen aus dem [Kursrepository LV-19-d19-006-25-R](https://github.com/gisma/LV-19-d19-006-25-R). Die Pufferberechnung dient hier als einfache Übung zur Skriptnutzung.
+**Beispiel:** Sie laden die Gebietsgrenze des Burgwalds, erzeugen einen Puffer und speichern eine Karte sowie die berechnete Geometrie. Die Daten stammen aus dem [Kursrepository LV-19-d19-006-25-R](https://github.com/gisma/LV-19-d19-006-25-R). Die Pufferberechnung dient als technisches Beispiel. Ein Abstandspuffer wird erst zu einer fachlichen Aussage, wenn begründet ist, weshalb Entfernung für die untersuchte Frage relevant ist. Welche Annahme würde etwa in der Deutung eines Puffers als Einflussbereich stecken?
 
 ## 1 · Das Projekt anlegen
 
@@ -160,4 +160,4 @@ Geben Sie Ihren Projektordner mit dem kommentierten Skript und den beiden Ergebn
 - Datenquelle und eigenes Abrufdatum.
 - Ihre Änderung, deren beobachtete Wirkung und gegebenenfalls verwendete KI-Hilfe.
 
-**Erfolgskriterium:** Eine andere Person erkennt, welche Dateien Eingangsdaten, Skripte und Ergebnisse sind, und kann den Ablauf aus einer frischen R-Sitzung erneut ausführen.
+**Technisches Erfolgskriterium:** Eine andere Person kann den Ablauf aus einer frischen R-Sitzung erneut ausführen. **Fachliche Rückfrage:** Was beschreibt der Puffer tatsächlich, und welche zusätzliche Annahme wäre nötig, um ihn als Wirkungsraum zu deuten? Die Wiederholbarkeit der Berechnung prüft diese Annahme noch nicht.

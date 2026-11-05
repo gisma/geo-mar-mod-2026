@@ -29,6 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../pages/r-werkzeuge.html" rel="next">
 <link href="../pages/exkurs_stationen.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -292,13 +293,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellierung städtischer Hitze</span></a>
+ <span class="menu-text">Modellkonzept: Oberfläche, Umwelt, Mensch</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
+ <span class="menu-text">Modellkritik: Messdaten und UTCI</span></a>
   </div>
 </li>
       </ul>
@@ -306,7 +307,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Anleitung</span></a>
+ <span class="menu-text">Werkzeugreferenzen</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -316,6 +317,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container">
+  <a href="../pages/r-werkzeuge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R-Referenz: Zeitreihen und Regionen</span></a>
   </div>
 </li>
       </ul>
@@ -350,11 +357,11 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="ziel" class="level1">
-<h1>Ziel</h1>
-<p><strong>Quellrepository:</strong> <a href="https://github.com/OGERHub/KlimaResilienzSchule">OGERHub / KlimaResilienzSchule</a> · <a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city/scripts">Summer in the City: Skripte und Datenverarbeitung</a></p>
-<p>Dieser Ablauf bildet den Kern des automatisierten QGIS-Pakets manuell nach: <strong>Luftbild und Oberflächentemperatur werden in QGIS überlagert und auf räumliche Muster geprüft.</strong> Verwendet werden ein frei herunterladbares Landsat-LST-Sommermittel für Deutschland und ein RGB-Luftbild. Aus dem Temperaturdatensatz wird in QGIS der Ausschnitt für Marburg gespeichert.</p>
-<p>Das Ergebnis ist ein QGIS-Projekt mit zwei Rasterebenen und einer selbst gezeichneten Erwartungsebene.</p>
+<section id="welche-annahme-prüfen-wir-mit-diesen-daten" class="level1">
+<h1>Welche Annahme prüfen wir mit diesen Daten?</h1>
+<p>Das <a href="../pages/modellierung_luftbild_lst.html">Modellierungskonzept</a> fragt, weshalb eine ältere Person auch in einem als kühl kartierten Park thermisch belastet sein kann. Diese Referenz unterstützt einen Teil der Untersuchung: Wie passen die aus dem Luftbild abgeleiteten Erwartungen zu den mittleren Oberflächentemperaturmustern?</p>
+<p>Das DLR-Produkt ist dafür eine begründbare Datenwahl, weil es die räumliche Beschreibung bereits bereitstellt. Für diese Frage muss kein eigenes Temperaturprodukt hergestellt werden. Für Luftbedingungen, metabolische Wärmeproduktion oder die individuelle Beanspruchung der Person brauchen wir andere Größen und Wirkungsannahmen.</p>
+<p>Formulieren Sie vor dem Laden der Temperaturkarte eine Erwartung und einen möglichen Gegenbefund. Entscheiden Sie danach, welche der folgenden Werkzeuge Sie benötigen.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -388,7 +395,12 @@ Important
 <tr class="even">
 <td>Landsat-LST-Sommermittel 2021–2025, Deutschland</td>
 <td><a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">GeoTIFF direkt herunterladen</a></td>
-<td>Marburg ausschneiden und sommerliche Temperaturmuster vergleichen</td>
+<td>mittlere Oberflächenmuster mit der Erwartung vergleichen</td>
+</tr>
+<tr class="odd">
+<td>Zahl gültiger Beobachtungen</td>
+<td><a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_scenecount.tif">DLR-Beobachtungszahlraster</a></td>
+<td>räumlich unterschiedliche Stichprobenumfänge prüfen</td>
 </tr>
 </tbody>
 </table>
@@ -403,7 +415,7 @@ Important
 └── marburg_stadtwaerme.qgz</code></pre>
 </section>
 <section id="luftbild-laden-und-lokal-speichern" class="level1">
-<h1>1. Luftbild laden und lokal speichern</h1>
+<h1>Luftbild laden und lokal speichern</h1>
 <p>Das Land Hessen stellt RGB-Orthophotos über einen WMS bereit. Die Orthophotos sind georeferenziert; für Hessen wird eine Bodenauflösung von 20 cm angegeben. Das Aufnahmejahr ist je Ausschnitt unterschiedlich und sollte im Quellenhinweis geprüft werden.</p>
 <ul>
 <li>Dienstbeschreibung: <a href="https://hvbg.hessen.de/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-true-orthophoto">HVBG – Orthophotos und TrueDOP</a></li>
@@ -421,10 +433,54 @@ Important
 </ol>
 <p>Quellenangabe für Karte und Projekt: <strong>© Hessische Verwaltung für Bodenmanagement und Geoinformation (HVBG)</strong>. Ergänze das Aufnahmejahr, wenn es in den Metadaten angezeigt wird.</p>
 </section>
+<section id="erwartung-im-luftbild-einzeichnen" class="level1">
+<h1>Erwartung im Luftbild einzeichnen</h1>
+<p>Die Erwartung wird zuerst ohne sichtbare Temperaturkarte erstellt.</p>
+<ol type="1">
+<li>Wärmebild vorübergehend ausblenden.</li>
+<li><strong>Layer → Layer erstellen → Neuer GeoPackage-Layer…</strong> öffnen.</li>
+<li>Datei <code>erwartungen.gpkg</code>, Geometrietyp <strong>Polygon</strong>, Projekt-KBS <strong>EPSG:25832</strong> wählen.</li>
+<li>Vier Textfelder anlegen:</li>
+</ol>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Feldname</th>
+<th>Beispiele</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>area_id</code></td>
+<td>eindeutige Flächenkennung, z. B. <code>park</code>, <code>gewerbe</code>, <code>wohnen</code></td>
+</tr>
+<tr class="even">
+<td><code>erwartung</code></td>
+<td><code>warm</code>, <code>mittel</code>, <code>kuehl</code></td>
+</tr>
+<tr class="odd">
+<td><code>oberflaeche</code></td>
+<td>Dach, Straße, Parkplatz, Vegetation, Wasser, Mischfläche</td>
+</tr>
+<tr class="even">
+<td><code>begruendung</code></td>
+<td>Versiegelung, Schatten, Verdunstung, Feuchte, Material</td>
+</tr>
+</tbody>
+</table>
+<ol start="5" type="1">
+<li>Bearbeitungsmodus einschalten und etwa fünf größere Vergleichsflächen digitalisieren. Grenzen nur so genau ziehen, wie Luftbild und spätere Thermalauflösung es sinnvoll erlauben.</li>
+<li>Änderungen speichern und Bearbeitungsmodus beenden.</li>
+</ol>
+</section>
 <section id="temperaturdatei-herunterladen-und-marburg-ausschneiden" class="level1">
-<h1>2. Temperaturdatei herunterladen und Marburg ausschneiden</h1>
+<h1>Temperaturdatei herunterladen und Marburg ausschneiden</h1>
 <p><strong>Datei:</strong> <a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">Germany_LST_summer_2021-2025_mean.tif – direkter GeoTIFF-Download</a></p>
-<p>Die Datei ist etwa <strong>1,3 GiB</strong> groß. Sie enthält ganz Deutschland und damit auch Marburg. Der Download erfolgt direkt vom DLR-Geoservice; ein Köln-Datensatz oder ein vorheriger Skriptlauf ist nicht erforderlich.</p>
+<p>Die Datei ist etwa <strong>1,3 GiB</strong> groß. Sie enthält ganz Deutschland und damit auch Marburg. Prüfen Sie zusätzlich die Beobachtungszahl: Eine räumlich vollständige Mittelwertkarte bedeutet keine überall gleich gut besetzte Stichprobe.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -477,7 +533,7 @@ Important
 <p>Quellenangabe: <strong>DLR/EOC, Land Surface Temperature – Aggregates – Germany, Summer 2021–2025</strong>, DOI: <a href="https://doi.org/10.15489/g3x9qw3nyj45">10.15489/g3x9qw3nyj45</a>, Lizenz CC BY 4.0. Eigene Bearbeitung: Ausschnitt Marburg.</p>
 </section>
 <section id="wärmebild-in-qgis-darstellen" class="level1">
-<h1>3. Wärmebild in QGIS darstellen</h1>
+<h1>Wärmebild in QGIS darstellen</h1>
 <ol type="1">
 <li>Beim Marburger Temperaturlayer <strong>Eigenschaften → Symbolisierung → Einkanal-Pseudofarbe</strong> öffnen und Band 1 auswählen.</li>
 <li>Die tatsächlichen Min-/Max-Werte des lokalen Rasters laden. Einen Farbverlauf von kühl nach warm und zunächst fünf gleich breite Temperaturklassen verwenden.</li>
@@ -487,130 +543,54 @@ Important
 <p><strong>Keine Temperaturumrechnung:</strong> Das DLR-GeoTIFF enthält bereits Grad Celsius. Der Landsat-Skalierungsfaktor darf hier nicht erneut angewendet werden.</p>
 <p><strong>Interpretation:</strong> Die Karte zeigt den Mittelwert verfügbarer wolkenfreier Satellitenbeobachtungen in den Sommern 2021–2025. Sie ist weder ein Tagesmaximum noch ein Mittel über sämtliche Tages- und Nachtstunden. Das 30-m-Raster erzeugt gegenüber der nativen Thermalauflösung keine zusätzlichen thermischen Details.</p>
 </section>
-<section id="erwartung-im-luftbild-einzeichnen" class="level1">
-<h1>4. Erwartung im Luftbild einzeichnen</h1>
-<p>Die Erwartung wird zuerst ohne sichtbare Temperaturkarte erstellt.</p>
-<ol type="1">
-<li>Wärmebild vorübergehend ausblenden.</li>
-<li><strong>Layer → Layer erstellen → Neuer GeoPackage-Layer…</strong> öffnen.</li>
-<li>Datei <code>erwartungen.gpkg</code>, Geometrietyp <strong>Polygon</strong>, Projekt-KBS <strong>EPSG:25832</strong> wählen.</li>
-<li>Vier Textfelder anlegen:</li>
-</ol>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Feldname</th>
-<th>Beispiele</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>area_id</code></td>
-<td>eindeutige Flächenkennung, z. B. <code>park</code>, <code>gewerbe</code>, <code>wohnen</code></td>
-</tr>
-<tr class="even">
-<td><code>erwartung</code></td>
-<td><code>warm</code>, <code>mittel</code>, <code>kuehl</code></td>
-</tr>
-<tr class="odd">
-<td><code>oberflaeche</code></td>
-<td>Dach, Straße, Parkplatz, Vegetation, Wasser, Mischfläche</td>
-</tr>
-<tr class="even">
-<td><code>begruendung</code></td>
-<td>Versiegelung, Schatten, Verdunstung, Feuchte, Material</td>
-</tr>
-</tbody>
-</table>
-<ol start="5" type="1">
-<li>Bearbeitungsmodus einschalten und etwa fünf größere Vergleichsflächen digitalisieren. Grenzen nur so genau ziehen, wie Luftbild und spätere Thermalauflösung es sinnvoll erlauben.</li>
-<li>Änderungen speichern und Bearbeitungsmodus beenden.</li>
-</ol>
-</section>
 <section id="erwartung-mit-der-temperaturkarte-vergleichen" class="level1">
-<h1>5. Erwartung mit der Temperaturkarte vergleichen</h1>
-<p>Die Erwartungsflächen mit transparenter Füllung und gut sichtbarer Umrandung darstellen. Das Temperaturbild einschalten und die gleichen Flächen abgleichen.</p>
+<h1>Erwartung mit der Temperaturkarte vergleichen</h1>
+<p>Die Erwartungsflächen mit transparenter Füllung und gut sichtbarer Umrandung darstellen. Das Temperaturbild einschalten und die gleichen Flächen abgleichen. Für das Beobachtungszahlraster denselben Ausschnitt speichern; prüfen, ob auffällige Unterschiede auf vergleichbaren Stichprobenumfängen beruhen. Eine hohe Beobachtungszahl allein garantiert keine repräsentative Auswahl der Wetterlagen.</p>
 <p>Für jede Fläche festhalten:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Fläche</th>
-<th>Erwartung</th>
-<th>Beobachtung im LST-Bild</th>
-<th>mögliche Erklärung</th>
+<th>Erwartung und Begründung</th>
+<th>Beobachtung</th>
+<th>konkurrierende Erklärungen</th>
+<th>mögliche Prüfung</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Beispiel</td>
-<td>eher warm</td>
-<td>im Raster warm / mittel / kühl</td>
-<td>Schatten, Feuchte, Material, Mischpixel oder Wolkenrest</td>
+<td>Park</td>
+<td>eher kühl wegen Vegetation</td>
+<td>kühl im Flächenmittel</td>
+<td>Verdunstung, Schatten oder Mischung verschiedener Oberflächen</td>
+<td>besonnten Weg und verschattete Fläche getrennt untersuchen</td>
 </tr>
 </tbody>
 </table>
 <p>Die zentrale Frage lautet: <strong>Wo stimmen die aus Oberflächen und Stadtstruktur abgeleiteten Erwartungen mit der Temperaturkarte überein – und wo nicht?</strong></p>
 <p>LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Das DLR-Sommermittel zeigt wiederkehrende räumliche Temperaturunterschiede in den verfügbaren wolkenfreien Sommerbeobachtungen. Es zeigt weder gleichzeitige Temperaturen an einem bestimmten Tag noch Temperaturspitzen. Luftbild und Temperaturzeitraum können außerdem unterschiedliche Bebauungszustände abbilden.</p>
 </section>
-<section id="bezug-zum-skriptworkflow" class="level1">
-<h1>Bezug zum Skriptworkflow</h1>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Skriptworkflow im Quellrepository</th>
-<th>Manuelle Kursimplementierung</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Landsat-Szenen laden, maskieren und in °C umrechnen</td>
-<td>bereits aufbereitetes DLR-LST-GeoTIFF direkt herunterladen</td>
-</tr>
-<tr class="even">
-<td>Heiße Szenen auswählen und pixelweises q90 berechnen</td>
-<td>das frei verfügbare Sommermittel 2021–2025 verwenden</td>
-</tr>
-<tr class="odd">
-<td>Untersuchungsgebiet zuschneiden</td>
-<td>Deutschlandraster in QGIS auf Marburg zuschneiden</td>
-</tr>
-<tr class="even">
-<td>CIR-Oberflächenmaske klassifizieren</td>
-<td>Oberflächen im RGB-Luftbild selbst interpretieren</td>
-</tr>
-<tr class="odd">
-<td>Projekt und Printlayouts automatisch erzeugen</td>
-<td>Layer anordnen, Erwartungen digitalisieren und Projekt speichern</td>
-</tr>
-</tbody>
-</table>
-<p>Manuell nachgebildet werden die <strong>räumliche Interpretation, die Erwartung und ihr Abgleich mit einem Landsat-basierten Wärmebild</strong>. Die thermische Statistik unterscheidet sich: Das Skript erzeugt Hot-q90 aus ausgewählten heißen Szenen; das hier direkt herunterladbare DLR-Produkt enthält das Sommermittel der gültigen Beobachtungen. Deshalb werden Ergebnis und Legende ausdrücklich als <strong>Sommermittel</strong> bezeichnet.</p>
+<section id="was-bedeutet-der-befund-für-den-parkfall" class="level1">
+<h1>Was bedeutet der Befund für den Parkfall?</h1>
+<p>Eine Übereinstimmung stützt zunächst nur die Erwartung zum Oberflächenmuster. Sie erklärt weder, welche Lufttemperatur die Person erlebt, noch ob sie ihre metabolisch erzeugte Wärme ausreichend abgeben kann. Ein Widerspruch verlangt eine Prüfung der Annahmen: Liegt er am Schatten, am Aufnahmezeitraum, an der räumlichen Mischung oder an einer unzutreffenden Vorstellung vom Zusammenhang zwischen Vegetation und Temperatur?</p>
+<p><strong>Ergebnis:</strong> Halten Sie fest, welche ursprüngliche Annahme bestehen bleibt, welche Sie ändern und welche zusätzliche Beobachtung Sie dafür brauchen. Formulieren Sie anschließend eine präzisere Frage zur Aufenthaltsumgebung der Person.</p>
 </section>
-<section id="übergang-zur-automatisierten-auswertung" class="level1">
-<h1>Übergang zur automatisierten Auswertung</h1>
-<p>Die hier digitalisierten Flächen werden im <a href="../pages/modellierung_luftbild_lst.html">Lehrpfad zur Modellierung städtischer Hitze</a> weiterverwendet. Für die R-Skripte wird der Polygonlayer über <strong>Exportieren → Objekte speichern als…</strong> als <code>data/flaechen.gpkg</code> im RStudio-Projekt gespeichert. Das Feld <code>area_id</code> bleibt erhalten.</p>
-<p>Ein zusätzlicher Polygonlayer mit genau einem Polygon legt das gesamte Untersuchungsgebiet fest. Er wird als <code>data/gebiet.gpkg</code> gespeichert und umfasst die Vergleichsflächen einschließlich ihres räumlichen Zusammenhangs. Diese beiden Dateien sind die Eingaben für den automatisierten Abruf und die Zeitreihenberechnung.</p>
+<section id="welche-weitere-untersuchung-ist-begründet" class="level1">
+<h1>Welche weitere Untersuchung ist begründet?</h1>
+<p>Eine <a href="../pages/r-werkzeuge.html">eigene Zeitreihe</a> hilft, wenn offenbleibt, ob sich das Oberflächenmuster zwischen Aufnahmeterminen verändert. Dafür können die Vergleichsflächen als <code>data/flaechen.gpkg</code> mit dem Feld <code>area_id</code> und ein Polygon des Untersuchungsgebiets als <code>data/gebiet.gpkg</code> exportiert werden.</p>
+<p>Betrifft die offene Frage Luft, Strahlung oder den menschlichen Wärmehaushalt, führt sie stattdessen zur <a href="../pages/exkurs_stationen.html">Vertiefung zu Messdaten und UTCI</a>. Begründen Sie den nächsten Untersuchungsschritt aus der offenen Frage.</p>
 </section>
 <section id="quellen-und-weitere-informationen" class="level1">
 <h1>Quellen und weitere Informationen</h1>
 <ul>
-<li><a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city/scripts">Skripte des Materialpakets</a></li>
-<li><a href="https://github.com/OGERHub/KlimaResilienzSchule/blob/main/04-summer-in-the-city/scripts/landsat_lst_mit_dop_cir_oberflaechenmaske.R">Technisches Hauptskript: Landsat-LST und Oberflächenmaske</a></li>
-<li><a href="https://github.com/OGERHub/KlimaResilienzSchule/blob/main/04-summer-in-the-city/scripts/create_qgis_project.py">QGIS-Projekterzeugung im Skriptpaket</a></li>
+<li><a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city">Materialanregung: Summer in the City</a></li>
 <li><a href="https://hvbg.hessen.de/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-true-orthophoto">Hessen: Orthophotos und TrueDOP</a></li>
 <li><a href="https://geoservice.dlr.de/web/datasets/lst_de">DLR: LST-Sommermittel für Deutschland 2021–2025</a></li>
 <li><a href="https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif">DLR: GeoTIFF direkt herunterladen</a></li>
@@ -1041,11 +1021,14 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Exkurs: Messdaten und UTCI">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exkurs: Messdaten und UTCI</span>
+      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Modellkritik: Messdaten und UTCI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modellkritik: Messdaten und UTCI</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="../pages/r-werkzeuge.html" class="pagination-link" aria-label="R-Referenz: Zeitreihen und Regionen">
+        <span class="nav-page-text">R-Referenz: Zeitreihen und Regionen</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Modellierung städtischer Hitze – Modellieren in der Geographie</title>
+<title>Modellieren in der Geographie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,11 +72,11 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<meta property="og:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
-<meta property="og:description" content="Thermische Hotspots, menschliche Belastung und räumliche Planung">
+<meta property="og:title" content="Modellieren in der Geographie">
+<meta property="og:description" content="Stadtwärme: Oberfläche, Umwelt und Mensch">
 <meta property="og:site_name" content="Modellieren in der Geographie">
-<meta name="twitter:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
-<meta name="twitter:description" content="Thermische Hotspots, menschliche Belastung und räumliche Planung">
+<meta name="twitter:title" content="Modellieren in der Geographie">
+<meta name="twitter:description" content="Stadtwärme: Oberfläche, Umwelt und Mensch">
 <meta name="twitter:creator" content="@gisma">
 <meta name="twitter:card" content="summary">
 </head>
@@ -253,7 +253,7 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Modellierung städtischer Hitze</h1>
+          <h1 class="quarto-secondary-nav-title">Modellieren in der Geographie</h1>
         </a>     
     </div>
   </nav>
@@ -291,13 +291,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellierung städtischer Hitze</span></a>
+ <span class="menu-text">Modellkonzept: Oberfläche, Umwelt, Mensch</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
+ <span class="menu-text">Modellkritik: Messdaten und UTCI</span></a>
   </div>
 </li>
       </ul>
@@ -305,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Anleitung</span></a>
+ <span class="menu-text">Werkzeugreferenzen</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -315,6 +315,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container">
+  <a href="./pages/r-werkzeuge.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">R-Referenz: Zeitreihen und Regionen</span></a>
   </div>
 </li>
       </ul>
@@ -331,8 +337,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title d-none d-lg-block">Modellierung städtischer Hitze</h1>
-<p class="subtitle lead">Thermische Hotspots, menschliche Belastung und räumliche Planung</p>
+<h1 class="title d-none d-lg-block">Modellieren in der Geographie</h1>
+<p class="subtitle lead">Stadtwärme: Oberfläche, Umwelt und Mensch</p>
 </div>
 
 
@@ -349,28 +355,20 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="zielsetzung" class="level2">
-<h2 class="anchored" data-anchor-id="zielsetzung">Zielsetzung</h2>
-<p>Wie wird aus einem thermischen Satellitenbild eine begründete räumliche Priorisierung für den Hitzeschutz?</p>
-<p>Die Fallstudie Marburg führt von Oberflächentemperaturen über zeitliche Kennwerte und thermische Regionen zu Aufenthaltsbedingungen und besonderem Schutzbedarf. Im Mittelpunkt stehen die Modellentscheidungen: Was wird beobachtet, wie wird aggregiert und welche zusätzliche Information verlangt die Planungsfrage?</p>
-<p>Sie lernen, vorhandene Skripte gezielt anzupassen, methodische Entscheidungen zu vergleichen und Ergebnisse fachlich zu prüfen. Räumliche Auflösung, Untersuchungsgebiet, zeitlicher Bezug und Übertragbarkeit begleiten alle Themen. Ziel ist, dass Sie einen Analyseweg selbstständig ausführen und seine Aussagekraft begründen können.</p>
+<section id="warum-kann-eine-ältere-frau-im-kühlen-park-kollabieren" class="level2">
+<h2 class="anchored" data-anchor-id="warum-kann-eine-ältere-frau-im-kühlen-park-kollabieren">Warum kann eine ältere Frau im kühlen Park kollabieren?</h2>
+<p>Ein Satellitenbild zeigt den Park als vergleichsweise kühl. Eine ältere Frau gerät dort dennoch an einem heißen Tag in eine belastende Situation. Was kann die Oberflächentemperatur dazu sagen – und welche Erklärung bleibt sie schuldig?</p>
+<p>An diesem Fall entwickeln die Studierenden schrittweise ein Modell. Sie formulieren eine Frage, legen angenommene Wirkungszusammenhänge offen und prüfen, welche Beobachtungen die Erklärung tragen. Jede Erweiterung braucht einen fachlichen Grund: von der Oberfläche zur Luft und Strahlung, vom Aufenthaltsort zur Tätigkeit, von der Umwelt zur metabolischen Wärmeproduktion und zur Wärmeabgabe des Körpers.</p>
 </section>
-<section id="der-lernweg" class="level2">
-<h2 class="anchored" data-anchor-id="der-lernweg">Der Lernweg</h2>
-<p>Der <a href="./pages/modellierung_luftbild_lst.html">Lehrpfad für eine 90-minütige Sitzung</a> beginnt mit dem DLR-Mittelwertbild. Aus einzelnen Landsat-Terminen wird eine Zeitreihe berechnet. Mittelwert, q90 und q95 werden räumlich verglichen und mit Jakub Nowosads R-Paket supercells zu thermischen Regionen zusammengefasst. Kurze R-Skripte setzen die Rechenschritte um.</p>
-<p>Der separate <a href="./pages/exkurs_stationen.html">Exkurs zu Stationsdaten und UTCI</a> erklärt den Zusammenhang von Oberflächen-, Luft- und Strahlungstemperatur. Ein Szenariovergleich macht die Bedeutung von Verschattung sichtbar. Abschließend werden thermische Befunde mit Aufenthaltsorten und vulnerablen Gruppen verbunden, um Prüfstandorte für die Stadtplanung zu begründen.</p>
-<p>Im Verlauf des Kurses entsteht ein Projektordner mit Datenquellen, Skripten, Parametern und ausgewählten Ergebnissen. Ihre Interpretationen unterscheiden zwischen Beobachtung, möglicher Erklärung und verbleibender Unsicherheit.</p>
+<section id="die-frage-bestimmt-daten-und-methode" class="level2">
+<h2 class="anchored" data-anchor-id="die-frage-bestimmt-daten-und-methode">Die Frage bestimmt Daten und Methode</h2>
+<p>Das <a href="./pages/modellierung_luftbild_lst.html">Modellierungskonzept zur Stadtwärme</a> beginnt mit eigenen Erklärungen zum Parkfall. Das DLR-LST-Produkt wird daraufhin geprüft, welche Aussage es ermöglicht. Eine eigene Zeitreihe ist dann sinnvoll, wenn die Frage zeitliche Information verlangt, die im Mittelwert fehlt. Zusätzliche Oberflächenkennwerte ersetzen keine Informationen über Luftbedingungen oder den menschlichen Wärmehaushalt.</p>
+<p>Mit <a href="./pages/exkurs_stationen.html">Stationsdaten und UTCI</a> wird untersucht, wie Umweltbedingungen mit einem physiologischen Modell verbunden werden. Dabei bleibt zu prüfen, welche Tätigkeit, Bekleidung und Körperregulation der Index annimmt und was das für die betrachtete Person bedeutet.</p>
 </section>
-<section id="was-sie-am-ende-können-sollen" class="level2">
-<h2 class="anchored" data-anchor-id="was-sie-am-ende-können-sollen">Was Sie am Ende können sollen</h2>
-<p>Sie können die Aussage eines Temperaturkennwerts erklären, die Folgen räumlicher Aggregation prüfen und den Übergang vom Oberflächenhotspot zur menschlichen Belastung begründen. Sie unterscheiden Beobachtung, Modellannahme und Planungsentscheidung und dokumentieren, welche Daten für eine belastbare Priorisierung noch fehlen.</p>
-</section>
-<section id="materialgrundlage" class="level2">
-<h2 class="anchored" data-anchor-id="materialgrundlage">Materialgrundlage</h2>
-<ul>
-<li><a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city">Ursprüngliches Materialpaket: KlimaResilienzSchule</a></li>
-<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">Landsat Collection 2 Surface Temperature (USGS)</a></li>
-</ul>
+<section id="eigenständig-begründen-und-prüfen" class="level2">
+<h2 class="anchored" data-anchor-id="eigenständig-begründen-und-prüfen">Eigenständig begründen und prüfen</h2>
+<p>Das Arbeitsergebnis ist ein begründetes Modellierungskonzept: eine präzise Fragestellung, ein Wirkungsgefüge, eine dazu passende Datenwahl und ein Vergleich, an dem die entscheidende Annahme geprüft werden kann. Dazu gehört, die Grenzen der eigenen Erklärung zu benennen und sie angesichts widersprechender Befunde zu überarbeiten.</p>
+<p>Die <a href="./pages/qgis-howto-stadtwaerme-marburg.html">QGIS-Referenz</a> und die <a href="./pages/r-werkzeuge.html">R-Referenz</a> unterstützen die benötigten Untersuchungen. Bewertet wird die fachliche Argumentation: Warum dieses Produkt, warum eine eigene Berechnung, warum ein weiteres Modell – und welche Frage lässt sich damit tatsächlich beantworten?</p>
 
 
 </section>

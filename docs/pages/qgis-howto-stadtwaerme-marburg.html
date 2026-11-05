@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="../pages/r-werkzeuge.html" rel="next">
-<link href="../pages/exkurs_stationen.html" rel="prev">
+<link href="../pages/ws/ws-02.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -299,7 +299,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellkritik: Messdaten und UTCI</span></a>
+ <span class="menu-text">Modellkritik: UTCI und PET</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container">
+  <a href="../pages/ws/ws-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worksheet: Thermische Entlastung</span></a>
   </div>
 </li>
       </ul>
@@ -359,7 +365,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="welche-annahme-prüfen-wir-mit-diesen-daten" class="level1">
 <h1>Welche Annahme prüfen wir mit diesen Daten?</h1>
-<p>Das <a href="../pages/modellierung_luftbild_lst.html">Modellierungskonzept</a> fragt, weshalb eine ältere Person auch in einem als kühl kartierten Park thermisch belastet sein kann. Diese Referenz unterstützt einen Teil der Untersuchung: Wie passen die aus dem Luftbild abgeleiteten Erwartungen zu den mittleren Oberflächentemperaturmustern?</p>
+<p>Das <a href="../pages/modellierung_luftbild_lst.html">Modellierungskonzept</a> fragt, unter welchen Bedingungen städtische Freiräume thermische Entlastung bieten. Diese Referenz unterstützt einen Teil der Untersuchung: Wie passen die aus dem Luftbild abgeleiteten Erwartungen zu den mittleren Oberflächentemperaturmustern?</p>
 <p>Das DLR-Produkt ist dafür eine begründbare Datenwahl, weil es die räumliche Beschreibung bereits bereitstellt. Für diese Frage muss kein eigenes Temperaturprodukt hergestellt werden. Für Luftbedingungen, metabolische Wärmeproduktion oder die individuelle Beanspruchung der Person brauchen wir andere Größen und Wirkungsannahmen.</p>
 <p>Formulieren Sie vor dem Laden der Temperaturkarte eine Erwartung und einen möglichen Gegenbefund. Entscheiden Sie danach, welche der folgenden Werkzeuge Sie benötigen.</p>
 <div class="callout callout-style-default callout-important callout-titled">
@@ -577,15 +583,15 @@ Important
 <p>Die zentrale Frage lautet: <strong>Wo stimmen die aus Oberflächen und Stadtstruktur abgeleiteten Erwartungen mit der Temperaturkarte überein – und wo nicht?</strong></p>
 <p>LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Das DLR-Sommermittel zeigt wiederkehrende räumliche Temperaturunterschiede in den verfügbaren wolkenfreien Sommerbeobachtungen. Es zeigt weder gleichzeitige Temperaturen an einem bestimmten Tag noch Temperaturspitzen. Luftbild und Temperaturzeitraum können außerdem unterschiedliche Bebauungszustände abbilden.</p>
 </section>
-<section id="was-bedeutet-der-befund-für-den-parkfall" class="level1">
-<h1>Was bedeutet der Befund für den Parkfall?</h1>
-<p>Eine Übereinstimmung stützt zunächst nur die Erwartung zum Oberflächenmuster. Sie erklärt weder, welche Lufttemperatur die Person erlebt, noch ob sie ihre metabolisch erzeugte Wärme ausreichend abgeben kann. Ein Widerspruch verlangt eine Prüfung der Annahmen: Liegt er am Schatten, am Aufnahmezeitraum, an der räumlichen Mischung oder an einer unzutreffenden Vorstellung vom Zusammenhang zwischen Vegetation und Temperatur?</p>
-<p><strong>Ergebnis:</strong> Halten Sie fest, welche ursprüngliche Annahme bestehen bleibt, welche Sie ändern und welche zusätzliche Beobachtung Sie dafür brauchen. Formulieren Sie anschließend eine präzisere Frage zur Aufenthaltsumgebung der Person.</p>
+<section id="was-bedeutet-der-befund-für-die-entlastungsfrage" class="level1">
+<h1>Was bedeutet der Befund für die Entlastungsfrage?</h1>
+<p>Eine Übereinstimmung stützt zunächst nur die Erwartung zum Oberflächenmuster. Für eine Aussage über Aufenthaltsbedingungen bleibt zu untersuchen, welche Luft- und Strahlungsbedingungen vorliegen und wie sie mit der Wärmeproduktion und Wärmeabgabe des Körpers zusammenwirken. Ein Widerspruch verlangt eine Prüfung der Annahmen: Liegt er am Schatten, am Aufnahmezeitraum, an der räumlichen Mischung oder an einer unzutreffenden Vorstellung vom Zusammenhang zwischen Vegetation und Temperatur?</p>
+<p><strong>Ergebnis:</strong> Halten Sie fest, welche ursprüngliche Annahme bestehen bleibt, welche Sie ändern und welche zusätzliche Beobachtung Sie dafür brauchen. Formulieren Sie anschließend eine präzisere Frage zu einer gewählten Aufenthalts- oder Nutzungssituation.</p>
 </section>
 <section id="welche-weitere-untersuchung-ist-begründet" class="level1">
 <h1>Welche weitere Untersuchung ist begründet?</h1>
 <p>Eine <a href="../pages/r-werkzeuge.html">eigene Zeitreihe</a> hilft, wenn offenbleibt, ob sich das Oberflächenmuster zwischen Aufnahmeterminen verändert. Dafür können die Vergleichsflächen als <code>data/flaechen.gpkg</code> mit dem Feld <code>area_id</code> und ein Polygon des Untersuchungsgebiets als <code>data/gebiet.gpkg</code> exportiert werden.</p>
-<p>Betrifft die offene Frage Luft, Strahlung oder den menschlichen Wärmehaushalt, führt sie stattdessen zur <a href="../pages/exkurs_stationen.html">Vertiefung zu Messdaten und UTCI</a>. Begründen Sie den nächsten Untersuchungsschritt aus der offenen Frage.</p>
+<p>Betrifft die offene Frage Luft, Strahlung oder den menschlichen Wärmehaushalt, führt sie stattdessen zur <a href="../pages/exkurs_stationen.html">Vertiefung zu Messdaten, UTCI und PET</a>. Begründen Sie den nächsten Untersuchungsschritt aus der offenen Frage.</p>
 </section>
 <section id="quellen-und-weitere-informationen" class="level1">
 <h1>Quellen und weitere Informationen</h1>
@@ -1021,8 +1027,8 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Modellkritik: Messdaten und UTCI">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Modellkritik: Messdaten und UTCI</span>
+      <a href="../pages/ws/ws-02.html" class="pagination-link" aria-label="Worksheet: Thermische Entlastung">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Worksheet: Thermische Entlastung</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

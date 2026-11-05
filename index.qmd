@@ -6,20 +6,22 @@ format:
     toc: false
 ---
 
-## Warum kann eine ältere Frau im kühlen Park kollabieren?
+## Wann bieten städtische Freiräume thermische Entlastung?
 
-Ein Satellitenbild zeigt den Park als vergleichsweise kühl. Eine ältere Frau gerät dort dennoch an einem heißen Tag in eine belastende Situation. Was kann die Oberflächentemperatur dazu sagen – und welche Erklärung bleibt sie schuldig?
+Parks, begrünte Plätze und Wege können unterschiedliche Aufenthaltsbedingungen bieten. Wie lässt sich ihr Beitrag zur thermischen Entlastung beurteilen – für wen, zu welcher Zeit und bei welcher Tätigkeit? Welche Rolle spielt dabei die Oberflächentemperatur, und welche weiteren Größen braucht eine begründete Aussage?
 
-An diesem Fall entwickeln die Studierenden schrittweise ein Modell. Sie formulieren eine Frage, legen angenommene Wirkungszusammenhänge offen und prüfen, welche Beobachtungen die Erklärung tragen. Jede Erweiterung braucht einen fachlichen Grund: von der Oberfläche zur Luft und Strahlung, vom Aufenthaltsort zur Tätigkeit, von der Umwelt zur metabolischen Wärmeproduktion und zur Wärmeabgabe des Körpers.
+Eine Aussage über thermische Entlastung braucht eine Vergleichssituation, eine Zielgröße und ein begründetes Wirkungsmodell. Welche Daten dafür ausreichen, hängt von der Frage ab. Oberflächentemperatur, Luftbedingungen, Strahlung und metabolische Wärmeproduktion beschreiben verschiedene Teile dieses Zusammenhangs. Ein Park ist ein mögliches Untersuchungsbeispiel.
 
 ## Die Frage bestimmt Daten und Methode
 
-Das [Modellierungskonzept zur Stadtwärme](pages/modellierung_luftbild_lst.qmd) beginnt mit eigenen Erklärungen zum Parkfall. Das DLR-LST-Produkt wird daraufhin geprüft, welche Aussage es ermöglicht. Eine eigene Zeitreihe ist dann sinnvoll, wenn die Frage zeitliche Information verlangt, die im Mittelwert fehlt. Zusätzliche Oberflächenkennwerte ersetzen keine Informationen über Luftbedingungen oder den menschlichen Wärmehaushalt.
+Formulieren Sie eine Teilfrage zur thermischen Entlastung und begründen Sie die Zielgröße. Prüfen Sie anhand des [Modellierungskonzepts zur Stadtwärme](pages/modellierung_luftbild_lst.qmd), welche Aussage das DLR-LST-Produkt dafür ermöglicht. Eine eigene Zeitreihe ist dann sinnvoll, wenn die Frage zeitliche Information verlangt, die im Mittelwert fehlt. Zusätzliche Oberflächenkennwerte ersetzen keine Informationen über Luftbedingungen oder den menschlichen Wärmehaushalt.
 
-Mit [Stationsdaten und UTCI](pages/exkurs_stationen.qmd) wird untersucht, wie Umweltbedingungen mit einem physiologischen Modell verbunden werden. Dabei bleibt zu prüfen, welche Tätigkeit, Bekleidung und Körperregulation der Index annimmt und was das für die betrachtete Person bedeutet.
+[Stationsdaten, UTCI und PET](pages/exkurs_stationen.qmd) verbinden die Beschreibung der Umwelt mit einem physiologischen Modell. Prüfen Sie, welche Tätigkeit, Bekleidung und Körperregulation der jeweilige Index annimmt und wie diese Annahmen zu Ihrer Frage passen.
 
 ## Eigenständig begründen und prüfen
 
-Das Arbeitsergebnis ist ein begründetes Modellierungskonzept: eine präzise Fragestellung, ein Wirkungsgefüge, eine dazu passende Datenwahl und ein Vergleich, an dem die entscheidende Annahme geprüft werden kann. Dazu gehört, die Grenzen der eigenen Erklärung zu benennen und sie angesichts widersprechender Befunde zu überarbeiten.
+Formulieren Sie eine präzise Frage, zeichnen Sie ein Wirkungsgefüge und begründen Sie die Datenwahl. Entwerfen Sie einen Vergleich, mit dem sich die entscheidende Annahme prüfen lässt. Benennen Sie die Grenzen Ihrer Erklärung und überarbeiten Sie sie angesichts widersprechender Befunde.
 
-Die [QGIS-Referenz](pages/qgis-howto-stadtwaerme-marburg.qmd) und die [R-Referenz](pages/r-werkzeuge.qmd) unterstützen die benötigten Untersuchungen. Bewertet wird die fachliche Argumentation: Warum dieses Produkt, warum eine eigene Berechnung, warum ein weiteres Modell – und welche Frage lässt sich damit tatsächlich beantworten?
+Die [QGIS-Referenz](pages/qgis-howto-stadtwaerme-marburg.qmd) und die [R-Referenz](pages/r-werkzeuge.qmd) unterstützen die benötigten Untersuchungen. Begründen Sie: Warum dieses Produkt, warum eine eigene Berechnung, warum ein weiteres Modell – und welche Frage lässt sich damit tatsächlich beantworten?
+
+Bearbeiten Sie das [Worksheet zu UTCI und PET](pages/ws/ws-02.qmd). Vergleichen Sie die Umweltantworten und untersuchen Sie, was sich bei veränderter metabolischer Leistung und Bekleidung modellieren lässt.

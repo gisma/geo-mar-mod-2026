@@ -9,27 +9,29 @@ execute:
   echo: true
 ---
 
-# Der Fall, an dem das erste Modell scheitert
+# Ausgangsfrage: Wo finden Menschen thermische Entlastung?
 
-Eine ältere Frau kollabiert an einem heißen Tag in einem Park. Im Satellitenbild erscheint der Park gegenüber den umliegenden Straßen kühl. **Wie kann das zusammenpassen?**
+Parks, begrünte Plätze und andere städtische Freiräume werden als mögliche Aufenthalts- und Rückzugsorte bei Hitze betrachtet. Wie lässt sich beurteilen, unter welchen Bedingungen sie diese Funktion erfüllen? Welche Unterschiede bestehen innerhalb eines Ortes, zwischen Tageszeiten und zwischen verschiedenen Nutzungen?
 
-Das ist der Ausgangspunkt der Fallstudie. Zunächst formulieren die Studierenden eigene Erklärungen und benennen, was sie dafür wissen müssten. Die Frage „Welche Oberflächen sind warm?“ erfasst einen anderen Gegenstand als „Unter welchen Bedingungen kann diese Person ihre Körperwärme noch abgeben?“. Eine Karte kühler Vegetation beantwortet die zweite Frage noch nicht. Der geschilderte Fall dient der Modellbildung; seine individuelle Ursache ist mit den Kursdaten nicht feststellbar.
+**Die übergeordnete Frage lautet: Unter welchen Bedingungen bieten städtische Freiräume thermische Entlastung – für wen, wann und bei welcher Tätigkeit?** Ein Park ist dafür ein Untersuchungsbeispiel. Sein Nutzen wird ebenso wenig vorweggenommen wie eine bestimmte Belastungssituation. Verglichen werden können etwa ein verschatteter Sitzplatz, eine offene Wiese, ein Weg und ein benachbarter Straßenraum.
 
-**Erster Auftrag:** Skizzieren Sie ein Wirkungsgefüge für den Fall, bevor Sie Daten laden. Verbinden Sie Oberfläche, Luft, Strahlung, Wind, Feuchte, Tätigkeit und Körper. Kennzeichnen Sie jede Verbindung, die eine LST-Karte tatsächlich beobachten kann, und jede, für die Sie eine zusätzliche Annahme benötigen.
+„Entlastung“ benötigt einen Bezug: gegenüber welchem anderen Ort oder Zeitpunkt, gemessen an welcher Größe und unter welchen Personenannahmen? Eine geringere Oberflächentemperatur, günstigere Bedingungen für den Wärmehaushalt und eine geringere individuelle Beanspruchung sind verschiedene mögliche Zielgrößen. Begründen Sie, welche dieser Zielgrößen Ihre Frage verlangt.
 
-# Das erste Modell: Oberfläche als Hinweis auf Hitze
+**Erster Auftrag:** Wählen Sie eine räumliche Situation und eine Nutzung. Formulieren Sie eine erste Vergleichsfrage und skizzieren Sie die vermuteten Wirkungszusammenhänge. Welche Größen müssten beobachtet werden? Welche können die verfügbaren Daten überhaupt erfassen? Halten Sie offene Beziehungen fest, ohne bereits für jede ein fertiges Modell vorauszusetzen.
 
-Die Aussage „Grünflächen sind kühl, dort sind Menschen vor Hitze geschützt“ enthält bereits ein Modell. Es überträgt eine Eigenschaft der Oberfläche auf die Beanspruchung eines Menschen. Dafür müssten mehrere Zusammenhänge gelten: Die beobachtete Oberfläche müsste die Aufenthaltsumgebung repräsentieren, der zeitliche Bezug müsste passen, und die Wärmeabgabe des Körpers müsste dort ausreichend möglich sein.
+# Das erste Modell: Was lässt sich aus der Oberfläche ableiten?
 
-Das Luftbild erlaubt Hypothesen zu Vegetation, Versiegelung und Schatten. LST beschreibt den thermischen Zustand der vom Sensor erfassten Oberflächen. Beides hilft, die Umgebung zu charakterisieren. Ob die ältere Frau gerade einen besonnten Weg hinaufgeht, wie warm und feucht die Luft ist oder wie ihr Körper Wärme reguliert, ist daraus nicht abzulesen.
+Ein möglicher Einstieg ist die Hypothese: Vegetationsgeprägte Flächen weisen unter bestimmten Aufnahmebedingungen geringere Oberflächentemperaturen auf als benachbarte versiegelte Flächen. Diese Hypothese betrifft zunächst die Oberfläche. Ob daraus günstigere Aufenthaltsbedingungen für Menschen folgen, ist eine weitere Frage mit zusätzlichen Wirkungszusammenhängen.
 
-**Prüffrage:** Welche Beobachtung würde Ihre erste Erklärung erschüttern? Ein kühles Parkmittel bei hoher Beanspruchung auf einem besonnten Weg? Gleiche LST bei unterschiedlicher Lufttemperatur? Zwei Personen mit unterschiedlicher Anstrengung am selben Ort? Formulieren Sie eine prüfbare Gegenüberstellung.
+Das Luftbild erlaubt Hypothesen zu Vegetation, Versiegelung und Schatten. LST beschreibt den thermischen Zustand der vom Sensor erfassten Oberflächen. Ein Vergleich kann die erwarteten Muster stützen, einschränken oder ihnen widersprechen. Die Luftbedingungen am Aufenthaltsort, die Strahlung auf den Körper und die Tätigkeit einer Person sind damit noch nicht vollständig beschrieben.
+
+**Prüffrage:** Welche Aussage wollen Sie untersuchen: einen Unterschied der Oberflächen, der Aufenthaltsumgebung oder der menschlichen Beanspruchung? Formulieren Sie einen Vergleich mit passendem räumlichem und zeitlichem Bezug. Benennen Sie eine Beobachtung, die gegen Ihre Hypothese sprechen würde. Wenn die verfügbaren Daten die gewählte Zielgröße nicht erfassen, bestimmen Sie den zusätzlichen Informationsbedarf.
 
 # Warum das DLR-LST-Produkt?
 
 Das DLR-Sommermittel bietet eine vorhandene, räumlich zusammenhängende Beschreibung von Oberflächentemperaturmustern. Es eignet sich, um eine erste Hypothese zu prüfen: Sind die aus dem Luftbild als warm oder kühl eingeschätzten größeren Flächen auch in den verfügbaren Satellitenbeobachtungen entsprechend auffällig? Die eigene Herstellung eines solchen Mittelwertbilds hätte für diese Frage zunächst keinen notwendigen Erkenntnisgewinn.
 
-Das Produkt mittelt gültige wolkenfreie Landsat-Beobachtungen der Sommer 2021–2025. Es beschreibt weder die Temperatur am Tag des Kollapses noch das gesamte Tagesgeschehen. Das ergänzende Beobachtungszahlraster hilft, die räumlich unterschiedliche Datengrundlage zu prüfen. [DLR-Produktbeschreibung](https://geoservice.dlr.de/web/datasets/lst_de) und [Produktmetadaten](https://download.geoservice.dlr.de/LST_DE/files/LST_README.txt).
+Das Produkt mittelt gültige wolkenfreie Landsat-Beobachtungen der Sommer 2021–2025. Es beschreibt weder die Bedingungen eines bestimmten Aufenthalts noch das gesamte Tagesgeschehen. Das ergänzende Beobachtungszahlraster hilft, die räumlich unterschiedliche Datengrundlage zu prüfen. [DLR-Produktbeschreibung](https://geoservice.dlr.de/web/datasets/lst_de) und [Produktmetadaten](https://download.geoservice.dlr.de/LST_DE/files/LST_README.txt).
 
 **Entscheidung:** Für eine Frage nach mittleren Oberflächenmustern kann dieses Produkt ausreichen. Für die Situation einer Person an einem bestimmten Nachmittag reicht es nicht. Begründen Sie die Eignung anhand von Zielgröße, Zeitpunkt und räumlichem Bezug. Die [QGIS-Referenz](qgis-howto-stadtwaerme-marburg.qmd) unterstützt diesen Vergleich.
 
@@ -48,7 +50,7 @@ Ein einfaches Gegenbeispiel: Oberfläche A hat fünf Beobachtungen mit 20 °C un
 
 Eine eigene Berechnung legt Entscheidungen über Zeitraum, Wolkenmaske, Raster und Statistik offen. Sie ist deshalb eine Möglichkeit, Annahmen zu untersuchen. Sie ist keine unabhängige Bestätigung des DLR-Produkts, wenn beide auf denselben Landsat-Beobachtungen beruhen. Unterschiede müssen zunächst aus Auswahl und Verarbeitung erklärt werden. Die [R-Referenz](r-werkzeuge.qmd) stellt die Berechnungen bereit.
 
-**Auftrag:** Entscheiden Sie, ob Ihre Frage eine eigene LST-Auswertung verlangt. Nennen Sie den erwarteten Erkenntnisgewinn und eine Frage zum Fall der älteren Frau, die auch danach offenbleibt. Die begründete Entscheidung, mit dem vorhandenen Produkt weiterzuarbeiten, ist ein vollständiges Ergebnis.
+**Auftrag:** Entscheiden Sie, ob Ihre Frage eine eigene LST-Auswertung verlangt. Nennen Sie den erwarteten Erkenntnisgewinn und eine Frage zur thermischen Entlastung am gewählten Aufenthaltsort, die auch danach offenbleibt. Die begründete Entscheidung, mit dem vorhandenen Produkt weiterzuarbeiten, ist ein vollständiges Ergebnis.
 
 # Warum die Luft dazugehört
 
@@ -74,15 +76,19 @@ Dabei ist $S$ die Wärmespeicherung pro Zeit, $M$ die metabolische Leistung, $W$
 
 Die Bilanz ordnet die Erklärungen: LST liefert Hinweise für einen Teil der Umgebung; Lufttemperatur und Wind beeinflussen $C$, die Strahlungsumgebung beeinflusst $R$, Feuchte und Schweißverdunstung beeinflussen $E$, die Tätigkeit beeinflusst $M-W$. Kleidung verändert den Austausch. Physiologische Regulation und gesundheitliche Voraussetzungen beeinflussen, wie der Körper mit der Situation umgehen kann. Grundlagen erläutert [Health Canada zur menschlichen Thermoregulation](https://www.canada.ca/en/health-canada/services/environmental-workplace-health/reports-publications/climate-change-health/extreme-heat-events-guidelines-technical-guide-health-care-workers.html).
 
-**Gedankenexperiment:** Zwei Personen befinden sich bei denselben Umweltbedingungen im Park. Eine sitzt, die andere kommt nach einem anstrengenden Anstieg an. Welche Bilanzgröße unterscheidet sich bereits durch die Tätigkeit? Was müssten Sie zusätzlich wissen, um ihre jeweilige Beanspruchung zu beurteilen? Begründen Sie auch, weshalb das Lebensalter allein dafür nicht genügt.
+**Gedankenexperiment:** Vergleichen Sie zunächst ruhiges Sitzen und Gehen unter denselben angenommenen Umweltbedingungen. Welche Bilanzgröße verändert sich durch die Tätigkeit? Welche Größen müssten für einen fairen Vergleich gleich gehalten werden? Überlegen Sie anschließend, welche zusätzlichen Informationen nötig wären, um Unterschiede zwischen Personen zu untersuchen. Eine Altersgruppe allein legt weder die Tätigkeit noch die individuelle Wärmeregulation fest.
 
-# Was leistet UTCI in diesem Konzept?
+# Welcher Index passt zur Frage: UTCI oder PET?
 
-Nun lässt sich ein Index gezielt auswählen: UTCI verbindet Lufttemperatur, Feuchte, Wind und mittlere Strahlungstemperatur mit einem Modell menschlicher Thermoregulation. Stoffwechsel und Bekleidung sind darin bereits über Referenzannahmen berücksichtigt. Die Referenztätigkeit entspricht Gehen mit etwa 4 km/h und einer metabolischen Leistung von 135 W/m². [UTCI: Herleitung und Referenzbedingungen](https://www.utci.org/resources/utci_poster.pdf).
+Die Indexwahl legt Personen- und Referenzannahmen fest: UTCI verbindet Lufttemperatur, Feuchte, Wind und mittlere Strahlungstemperatur mit einem Modell menschlicher Thermoregulation. Stoffwechsel und Bekleidung sind darin bereits über Referenzannahmen berücksichtigt. Die Referenztätigkeit entspricht Gehen mit etwa 4 km/h und einer metabolischen Leistung von 135 W/m². [UTCI: Herleitung und Referenzbedingungen](https://www.utci.org/resources/utci_poster.pdf).
 
-Damit können wir Umweltsituationen unter gleichen Personenannahmen vergleichen. Die ältere Frau mit ihrer konkreten Tätigkeit, Kleidung und gesundheitlichen Verfassung ist damit noch nicht individuell beschrieben. Ein UTCI-Wert erklärt keinen Kollaps und bildet individuelle Unterschiede in der Regulation nicht vollständig ab. Die [Vertiefung zu Messdaten und UTCI](exkurs_stationen.qmd) stellt einen kontrollierten Szenariovergleich bereit.
+Damit können wir Umweltsituationen unter gleichen Personenannahmen vergleichen. Für einen Vergleich von Sitzplätzen oder Wegen ist zu prüfen, wie diese Referenzannahmen zur beabsichtigten Aussage passen. Tatsächliche Tätigkeit, Kleidung, Aufenthaltsdauer und gesundheitliche Voraussetzungen einzelner Menschen sind damit nicht individuell erfasst. Ein günstigerer Indexwert kann einen Umweltvergleich stützen; eine Aussage über die Beanspruchung einer konkreten Person verlangt zusätzliche Begründungen und Daten. Die [Vertiefung zu Messdaten, UTCI und PET](exkurs_stationen.qmd) stellt einen kontrollierten Szenariovergleich bereit.
 
-**Modellkritik:** Was gewinnen Sie gegenüber LST? Was bleibt gegenüber Ihrer Frage zur älteren Frau offen? Könnten Sie im verwendeten UTCI-Rechner den Stoffwechsel ändern? Falls nicht: Wo steckt diese Annahme im Modell, und welche andere Fragestellung lässt sich damit trotzdem bearbeiten?
+PET (Physiologisch Äquivalente Temperatur) ist eine weitere Möglichkeit, die Umwelt mit einem menschlichen Wärmebilanzmodell zu verbinden. Es bezieht sich auf eine definierte Innenraumumgebung. In der hier verwendeten Implementierung lassen sich metabolische Leistung und Bekleidung der untersuchten Situation verändern. Die Referenzbedingungen des Index bleiben davon zu unterscheiden. PET ist damit ein Ansatz für Sensitivitätsfragen zu diesen Personenannahmen; die stationäre Berechnung beschreibt jedoch keinen individuellen Verlauf von Aufheizung und Erholung. [PET nach Höppe](https://doi.org/10.1007/s004840050118) und [Implementierung von `pet_steady`](https://pythermalcomfort.readthedocs.io/en/stable/documentation/models.html#physiological-equivalent-temperature-pet).
+
+**Modellkritik:** Welche Aussage gewinnen Sie mit UTCI oder PET gegenüber LST? Welche Annahmen sind festgelegt, welche können Sie verändern? Begründen Sie die Auswahl anhand Ihrer Frage. Vergleichen Sie Indexwerte und Belastungsklassen nur unter Berücksichtigung ihrer unterschiedlichen Referenzbedingungen.
+
+Im [Worksheet zu UTCI und PET](ws/ws-02.qmd) können Sie beide Indizes für angenommene Umweltsituationen berechnen und die PET-Antwort auf veränderte metabolische Leistung, Bekleidung und Luftgeschwindigkeit untersuchen.
 
 # Welche räumlichen Einheiten passen zur Frage?
 
@@ -92,7 +98,15 @@ Eine Segmentierung mit `supercells` kann thermisch ähnliche Oberflächen zusamm
 
 # Ein eigenes Modell begründen {#planungsauftrag}
 
-**Fragestellung:** Unter welchen Umwelt- und Aufenthaltsbedingungen könnte der als kühl kartierte Park für eine ältere Person dennoch thermisch belastend sein, und welche Beobachtungen würden Ihre Erklärung prüfen?
+**Auftrag:** Leiten Sie aus der übergeordneten Frage eine untersuchbare Teilfrage zur thermischen Entlastung in einem städtischen Freiraum ab. Legen Sie Vergleichsort oder Vergleichssituation, Zeitraum, Nutzung und Zielgröße fest.
+
+Mögliche Richtungen sind:
+
+- Unterscheidet sich das mittlere Oberflächentemperaturmuster eines Parks von seinem bebauten Umfeld, und wie hängt der Befund von Flächenabgrenzung und Beobachtungsauswahl ab?
+- Welche Umweltbedingungen unterscheiden einen verschatteten Sitzplatz von einem besonnten Platz zur selben Zeit, und welchen Beitrag leistet ein Index zu ihrer Bewertung?
+- Welche zusätzlichen Annahmen und Daten benötigt ein Vergleich zwischen ruhigem Aufenthalt und körperlicher Aktivität entlang eines Wegs?
+
+Diese Fragen verlangen unterschiedliche Modelle. Begründen Sie, wie Ihre gewählte Teilfrage zur übergeordneten Frage beiträgt und welche weiteren Teile zunächst offenbleiben.
 
 Überarbeiten Sie Ihr anfängliches Wirkungsgefüge. Leiten Sie jede Erweiterung aus einer offenen Frage des bisherigen Modells ab. Benennen Sie auch, welche Beobachtung Ihre Erklärung widerlegen oder eine andere Erklärung wahrscheinlicher machen würde.
 
@@ -106,18 +120,14 @@ Dokumentieren Sie in einer kurzen Argumentation mit Karte oder Skizze:
 
 Falls Sie daraus einen Prüfstandort für Hitzeschutz ableiten, begründen Sie ihn über Aufenthaltsbedingungen und Schutzbedarf. Ein hoher Oberflächenwert oder eine Grenze im Segmentierungsraster allein trägt diese Entscheidung nicht. Auch die Wirksamkeit einer Maßnahme wie Verschattung ist eine eigene, zu prüfende Hypothese.
 
-Beurteilt wird, ob Frage, Wirkungsmodell, Datenwahl und Prüfung zusammenpassen. Eine begründete Revision des ersten Modells gehört zur Leistung. Anzahl der Karten, Menge des Codes und das Abarbeiten sämtlicher Werkzeuge sind keine Qualitätsmaßstäbe.
+Prüfen Sie, ob Frage, Wirkungsmodell, Datenwahl und Prüfvergleich zusammenpassen. Benennen Sie, welche Annahme Sie aufgrund welcher Befunde geändert haben.
 
-# Diskussion in einer 90-minütigen Sitzung
+# Das Konzept zur Diskussion stellen
 
-| Zeit | Denkaufgabe | Ergebnis für die nächste Diskussion |
-|---|---|---|
-| 0–15 min | Parkfall erklären; erstes Wirkungsgefüge zeichnen | eigene Hypothese und ihre offenen Fragen |
-| 15–30 min | Luftbild und DLR-LST mit der Hypothese konfrontieren | begründete Reichweite der Oberflächenaussage |
-| 30–50 min | fehlende Austauschprozesse und metabolische Wärmeproduktion herleiten | erweitertes Wirkungsmodell und präzisierte Frage |
-| 50–65 min | Datenprodukt, eigene Zeitreihe oder UTCI-Szenario zur Frage auswählen | begründete Methodenwahl samt Grenze |
-| 65–90 min | Prüfvergleich entwerfen und gegenseitig kritisieren | überarbeitetes Konzept und offener Erkenntnisbedarf |
-
-Vorbereitete Karten und Szenarien dienen als Diskussionsmaterial. Die Sitzung verlangt keinen vollständigen mehrjährigen Datenabruf. Welche Berechnung vertieft wird, ergibt sich aus den formulierten Fragen.
+- Erläutern Sie, welche Aussage Ihr Modell ermöglicht und welche Frage offenbleibt.
+- Prüfen Sie am Konzept einer anderen Gruppe, ob die Daten die gewählte Zielgröße erfassen und die behaupteten Zusammenhänge tragen.
+- Formulieren Sie eine konkurrierende Erklärung für den gleichen Befund.
+- Schlagen Sie eine Beobachtung vor, die zwischen den Erklärungen unterscheiden könnte.
+- Überarbeiten Sie Ihr Konzept anhand der begründeten Einwände. Halten Sie fest, welche zusätzliche Berechnung oder Messung dadurch erforderlich wird.
 
 Materialanregung: [Summer in the City, KlimaResilienzSchule](https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city).

@@ -97,7 +97,7 @@ Bodenbedeckung
 Kaltluft
 ```
 
-Diese Übung reduziert den Fall bewusst auf Temperatur und Höhe.
+Der Modellvergleich verwendet Temperatur und Höhe. Welche örtlichen Einflüsse bleiben damit unberücksichtigt?
 
 # Benötigte Daten
 
@@ -129,7 +129,7 @@ names(dem) <- "altitude"
 
 # Ein Zeitpunkt
 
-Für den Warmup wird nur ein Messzeitpunkt betrachtet:
+Verwenden Sie für den Vergleich einen gemeinsamen Messzeitpunkt:
 
 ```text
 A20230830

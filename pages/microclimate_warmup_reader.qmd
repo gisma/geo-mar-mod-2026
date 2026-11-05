@@ -24,19 +24,19 @@ execute:
 
 Messungen liegen an einzelnen Stationen vor, die Frage richtet sich auf die Temperaturverteilung im Raum. Welche Annahme erlaubt uns, zwischen den Messpunkten Werte zu schätzen, und wie lässt sich diese Annahme prüfen?
 
-Die Studierenden begründen und vergleichen vier Modelle räumlicher Übertragung. Voronoi, IDW, Höhenregression und Random Forest schreiben unterschiedliche Zusammenhänge in die Ergebnisfläche ein. Eine glatte Karte, ein komplexes Verfahren oder ein kleiner Punktfehler begründen für sich noch keine belastbare räumliche Aussage.
+Voronoi, IDW, Höhenregression und Random Forest schreiben unterschiedliche Zusammenhänge in die Ergebnisfläche ein. Eine glatte Karte, ein komplexes Verfahren oder ein kleiner Punktfehler begründen für sich noch keine belastbare räumliche Aussage.
 
 **Ausgangspunkt:** Skizzieren Sie vor der Berechnung, welche Temperaturmuster Sie zwischen den Stationen erwarten und weshalb. Entscheiden Sie, ob Entfernung, Höhe oder weitere Prozesse diese Erwartung tragen. Formulieren Sie einen Gegenbefund, der Sie zur Revision zwingen würde.
 
-Der bereitgestellte Code unterstützt den Vergleich. Die fachliche Leistung besteht darin, ein zur Frage passendes Modell auszuwählen, seine Übertragungsannahme zu prüfen und die Aussagefläche zu begründen. Auch eine gut modellierte Lufttemperaturfläche erfasst nur einen Teil der menschlichen Wärmebilanz; für die [Stadtwärme-Fragestellung](modellierung_luftbild_lst.qmd) kommen Strahlung, Feuchte, Wind, Tätigkeit und metabolische Wärmeproduktion hinzu.
+Vergleichen Sie die Modelle mit dem bereitgestellten Code. Begründen Sie Ihre Modellwahl und die Aussagefläche; prüfen Sie die zugrunde liegende Übertragungsannahme. Auch eine gut modellierte Lufttemperaturfläche erfasst nur einen Teil der menschlichen Wärmebilanz; für die [Stadtwärme-Fragestellung](modellierung_luftbild_lst.qmd) kommen Strahlung, Feuchte, Wind, Tätigkeit und metabolische Wärmeproduktion hinzu.
 
 # Projekt herunterladen und öffnen
 
-Für die Übung wird das komplette RStudio-Projekt als ZIP-Datei bereitgestellt:
+Laden Sie das RStudio-Projekt herunter:
 
 [**Projekt-ZIP herunterladen**](../assets/Archive.zip){download="Archive.zip"}
 
-Die ZIP-Datei muss zuerst heruntergeladen und entpackt werden. Danach wird im entpackten Projektordner die `.Rproj`-Datei geöffnet. Erst dann liegen Skript, Datenordner und relative Pfade in der erwarteten Projektstruktur.
+Entpacken Sie die ZIP-Datei und öffnen Sie die `.Rproj`-Datei im Projektordner. Die relativen Pfade beziehen sich auf diesen Ordner.
 
 # Das Skript
 
@@ -290,7 +290,7 @@ leaflet_map
 
 Mikroklima beschreibt kleinräumige Unterschiede in Temperatur, Feuchte, Wind, Strahlung oder thermischer Belastung. Solche Unterschiede entstehen nicht zufällig. Sie hängen unter anderem mit Geländeform, Höhe, Hanglage, Vegetation, Verschattung, Bodenbedeckung, Bebauung, Kaltluftbildung und Luftaustausch zusammen.
 
-Für diese Übung ist Mikroklima der fachliche Anlass für die methodische Frage: Wie arbeitet man weiter, wenn nur punktuelle Messungen vorliegen, die gewünschte Aussage aber räumlich ist?
+Wie lässt sich eine räumliche Aussage zur Temperaturverteilung begründen, wenn nur punktuelle Messungen vorliegen?
 
 Zwischen Höhe, Luftdruck und Temperatur besteht ein grundlegender physikalischer Zusammenhang: Mit zunehmender Höhe nimmt der Luftdruck ab, Luft dehnt sich bei Aufstieg aus und kühlt dabei in der Regel ab. Deshalb ist Höhe häufig ein sinnvoller erster Prädiktor für räumliche Temperaturunterschiede.
 
@@ -503,7 +503,7 @@ names(dem) <- "altitude"
 
 ## 2. Einen Zeitpunkt auswählen
 
-Die Messdaten enthalten mehrere Temperaturspalten. Für den Warmup wird ein Zeitpunkt herausgegriffen. Damit arbeiten alle Modelle mit derselben Zielvariable.
+Wählen Sie aus den Temperaturspalten einen Zeitpunkt aus und verwenden Sie ihn für alle Modelle. So beziehen sich Unterschiede zwischen den Ergebnisflächen auf dieselbe beobachtete Situation.
 
 ::: {.callout-note title="Code-Snippet: Temperaturspalte setzen" collapse="true"}
 ```r

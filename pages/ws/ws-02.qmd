@@ -1,21 +1,97 @@
 ---
-title: "Worksheet 02"
+title: "Worksheet 02: Thermische Entlastung modellieren"
+subtitle: "LST, Luftbedingungen, Stoffwechsel – UTCI oder PET?"
 order: 2
-title-block-banner: ../../images/placeholder.png
-title-block-banner-color: black
-#page-layout: full
-format-links: [html, pdf, docx]
 format:
   html:
-    toc: false
-    code-fold: false
-    number-sections: false
-  pdf:
-    pdf-engine: lualatex
-  docx: default
+    toc: true
 execute:
-  echo: false
-  warning: false
-  message: false
+  eval: false
+  echo: true
 ---
 
+# Eine untersuchbare Frage formulieren
+
+Unter welchen Bedingungen bietet ein städtischer Freiraum thermische Entlastung – für wen, wann und bei welcher Tätigkeit?
+
+Wählen Sie einen Vergleich, etwa zwischen zwei Sitzplätzen, zwischen Weg und Aufenthaltsfläche oder zwischen zwei Nutzungssituationen. Legen Sie Zielgröße, Zeitpunkt und räumlichen Bezug fest. Zeichnen Sie ein Wirkungsgefüge und unterscheiden Sie Oberfläche, Umweltbedingungen und körperliche Wärmeproduktion beziehungsweise Wärmeabgabe.
+
+**Begründen Sie:** Welche Teilfrage kann das DLR-LST-Mittel beantworten? Welche Information würde eine eigene LST-Zeitreihe hinzufügen? Welche offenen Fragen benötigen andere Größen? Verwenden Sie das [Modellierungskonzept](../modellierung_luftbild_lst.qmd) als Grundlage Ihrer Argumentation.
+
+# UTCI und PET als Modellentscheidungen prüfen
+
+Beide Indizes verbinden Umweltgrößen mit einem Modell des menschlichen Wärmehaushalts. Ihre Referenzbedingungen und Rechenansätze unterscheiden sich. Gleiche Zahlenwerte in °C haben deshalb nicht automatisch dieselbe Bedeutung.
+
+| Entscheidung | UTCI | PET im hier verwendeten Rechner |
+|---|---|---|
+| Umweltgrößen | Lufttemperatur, Feuchte, Wind, mittlere Strahlungstemperatur | dieselben Arten von Umweltgrößen |
+| Aktivität und Bekleidung | über Referenzannahmen festgelegt; keine frei gewählten `met`- und `clo`-Eingaben | `met` und `clo` für die untersuchte Situation veränderbar; Referenzumgebung bleibt definiert |
+| Windbezug | Windgeschwindigkeit in 10 m Höhe | Luftgeschwindigkeit an der Person |
+| Zeitliche Aussage | standardisierter Index auf Basis eines thermoregulatorischen Modells | `pet_steady` berechnet einen stationären Zustand; keine Aufheiz- oder Erholungsdauer |
+
+Quellen: [UTCI-Modellkonzept](https://www.utci.org/resources/utci_poster.pdf), [PET nach Höppe](https://doi.org/10.1007/s004840050118) und [Dokumentation der verwendeten PET-Implementierung](https://pythermalcomfort.readthedocs.io/en/stable/documentation/models.html#physiological-equivalent-temperature-pet).
+
+1. Formulieren Sie eine Frage, für die ein Umweltvergleich mit festgehaltener Referenzperson sinnvoll ist.
+2. Formulieren Sie eine Frage, bei der metabolische Leistung oder Bekleidung variiert werden müssen. Begründen Sie die Modellwahl.
+3. Unterscheiden Sie zwischen Eingaben der untersuchten Situation und Bedingungen der jeweiligen Referenzumgebung. Welche Bedeutung hat dann die ausgegebene äquivalente Temperatur?
+4. Erklären Sie, weshalb eine einstellbare Altersangabe oder Körpermasse noch keine geprüfte Abbildung gesundheitlich bedingter Unterschiede in der Wärmeregulation gewährleistet.
+
+# Annahmen vor der Berechnung festhalten
+
+Das [Vergleichsskript](../../scripts/thermische_indizes.py) verwendet zwei angenommene Umweltsituationen:
+
+| Größe | besonnt | verschattet |
+|---|---:|---:|
+| Lufttemperatur | 30 °C | 30 °C |
+| Mittlere Strahlungstemperatur | 40 °C | 32 °C |
+| Relative Feuchte | 50 % | 50 % |
+| Wind in 10 m Höhe für UTCI | 1 m/s | 1 m/s |
+| Luftgeschwindigkeit an der Person für PET | 0,5 m/s | 0,5 m/s |
+
+Diese Werte sind Szenarioannahmen. Die beiden Windwerte sind separat angenommen; das Skript rechnet keinen aus dem anderen um. Prüfen Sie, wie Sie diesen Zusammenhang am gewählten Ort messen oder modellieren würden.
+
+Für PET sind Körperhaltung und Körperparameter festgehalten. Variiert werden die metabolische Leistung mit 1,2 / 2,3 / 3,5 met und die Bekleidung mit 0,5 / 0,9 clo. Ordnen Sie die Zahlen erst nach Prüfung geeigneter Quellen einer konkreten Tätigkeit oder Bekleidung zu. Verwechseln Sie weder met mit W noch eine Leistung für den ganzen Körper mit einer Leistung pro Körperoberfläche.
+
+**Vorhersage:** Welche Modellantwort erwarten Sie bei geringerer Strahlungstemperatur, höherer metabolischer Leistung oder anderer Bekleidung? Begründen Sie Ihre Erwartung anhand der Wärmebilanz. Kennzeichnen Sie Bedingungen, unter denen die Richtung eines Effekts nicht ohne Weiteres feststeht.
+
+# Berechnung ausführen
+
+Speichern Sie das Skript und die [Paketliste](../../scripts/requirements-thermik.txt) unter `scripts/` in Ihrem Projektordner. Die Bibliothek enthält dokumentierte Implementierungen beider Indizes. Die Modellwahl folgt aus der Frage; die gemeinsame Bibliothek erleichtert den Vergleich.
+
+Richten Sie im Projektordner einmalig eine Python-Umgebung ein:
+
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install -r scripts/requirements-thermik.txt
+.venv/bin/python scripts/thermische_indizes.py
+```
+
+Unter Windows verwenden Sie `py -m venv .venv` und danach `.venv\Scripts\python.exe` statt `.venv/bin/python`.
+
+| Datei unter `output/thermische_indizes/` | Untersuchung |
+|---|---|
+| `umweltvergleich.csv` | UTCI und PET für beide Umweltsituationen bei festgehaltenen jeweiligen Personenannahmen |
+| `pet_personenannahmen.csv` | PET bei veränderter metabolischer Leistung und Bekleidung; UTCI bleibt als Umweltvergleich separat ausgewiesen |
+| `pet_windannahmen.csv` | PET bei drei angenommenen Luftgeschwindigkeiten an der Person |
+| `annahmen.json` | Eingaben, feste PET-Personenparameter und Bibliotheksversion |
+
+Das vorhandene [R-Skript zu UTCI](../../scripts/utci_szenarien.R) bleibt ein einzelner Umweltvergleich. Für die gemeinsame Untersuchung von UTCI und PET verwenden Sie das Vergleichsskript.
+
+# Ergebnisse als Modellantworten lesen
+
+1. Vergleichen Sie besonnt und verschattet **innerhalb jedes Index**. Stimmen Richtung und Rangfolge überein? Welche Änderung der Wärmebilanz liegt dem Vergleich zugrunde?
+2. Vergleichen Sie PET bei veränderter metabolischer Leistung und gleicher Bekleidung. Vergleichen Sie anschließend Bekleidungsvarianten bei gleicher metabolischer Leistung. Welche Annahmen bleiben dabei unverändert?
+3. Erklären Sie, weshalb der UTCI-Umweltwert in der Personentabelle unverändert bleibt. Er beschreibt dort weiterhin seine Referenzperson; er wurde nicht für die jeweilige PET-Person berechnet.
+4. Prüfen Sie die Empfindlichkeit gegenüber der angenommenen Luftgeschwindigkeit an der Person. Welche Aussage wäre ohne eine belastbare Windannahme zu weitgehend?
+5. Begründen Sie, weshalb eine Differenz zwischen PET und UTCI keine Aussage darüber erlaubt, welcher Index „richtiger“ ist. Übertragen Sie keine Belastungsklassen von einem Index auf den anderen.
+6. Welche Ihrer Fragen verlangt einen zeitlichen Verlauf? Begründen Sie, weshalb eine Folge stationärer PET-Werte allein keine physiologische Aufheiz- oder Erholungsphase beschreibt.
+
+# Das Konzept revidieren
+
+Beantworten Sie Ihre Ausgangsfrage so weit, wie die Daten und Modelle es erlauben. Unterscheiden Sie dabei:
+
+- den beobachteten oder angenommenen Umweltunterschied,
+- die unter festgelegten Personenannahmen berechnete Indexantwort,
+- eine weitergehende Aussage über tatsächliche Nutzung oder individuelle Beanspruchung.
+
+Begründen Sie die Wahl von UTCI, PET oder einem anderen Ansatz. Benennen Sie einen möglichen Gegenbefund und die Messung, die Ihre entscheidende Annahme prüfen könnte. Halten Sie fest, welche Aussage Sie aufgrund des Vergleichs zurücknehmen oder präzisieren müssen.

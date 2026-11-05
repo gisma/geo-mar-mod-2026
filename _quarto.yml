@@ -3,12 +3,15 @@ project:
   output-dir: docs/
   resources:
     - "scripts/*.R"
+    - "scripts/*.py"
+    - "scripts/requirements-thermik.txt"
   render:
     - "index.qmd"
     - "pages/modellierung_luftbild_lst.qmd"
     - "pages/qgis-howto-stadtwaerme-marburg.qmd"
     - "pages/exkurs_stationen.qmd"
     - "pages/r-werkzeuge.qmd"
+    - "pages/ws/ws-02.qmd"
 
 website:
   title: "Modellieren in der Geographie"
@@ -43,7 +46,9 @@ website:
             - href: pages/modellierung_luftbild_lst.qmd
               text: "Modellkonzept: Oberfläche, Umwelt, Mensch"
             - href: pages/exkurs_stationen.qmd
-              text: "Modellkritik: Messdaten und UTCI"
+              text: "Modellkritik: UTCI und PET"
+            - href: pages/ws/ws-02.qmd
+              text: "Worksheet: Thermische Entlastung"
         - section: "Werkzeugreferenzen"
           contents:
             - href: pages/qgis-howto-stadtwaerme-marburg.qmd

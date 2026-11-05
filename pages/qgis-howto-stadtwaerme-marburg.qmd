@@ -17,7 +17,7 @@ execute:
 
 # Welche Annahme prüfen wir mit diesen Daten?
 
-Das [Modellierungskonzept](modellierung_luftbild_lst.qmd) fragt, weshalb eine ältere Person auch in einem als kühl kartierten Park thermisch belastet sein kann. Diese Referenz unterstützt einen Teil der Untersuchung: Wie passen die aus dem Luftbild abgeleiteten Erwartungen zu den mittleren Oberflächentemperaturmustern?
+Das [Modellierungskonzept](modellierung_luftbild_lst.qmd) fragt, unter welchen Bedingungen städtische Freiräume thermische Entlastung bieten. Diese Referenz unterstützt einen Teil der Untersuchung: Wie passen die aus dem Luftbild abgeleiteten Erwartungen zu den mittleren Oberflächentemperaturmustern?
 
 Das DLR-Produkt ist dafür eine begründbare Datenwahl, weil es die räumliche Beschreibung bereits bereitstellt. Für diese Frage muss kein eigenes Temperaturprodukt hergestellt werden. Für Luftbedingungen, metabolische Wärmeproduktion oder die individuelle Beanspruchung der Person brauchen wir andere Größen und Wirkungsannahmen.
 
@@ -141,17 +141,17 @@ Die zentrale Frage lautet: **Wo stimmen die aus Oberflächen und Stadtstruktur a
 
 LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Lufttemperatur in zwei Metern Höhe. Das DLR-Sommermittel zeigt wiederkehrende räumliche Temperaturunterschiede in den verfügbaren wolkenfreien Sommerbeobachtungen. Es zeigt weder gleichzeitige Temperaturen an einem bestimmten Tag noch Temperaturspitzen. Luftbild und Temperaturzeitraum können außerdem unterschiedliche Bebauungszustände abbilden.
 
-# Was bedeutet der Befund für den Parkfall?
+# Was bedeutet der Befund für die Entlastungsfrage?
 
-Eine Übereinstimmung stützt zunächst nur die Erwartung zum Oberflächenmuster. Sie erklärt weder, welche Lufttemperatur die Person erlebt, noch ob sie ihre metabolisch erzeugte Wärme ausreichend abgeben kann. Ein Widerspruch verlangt eine Prüfung der Annahmen: Liegt er am Schatten, am Aufnahmezeitraum, an der räumlichen Mischung oder an einer unzutreffenden Vorstellung vom Zusammenhang zwischen Vegetation und Temperatur?
+Eine Übereinstimmung stützt zunächst nur die Erwartung zum Oberflächenmuster. Für eine Aussage über Aufenthaltsbedingungen bleibt zu untersuchen, welche Luft- und Strahlungsbedingungen vorliegen und wie sie mit der Wärmeproduktion und Wärmeabgabe des Körpers zusammenwirken. Ein Widerspruch verlangt eine Prüfung der Annahmen: Liegt er am Schatten, am Aufnahmezeitraum, an der räumlichen Mischung oder an einer unzutreffenden Vorstellung vom Zusammenhang zwischen Vegetation und Temperatur?
 
-**Ergebnis:** Halten Sie fest, welche ursprüngliche Annahme bestehen bleibt, welche Sie ändern und welche zusätzliche Beobachtung Sie dafür brauchen. Formulieren Sie anschließend eine präzisere Frage zur Aufenthaltsumgebung der Person.
+**Ergebnis:** Halten Sie fest, welche ursprüngliche Annahme bestehen bleibt, welche Sie ändern und welche zusätzliche Beobachtung Sie dafür brauchen. Formulieren Sie anschließend eine präzisere Frage zu einer gewählten Aufenthalts- oder Nutzungssituation.
 
 # Welche weitere Untersuchung ist begründet?
 
 Eine [eigene Zeitreihe](r-werkzeuge.qmd) hilft, wenn offenbleibt, ob sich das Oberflächenmuster zwischen Aufnahmeterminen verändert. Dafür können die Vergleichsflächen als `data/flaechen.gpkg` mit dem Feld `area_id` und ein Polygon des Untersuchungsgebiets als `data/gebiet.gpkg` exportiert werden.
 
-Betrifft die offene Frage Luft, Strahlung oder den menschlichen Wärmehaushalt, führt sie stattdessen zur [Vertiefung zu Messdaten und UTCI](exkurs_stationen.qmd). Begründen Sie den nächsten Untersuchungsschritt aus der offenen Frage.
+Betrifft die offene Frage Luft, Strahlung oder den menschlichen Wärmehaushalt, führt sie stattdessen zur [Vertiefung zu Messdaten, UTCI und PET](exkurs_stationen.qmd). Begründen Sie den nächsten Untersuchungsschritt aus der offenen Frage.
 
 # Quellen und weitere Informationen
 

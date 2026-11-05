@@ -362,7 +362,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container">
   <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellkritik: Messdaten und UTCI</span></a>
+ <span class="menu-text">Modellkritik: UTCI und PET</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container">
+  <a href="../pages/ws/ws-02.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Worksheet: Thermische Entlastung</span></a>
   </div>
 </li>
       </ul>
@@ -482,7 +488,7 @@ window.Quarto = {
 LST_{°C}=DN\cdot0{,}00341802+149-273{,}15.
 \]</span></p>
 <p>Die Skalierung und die Qualitätsbits sind in der <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">USGS-Temperaturdokumentation</a> und der <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands">QA-Dokumentation</a> beschrieben.</p>
-<p>Für die Übung wird ein 100-m-Ausgaberaster verwendet. Das erleichtert die Auswertung größerer Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.</p>
+<p>Die Berechnung verwendet ein 100-m-Ausgaberaster für größere Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.</p>
 <p>Für jedes Vergleichspolygon berechnen wir anschließend den Median seiner gültigen Rasterzellen. Das liefert eine Tabellenzeile je Fläche und Termin:</p>
 <table class="caption-top table">
 <thead>
@@ -621,7 +627,7 @@ LST_{°C}=DN\cdot0{,}00341802+149-273{,}15.
 <p>Der erste Wert ist q90 der regionalen Mitteltemperaturen über die Zeit. Der zweite ist der räumliche Mittelwert der pixelweisen q90-Werte.</p>
 <p><strong>Prüfung der Gebietswahl:</strong> Begründen Sie zunächst, weshalb temperaturbasierte Gebiete für Ihre Frage geeignet sein könnten. Vergleichen Sie beispielsweise <code>k &lt;- 15</code> mit <code>k &lt;- 60</code> und bei gleicher Segmentzahl unterschiedliche Kompaktheit. Sichern Sie die Ausgaben jeder Variante vor dem nächsten Lauf in einem eigenen Ordner; die Skripte überschreiben ihre Ausgaben. Prüfen Sie, ob ein priorisierter Aufenthaltsort durch andere Grenzen anders bewertet wird. Geringe innere Temperaturstreuung ist eine Folge des Segmentierungsziels und keine unabhängige Validierung.</p>
 <p>Die Segmente sind thermisch begründete Analysegebiete. Ob ihre Grenzen mit Stadtquartieren zusammenfallen, wird anschließend anhand von Bebauung, Nutzung und Topografie untersucht. Die Wahl von Merkmalen, Segmentzahl und Kompaktheit ist Teil des räumlichen Modells. Durch Vergleich mehrerer Varianten wird sichtbar, welche Strukturen über Maßstäbe hinweg bestehen.</p>
-<p>Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads <a href="https://jakubnowosad.com/motif/">motif</a> weitere Methoden. Es beschreibt Muster kategorialer Raster; in dieser Einheit werden zunächst kontinuierliche Temperaturmerkmale mit <code>supercells</code> regionalisiert.</p>
+<p>Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads <a href="https://jakubnowosad.com/motif/">motif</a> weitere Methoden. Es beschreibt Muster kategorialer Raster. Die hier verwendete Regionalisierung mit <code>supercells</code> beruht auf kontinuierlichen Temperaturmerkmalen.</p>
 
 
 </section>

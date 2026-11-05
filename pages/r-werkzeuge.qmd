@@ -41,7 +41,7 @@ $$
 
 Die Skalierung und die Qualitätsbits sind in der [USGS-Temperaturdokumentation](https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature) und der [QA-Dokumentation](https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands) beschrieben.
 
-Für die Übung wird ein 100-m-Ausgaberaster verwendet. Das erleichtert die Auswertung größerer Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.
+Die Berechnung verwendet ein 100-m-Ausgaberaster für größere Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.
 
 Für jedes Vergleichspolygon berechnen wir anschließend den Median seiner gültigen Rasterzellen. Das liefert eine Tabellenzeile je Fläche und Termin:
 
@@ -158,5 +158,5 @@ Der erste Wert ist q90 der regionalen Mitteltemperaturen über die Zeit. Der zwe
 
 Die Segmente sind thermisch begründete Analysegebiete. Ob ihre Grenzen mit Stadtquartieren zusammenfallen, wird anschließend anhand von Bebauung, Nutzung und Topografie untersucht. Die Wahl von Merkmalen, Segmentzahl und Kompaktheit ist Teil des räumlichen Modells. Durch Vergleich mehrerer Varianten wird sichtbar, welche Strukturen über Maßstäbe hinweg bestehen.
 
-Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads [motif](https://jakubnowosad.com/motif/) weitere Methoden. Es beschreibt Muster kategorialer Raster; in dieser Einheit werden zunächst kontinuierliche Temperaturmerkmale mit `supercells` regionalisiert.
+Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads [motif](https://jakubnowosad.com/motif/) weitere Methoden. Es beschreibt Muster kategorialer Raster. Die hier verwendete Regionalisierung mit `supercells` beruht auf kontinuierlichen Temperaturmerkmalen.
 

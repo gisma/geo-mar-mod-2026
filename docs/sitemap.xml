@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/r-werkzeuge.html</loc>
-    <lastmod>2026-11-05T09:32:07.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/qgis-howto-stadtwaerme-marburg.html</loc>
-    <lastmod>2026-11-05T09:33:38.506Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/index.html</loc>
-    <lastmod>2026-11-05T09:32:07.236Z</lastmod>
-  </url>
-  <url>
-    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/modellierung_luftbild_lst.html</loc>
-    <lastmod>2026-11-05T09:32:07.236Z</lastmod>
+    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/ws/ws-02.html</loc>
+    <lastmod>2026-11-05T09:45:49.437Z</lastmod>
   </url>
   <url>
     <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/exkurs_stationen.html</loc>
-    <lastmod>2026-11-05T09:33:38.506Z</lastmod>
+    <lastmod>2026-11-05T09:46:47.933Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/modellierung_luftbild_lst.html</loc>
+    <lastmod>2026-11-05T09:46:47.933Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/index.html</loc>
+    <lastmod>2026-11-05T09:46:47.933Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/qgis-howto-stadtwaerme-marburg.html</loc>
+    <lastmod>2026-11-05T09:46:47.933Z</lastmod>
+  </url>
+  <url>
+    <loc>https://gisma-courses.github.io/geo-mar-mod-2026/pages/r-werkzeuge.html</loc>
+    <lastmod>2026-11-05T09:42:53.674Z</lastmod>
   </url>
 </urlset>

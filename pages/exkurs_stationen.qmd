@@ -1,5 +1,5 @@
 ---
-title: "Umwelt und Körper: Was bildet UTCI ab?"
+title: "Umwelt und Körper: UTCI und PET vergleichen"
 subtitle: "Luftbedingungen, Wärmehaushalt und physiologische Referenzannahmen"
 format:
   html:
@@ -11,7 +11,7 @@ execute:
 
 # Warum Lufttemperatur in dieser Fallstudie?
 
-Im [Parkfall](modellierung_luftbild_lst.qmd) erklärt eine kühle Oberflächenkarte die Beanspruchung der älteren Person nicht. Daraus entsteht eine neue Frage: Unter welchen Bedingungen kann ihr Körper die eigene metabolische Wärme und aufgenommene Umweltwärme wieder abgeben? Diese Vertiefung untersucht den Beitrag der Luftbedingungen und prüft, wie ein Index die Umwelt mit einem physiologischen Modell verbindet.
+Das [Modellierungskonzept](modellierung_luftbild_lst.qmd) fragt nach thermischer Entlastung in städtischen Freiräumen. Wenn wir Aufenthaltsbedingungen beurteilen wollen, müssen wir klären, welche Wärme ein Körper aus der Umgebung aufnimmt und unter welchen Bedingungen er eigene metabolische Wärme abgeben kann. Diese Vertiefung untersucht den Beitrag der Luftbedingungen und prüft, welche Aussagen ein Umweltindex unter physiologischen Referenzannahmen ermöglicht.
 
 Warme Oberflächen beeinflussen die Umgebung durch langwellige Wärmestrahlung und den Austausch fühlbarer Wärme mit der Luft. Wie stark sich die Luft erwärmt, hängt zusätzlich von Wind, Durchmischung und der Umgebung ab. Aus 45 °C Oberflächentemperatur folgt deshalb kein fester Wert der Lufttemperatur. Im Schatten eines Baumes kann die Strahlungsbelastung deutlich geringer sein, obwohl die Lufttemperatur nur wenig von der benachbarten besonnten Fläche abweicht.
 
@@ -21,7 +21,7 @@ Eine Station ergänzt die räumliche Momentaufnahme um die Wetterentwicklung. Si
 
 Für die Bewertung im Freien wird das Zusammenwirken von Lufttemperatur, Feuchte, Wind und Strahlung betrachtet. UTCI und PET bilden diese Einflüsse über Modelle des menschlichen Wärmehaushalts ab und drücken das Ergebnis als äquivalente Temperatur in °C aus. Individuelles Wohlbefinden und die Empfindlichkeit bestimmter Personengruppen gehen darüber hinaus.
 
-Für einen Vergleich der Umweltsituationen untersuchen wir **UTCI (Universal Thermal Climate Index)**. Er beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. [ECMWF: Definition und Referenzbedingungen](https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature).
+**UTCI (Universal Thermal Climate Index)** beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. [ECMWF: Definition und Referenzbedingungen](https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature).
 
 # Wo bleibt der Stoffwechsel im UTCI?
 
@@ -31,24 +31,34 @@ UTCI berücksichtigt diese Prozesse über ein thermophysiologisches Modell mit f
 
 Im hier verwendeten Rechner ist der Stoffwechsel deshalb kein frei veränderbarer Eingabewert. Zwei Personen mit verschiedenen tatsächlichen Tätigkeiten erhalten bei denselben vier Umwelteingaben denselben UTCI-Wert. Das ist eine Eigenschaft des standardisierten Umweltvergleichs. Ihre individuelle Beanspruchung muss damit nicht gleich sein.
 
-**Auftrag vor der Berechnung:** Stellen Sie die Frage „Welche Bank bietet günstigere Umweltbedingungen?“ der Frage „Warum kollabiert diese Person?“ gegenüber. Für welche kann UTCI unter seinen Referenzannahmen einen Beitrag leisten? Welche Informationen über Tätigkeit, Dauer, Bekleidung und physiologische Voraussetzungen fehlen bei der anderen?
+**Auftrag vor der Berechnung:** Vergleichen Sie die Fragen „Welche Bank bietet zu einer bestimmten Zeit günstigere Umweltbedingungen?“ und „Wie unterscheidet sich die Beanspruchung beim Sitzen und Gehen?“. Für welche kann UTCI unter seinen Referenzannahmen unmittelbar einen Beitrag leisten? Welche Informationen oder anderen Modelle benötigen Sie für Unterschiede in Tätigkeit, Dauer, Bekleidung und physiologischen Voraussetzungen?
 
-# Können wir LST in UTCI umrechnen?
+# Warum auch PET?
 
-Eine direkte Umrechnung aus dem Satellitenraster ist nicht möglich. Für UTCI benötigen wir vier Eingangsgrößen:
+PET basiert auf dem Münchner Energiebilanzmodell für Individuen (MEMI). Der Index drückt die untersuchte Situation als äquivalente Lufttemperatur einer definierten Innenraumumgebung aus. [Höppe: Definition von PET](https://doi.org/10.1007/s004840050118).
+
+Die verwendete Funktion `pet_steady` erlaubt Eingaben für metabolische Leistung und Bekleidung der untersuchten Situation. Das eröffnet einen Vergleich, den die vier Umwelteingaben von UTCI nicht leisten: Wie reagiert das Modell bei gleicher Umwelt auf veränderte Personenannahmen? Die PET-Referenzumgebung ist davon getrennt. Die Routine berechnet einen stationären Zustand und keinen Verlauf der Wärmespeicherung. [Dokumentation der PET-Implementierung](https://pythermalcomfort.readthedocs.io/en/stable/documentation/models.html#physiological-equivalent-temperature-pet).
+
+**Auftrag:** Prüfen Sie für Ihre Frage, ob Sie Umweltbedingungen unter festgelegten Personenannahmen vergleichen oder diese Annahmen selbst variieren müssen. Begründen Sie die Indexwahl. Eine veränderbare Personenangabe garantiert keine geprüfte Abbildung individueller physiologischer Unterschiede. Gleiche Zahlenwerte oder Belastungsklassen von PET und UTCI dürfen nicht gleichgesetzt werden.
+
+Das [Worksheet](ws/ws-02.qmd) enthält einen direkten Modellvergleich und das [Skript `thermische_indizes.py`](../scripts/thermische_indizes.py). Es berechnet beide Indizes für besonnte und verschattete Szenarien und variiert für PET metabolische Leistung, Bekleidung und die angenommene Luftgeschwindigkeit an der Person. UTCI verwendet den Windbezug auf 10 m; die Windwerte dürfen nicht ungeprüft zwischen beiden Rechnungen übernommen werden.
+
+# Können wir LST in einen Belastungsindex umrechnen?
+
+Eine direkte Umrechnung aus dem Satellitenraster ist nicht möglich. Für UTCI und PET benötigen wir unter anderem vier Umweltgrößen:
 
 | Größe | Bedeutung | Mögliche Grundlage |
 |---|---|---|
 | Lufttemperatur in °C | thermischer Zustand der Luft | Station oder abgeschirmter Logger |
 | Relative Luftfeuchte in % | Einfluss auf die Verdunstung | Station oder Feuchtesensor |
-| Windgeschwindigkeit in m/s | Austausch zwischen Körper und Umgebung | Messung oder Strömungsmodell; UTCI verwendet den Bezug auf 10 m Höhe |
+| Windgeschwindigkeit in m/s | Austausch zwischen Körper und Umgebung | Messung oder Strömungsmodell; Bezug auf 10 m bei UTCI, an der Person bei der verwendeten PET-Routine |
 | Mittlere Strahlungstemperatur in °C | zusammengefasste Strahlungswirkung auf den Menschen | Strahlungsmessung oder Modell von Sonne, Schatten, Himmel, Boden und Gebäuden |
 
 Die mittlere Strahlungstemperatur ist keine Oberflächentemperatur. Sie berücksichtigt kurz- und langwellige Strahlung aus unterschiedlichen Richtungen. Die LST liefert hierfür einen Teil der Information über die Oberflächen; für eine Berechnung fehlen weiterhin unter anderem Strahlungsgeometrie und direkte Sonneneinstrahlung.
 
 Eine UTCI-Berechnung ist erst begründet, wenn die Frage einen Umweltvergleich unter den Referenzannahmen verlangt. Dafür müssen die vier Eingangsgrößen zeitlich und räumlich zusammenpassen. Für die Diskussion verwenden wir ein angenommenes Szenario. Es zeigt die Reaktion des Modells auf eine veränderte Eingabe; die Wirkung einer realen Maßnahme muss zusätzlich beobachtet oder modelliert werden. Die Eingangsgrößen und deren Gültigkeitsbereiche sind im [UTCI-Leitfaden des ECMWF](https://confluence.ecmwf.int/spaces/CKB/pages/650383669/UTCI+Timeseries+User+Guide) erläutert.
 
-# Einfaches Rechenbeispiel: Verschattung
+# Einzelbeispiel in R: UTCI und Verschattung
 
 Wir halten Lufttemperatur, Feuchte und Wind konstant und verändern nur die angenommene Strahlungstemperatur. Das ist ein kontrollierter Vergleich zweier Szenarien; eine reale Baumpflanzung kann mehrere Größen verändern.
 
@@ -92,8 +102,8 @@ Das Stationspixel beantwortet eine andere räumliche Frage als der Median eines 
 
 # Was bleibt für die konkrete Person offen?
 
-Ein Umweltindex liefert keine individuelle Erklärung des Kollapses. Dafür fehlen unter anderem der Verlauf der Exposition, die tatsächliche Tätigkeit und die körperlichen Voraussetzungen. Alter allein ersetzt diese Informationen nicht.
+Ein Umweltindex vergleicht Bedingungen unter festgelegten Personenannahmen. Soll daraus eine Aussage über eine konkrete Nutzung oder Personengruppe werden, ist der Geltungsbereich zu prüfen. Dazu gehören der Verlauf der Exposition, die tatsächliche Tätigkeit und die körperlichen Voraussetzungen. Alter allein ersetzt diese Informationen nicht.
 
 Die Wahl des Index beendet auch die räumliche Bewertung nicht. Für die Planung kommen Aufenthaltsorte, Aufenthaltsdauer, erreichbare kühle Räume und empfindliche Personengruppen hinzu. Ältere und vorerkrankte Menschen sowie kleine Kinder gehören zu Gruppen mit erhöhtem Hitzeschutzbedarf. Zusätzlich können Arbeitsbedingungen oder fehlende Ausweichmöglichkeiten die Exposition erhöhen. [UBA: Hitze und vulnerable Gruppen](https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze).
 
-UTCI beschreibt dabei die Umweltsituation unter Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum [Auftrag: ein eigenes Modell begründen](modellierung_luftbild_lst.qmd#planungsauftrag).
+UTCI und PET beschreiben die Umweltsituation unter ihren jeweiligen Modell- und Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum [Auftrag: ein eigenes Modell begründen](modellierung_luftbild_lst.qmd#planungsauftrag).

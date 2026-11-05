@@ -1,0 +1,87 @@
+---
+title: "Von Oberflächentemperatur zu thermischer Belastung"
+subtitle: "Stationsdaten aus Mittelhessen und ein UTCI-Szenario"
+format:
+  html:
+    toc: true
+execute:
+  eval: false
+  echo: true
+---
+
+# Warum Lufttemperatur in dieser Fallstudie?
+
+Die Hotspot-Karten zeigen Temperaturmuster der Oberflächen. Die anschließende Planungsfrage betrifft Menschen: Wie belastend ist ein Aufenthalt an einer Haltestelle, auf einem Schulhof oder auf einem Weg zur Pflegeeinrichtung?
+
+Warme Oberflächen beeinflussen die Umgebung durch langwellige Wärmestrahlung und den Austausch fühlbarer Wärme mit der Luft. Wie stark sich die Luft erwärmt, hängt zusätzlich von Wind, Durchmischung und der Umgebung ab. Aus 45 °C Oberflächentemperatur folgt deshalb kein fester Wert der Lufttemperatur. Im Schatten eines Baumes kann die Strahlungsbelastung deutlich geringer sein, obwohl die Lufttemperatur nur wenig von der benachbarten besonnten Fläche abweicht.
+
+Eine Station ergänzt die räumliche Momentaufnahme um die Wetterentwicklung. Sie zeigt etwa, ob der Überflug an einem außergewöhnlich warmen Tag stattfand und wie sich die Lufttemperatur danach entwickelte. Die Stationsumgebung muss zur Fragestellung passen: Eine Freilandstation beschreibt andere Bedingungen als ein dicht bebauter Straßenraum.
+
+# Was ist mit „Wohlfühltemperatur“ gemeint?
+
+Für die Bewertung im Freien wird das Zusammenwirken von Lufttemperatur, Feuchte, Wind und Strahlung betrachtet. UTCI und PET bilden diese Einflüsse über Modelle des menschlichen Wärmehaushalts ab und drücken das Ergebnis als äquivalente Temperatur in °C aus. Individuelles Wohlbefinden und die Empfindlichkeit bestimmter Personengruppen gehen darüber hinaus.
+
+In dieser Sitzung verwenden wir **UTCI (Universal Thermal Climate Index)**. Er beschreibt die thermische Beanspruchung einer standardisierten Referenzperson unter vorgegebenen Aktivitäts- und Bekleidungsannahmen. Damit lassen sich Umweltsituationen vergleichen. Eine gleiche UTCI-Zahl bedeutet keine gleiche individuelle Gefährdung für alle Menschen. [ECMWF: Definition und Referenzbedingungen](https://confluence.ecmwf.int/spaces/FCST/pages/462912535/New+parameters+heat+and+cold+indices+mean+radiant+temperature+and+globe+temperature).
+
+# Können wir LST in UTCI umrechnen?
+
+Eine direkte Umrechnung aus dem Satellitenraster ist nicht möglich. Für UTCI benötigen wir vier Eingangsgrößen:
+
+| Größe | Bedeutung | Mögliche Grundlage |
+|---|---|---|
+| Lufttemperatur in °C | thermischer Zustand der Luft | Station oder abgeschirmter Logger |
+| Relative Luftfeuchte in % | Einfluss auf die Verdunstung | Station oder Feuchtesensor |
+| Windgeschwindigkeit in m/s | Austausch zwischen Körper und Umgebung | Messung oder Strömungsmodell; UTCI verwendet den Bezug auf 10 m Höhe |
+| Mittlere Strahlungstemperatur in °C | zusammengefasste Strahlungswirkung auf den Menschen | Strahlungsmessung oder Modell von Sonne, Schatten, Himmel, Boden und Gebäuden |
+
+Die mittlere Strahlungstemperatur ist keine Oberflächentemperatur. Sie berücksichtigt kurz- und langwellige Strahlung aus unterschiedlichen Richtungen. Die LST liefert hierfür einen Teil der Information über die Oberflächen; für eine Berechnung fehlen weiterhin unter anderem Strahlungsgeometrie und direkte Sonneneinstrahlung.
+
+Der Rechenweg lautet daher: **Stations- oder lokale Messdaten ergänzen → Strahlungssituation messen oder modellieren → UTCI berechnen.** Für die Sitzung setzen wir plausible Szenarien an und kennzeichnen sie als Annahmen. So wird der Einfluss einer Planungsentscheidung sichtbar, ohne eine gemessene Belastung vorzutäuschen. Die Eingangsgrößen und deren Gültigkeitsbereiche sind im [UTCI-Leitfaden des ECMWF](https://confluence.ecmwf.int/spaces/CKB/pages/650383669/UTCI+Timeseries+User+Guide) erläutert.
+
+# Einfaches Rechenbeispiel: Verschattung
+
+Wir halten Lufttemperatur, Feuchte und Wind konstant und verändern nur die angenommene Strahlungstemperatur. Das ist ein kontrollierter Vergleich zweier Szenarien; eine reale Baumpflanzung kann mehrere Größen verändern.
+
+Das kurze Skript [utci_szenarien.R](../scripts/utci_szenarien.R) verwendet die dokumentierte Funktion [comf::calcUTCI()](https://rdrr.io/cran/comf/man/calcUTCI.html). Einmalig wird das Paket installiert:
+
+```r
+install.packages("comf")
+source("scripts/utci_szenarien.R")
+```
+
+Die angenommenen Szenarien sind:
+
+| Szenario | Lufttemperatur | Strahlungstemperatur | Wind in 10 m | Relative Feuchte |
+|---|---:|---:|---:|---:|
+| besonnter Standort | 30 °C | 40 °C | 1 m/s | 50 % |
+| verschatteter Standort | 30 °C | 32 °C | 1 m/s | 50 % |
+
+Das Skript liefert für diese Annahmen 32,9 °C UTCI am besonnten und 30,9 °C am verschatteten Standort und zeichnet den Vergleich. **Arbeitsauftrag:** Verändern Sie anschließend nur die Windgeschwindigkeit oder nur die Lufttemperatur. Erläutern Sie, welche Größe verändert wurde, welche konstant blieb und wie belastbar die Annahme für den gewählten Standort ist.
+
+Für eine reale räumliche UTCI-Karte müssen die vier Größen für denselben Zeitpunkt und die jeweiligen Aufenthaltsorte vorliegen. Eine einzelne Station liefert keine vollständige räumliche Verteilung dieser Größen. Eine empirische Beziehung zwischen LST und Lufttemperatur wäre ebenfalls ein eigenes, lokal zu prüfendes Modell.
+
+# Verfügbare Stationen im Großraum Mittelhessen
+
+Für den Einstieg eignen sich die öffentlich zugänglichen DWD-Lufttemperaturdaten. Die folgenden Beispiele sind im [DWD-Stationsverzeichnis für Stundenwerte](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/recent/TU_Stundenwerte_Beschreibung_Stationen.txt) aufgeführt; Auswahl geprüft am 5. November 2026.
+
+| Station | DWD-ID | Höhe | Zugang |
+|---|---|---:|---|
+| Cölbe, Kr. Marburg-Biedenkopf | 03164 | 187 m | [aktuelle Stundenwerte als ZIP](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/recent/stundenwerte_TU_03164_akt.zip) |
+| Gießen/Wettenberg | 01639 | 203 m | [aktuelle Stundenwerte als ZIP](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/recent/stundenwerte_TU_01639_akt.zip) |
+| Alsfeld-Eifa | 00091 | 304 m | [aktuelle Stundenwerte als ZIP](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/recent/stundenwerte_TU_00091_akt.zip) |
+
+Für die Landsat-Sommer 2021–2025 werden die entsprechenden Dateien im [historischen Archiv](https://opendata.dwd.de/climate_environment/CDC/observations_germany/climate/hourly/air_temperature/historical/) nach Stations-ID ausgewählt. Die aktuellen ZIPs enthalten nur einen begrenzten jüngeren Zeitraum. Dillenburg (00979) ist als zusätzliche historische Referenz verfügbar; die Stundenreihe endet laut Verzeichnis am 13. März 2023.
+
+Weitere regionale Zugänge bietet das [Wetterstationsnetz des Landesbetriebs Landwirtschaft Hessen](https://www.wetter.llh-hessen.de/). Messgrößen, Zeitauflösung und Stationsumgebung sind jeweils in der Stationsansicht zu prüfen. Die [LLH-Übersicht](https://llh.hessen.de/pflanze/wetter/) erläutert die Datenangebote.
+
+## Stationsdaten mit einem Überflug verbinden
+
+Für einen einfachen Vergleich werden der nächstgelegene Stundenwert der Lufttemperatur und der LST-Wert am Stationsstandort nebeneinandergestellt. Aufnahmezeit und Stationszeit werden zuerst in UTC vereinheitlicht. Bei stündlichen Daten wird die tatsächliche Zeitdifferenz festgehalten; feinere Zeitfenster benötigen entsprechend höher aufgelöste Messungen.
+
+Das Stationspixel beantwortet eine andere räumliche Frage als der Median eines Stadtquartiers. Beide können verglichen werden, wenn der Unterschied der Bezugseinheiten ausdrücklich benannt wird. Ein Tagesmaximum der Lufttemperatur gehört ebenfalls zu einer anderen Zeitbasis als eine einzelne Überflugaufnahme.
+
+# Von thermischer Belastung zu Planungsbedarf
+
+Die Wahl des Index beendet die Modellierung nicht. Für die Planung kommen Aufenthaltsorte, Aufenthaltsdauer, erreichbare kühle Räume und empfindliche Personengruppen hinzu. Ältere und vorerkrankte Menschen sowie kleine Kinder gehören zu Gruppen mit erhöhtem Hitzeschutzbedarf. Zusätzlich können Arbeitsbedingungen oder fehlende Ausweichmöglichkeiten die Exposition erhöhen. [UBA: Hitze und vulnerable Gruppen](https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze).
+
+UTCI beschreibt dabei die Umweltsituation unter Referenzannahmen. Für die Priorisierung einer Pflegeeinrichtung, eines Schulhofs oder eines Fußwegs werden Nutzung und Vulnerabilität als zusätzliche Informationen herangezogen. Zurück zum [Planungsauftrag der Sitzung](modellierung_luftbild_lst.qmd#planungsauftrag).

@@ -1,821 +1,1278 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<link href="..//images/logo.png" rel="icon" type="image/png">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.26">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Modellierung städtischer Hitze – Modellieren in der Geographie</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../pages/exkurs_stationen.html" rel="next">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-7ac2f9da8c2617a4fdd15004b4601015.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-597958c53c93a607afca12fd375c57ed.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c5ca5c32b214fe74a527b2ba75d794cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-c8e893c45ba768c613f97d88ef0faa80.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c5ca5c32b214fe74a527b2ba75d794cd.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
-  <meta name="author" content="KlimaResilienzSchule">
-  <meta name="dcterms.date" content="2026-10-22">
-  <title>Modellieren in der Geographie – Stadtwärme in Marburg modellieren</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/reveal.css">
-  <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
-      vertical-align: middle;
-    }
-    /* CSS for syntax highlighting */
-    html { -webkit-text-size-adjust: 100%; }
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
       }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-7089a49044d7e616d6ec0839793644bf.css">
-  <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="../site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
-  <style type="text/css">
-    .reveal div.sourceCode {
-      margin: 0;
-      overflow: auto;
-    }
-    .reveal div.hanging-indent {
-      margin-left: 1em;
-      text-indent: -1em;
-    }
-    .reveal .slide:not(.center) {
-      height: 100%;
-    }
-    .reveal .slide.scrollable {
-      overflow-y: auto;
-    }
-    .reveal .footnotes {
-      height: 100%;
-      overflow-y: auto;
-    }
-    .reveal .slide .absolute {
-      position: absolute;
-      display: block;
-    }
-    .reveal .footnotes ol {
-      counter-reset: ol;
-      list-style-type: none; 
-      margin-left: 0;
-    }
-    .reveal .footnotes ol li:before {
-      counter-increment: ol;
-      content: counter(ol) ". "; 
-    }
-    .reveal .footnotes ol li > p:first-child {
-      display: inline-block;
-    }
-    .reveal .slide ul,
-    .reveal .slide ol {
-      margin-bottom: 0.5em;
-    }
-    .reveal .slide ul li,
-    .reveal .slide ol li {
-      margin-top: 0.4em;
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide ul[role="tablist"] li {
-      margin-bottom: 0;
-    }
-    .reveal .slide ul li > *:first-child,
-    .reveal .slide ol li > *:first-child {
-      margin-block-start: 0;
-    }
-    .reveal .slide ul li > *:last-child,
-    .reveal .slide ol li > *:last-child {
-      margin-block-end: 0;
-    }
-    .reveal .slide .columns:nth-child(3) {
-      margin-block-start: 0.8em;
-    }
-    .reveal blockquote {
-      box-shadow: none;
-    }
-    .reveal .tippy-content>* {
-      margin-top: 0.2em;
-      margin-bottom: 0.7em;
-    }
-    .reveal .tippy-content>*:last-child {
-      margin-bottom: 0.2em;
-    }
-    .reveal .slide > img.stretch.quarto-figure-center,
-    .reveal .slide > img.r-stretch.quarto-figure-center {
-      display: block;
-      margin-left: auto;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-left,
-    .reveal .slide > img.r-stretch.quarto-figure-left  {
-      display: block;
-      margin-left: 0;
-      margin-right: auto; 
-    }
-    .reveal .slide > img.stretch.quarto-figure-right,
-    .reveal .slide > img.r-stretch.quarto-figure-right  {
-      display: block;
-      margin-left: auto;
-      margin-right: 0; 
-    }
-  </style>
-<meta property="og:title" content="Stadtwärme in Marburg modellieren – Modellieren in der Geographie">
-<meta property="og:description" content="Von der Erwartung über die räumliche Struktur zum Hotspot-Abgleich">
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<meta property="og:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
+<meta property="og:description" content="Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen">
 <meta property="og:site_name" content="Modellieren in der Geographie">
-<meta name="twitter:title" content="Stadtwärme in Marburg modellieren – Modellieren in der Geographie">
-<meta name="twitter:description" content="Von der Erwartung über die räumliche Struktur zum Hotspot-Abgleich">
+<meta name="twitter:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
+<meta name="twitter:description" content="Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen">
 <meta name="twitter:creator" content="@gisma">
 <meta name="twitter:card" content="summary">
 </head>
-<body class="quarto-light">
-  <div class="reveal">
-    <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Stadtwärme in Marburg modellieren</h1>
-  <p class="subtitle">Von der Erwartung über die räumliche Struktur zum Hotspot-Abgleich</p>
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
-<div class="quarto-title-authors">
-<div class="quarto-title-author">
-<div class="quarto-title-author-name">
-KlimaResilienzSchule 
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+          <h1 class="quarto-secondary-nav-title">Modellierung städtischer Hitze</h1>
+        </a>     
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Stadtwärme modellieren</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
-</div>
+    </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Start</span></a>
+  </div>
+</li>
+        <li class="px-0"><hr class="sidebar-divider hi "></li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Modellierung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Modellierung städtischer Hitze</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Anleitung</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhalt</h2>
+   
+  <ul>
+  <li><a href="#lehrpfad-für-eine-kurssitzung" id="toc-lehrpfad-für-eine-kurssitzung" class="nav-link active" data-scroll-target="#lehrpfad-für-eine-kurssitzung">Lehrpfad für eine Kurssitzung</a></li>
+  <li><a href="#was-beschreibt-das-mittelwertbild" id="toc-was-beschreibt-das-mittelwertbild" class="nav-link" data-scroll-target="#was-beschreibt-das-mittelwertbild">1 · Was beschreibt das Mittelwertbild?</a></li>
+  <li><a href="#wofür-brauchen-wir-eine-zeitreihe" id="toc-wofür-brauchen-wir-eine-zeitreihe" class="nav-link" data-scroll-target="#wofür-brauchen-wir-eine-zeitreihe">2 · Wofür brauchen wir eine Zeitreihe?</a></li>
+  <li><a href="#wie-entsteht-die-zeitreihe" id="toc-wie-entsteht-die-zeitreihe" class="nav-link" data-scroll-target="#wie-entsteht-die-zeitreihe">3 · Wie entsteht die Zeitreihe?</a>
+  <ul class="collapse">
+  <li><a href="#untersuchungsgebiet-und-vergleichsflächen" id="toc-untersuchungsgebiet-und-vergleichsflächen" class="nav-link" data-scroll-target="#untersuchungsgebiet-und-vergleichsflächen">Untersuchungsgebiet und Vergleichsflächen</a></li>
+  <li><a href="#einen-termin-nachvollziehen" id="toc-einen-termin-nachvollziehen" class="nav-link" data-scroll-target="#einen-termin-nachvollziehen">Einen Termin nachvollziehen</a></li>
+  <li><a href="#wiederholung-automatisieren" id="toc-wiederholung-automatisieren" class="nav-link" data-scroll-target="#wiederholung-automatisieren">Wiederholung automatisieren</a></li>
+  </ul></li>
+  <li><a href="#mittelwert-q90-und-q95-räumlich-vergleichen" id="toc-mittelwert-q90-und-q95-räumlich-vergleichen" class="nav-link" data-scroll-target="#mittelwert-q90-und-q95-räumlich-vergleichen">4 · Mittelwert, q90 und q95 räumlich vergleichen</a></li>
+  <li><a href="#von-rasterzellen-zu-flächen-und-regionen" id="toc-von-rasterzellen-zu-flächen-und-regionen" class="nav-link" data-scroll-target="#von-rasterzellen-zu-flächen-und-regionen">5 · Von Rasterzellen zu Flächen und Regionen</a>
+  <ul class="collapse">
+  <li><a href="#vorgegebene-gebiete-aggregieren" id="toc-vorgegebene-gebiete-aggregieren" class="nav-link" data-scroll-target="#vorgegebene-gebiete-aggregieren">Vorgegebene Gebiete aggregieren</a></li>
+  <li><a href="#temperaturbasierte-regionen-ableiten" id="toc-temperaturbasierte-regionen-ableiten" class="nav-link" data-scroll-target="#temperaturbasierte-regionen-ableiten">Temperaturbasierte Regionen ableiten</a></li>
+  </ul></li>
+  <li><a href="#einordnung-als-geographische-modellierung" id="toc-einordnung-als-geographische-modellierung" class="nav-link" data-scroll-target="#einordnung-als-geographische-modellierung">6 · Einordnung als geographische Modellierung</a></li>
+  <li><a href="#vom-oberflächenhotspot-zur-thermischen-belastung" id="toc-vom-oberflächenhotspot-zur-thermischen-belastung" class="nav-link" data-scroll-target="#vom-oberflächenhotspot-zur-thermischen-belastung">7 · Vom Oberflächenhotspot zur thermischen Belastung</a></li>
+  <li><a href="#planungsauftrag" id="toc-planungsauftrag" class="nav-link" data-scroll-target="#planungsauftrag">8 · Planungsauftrag: räumliche Prioritäten begründen</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/edit/main/pages/modellierung_luftbild_lst.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Modellierung städtischer Hitze</h1>
+<p class="subtitle lead">Von thermischen Satellitenbildern zu räumlichen Planungsentscheidungen</p>
 </div>
 
-  <p class="date">2026-10-22</p>
-</section>
-<section>
-<section id="ziel" class="title-slide slide level1 center">
-<h1>Ziel</h1>
-<p>Eine einfache GIS-Modellierung für <strong>Marburg</strong>:</p>
-<p><strong>Luftbild → begründete Erwartung → räumliche Struktur → Landsat-Wärmebild</strong></p>
-<p>Zwei Rasterbilder. Eine selbst gezeichnete Erwartung. Ein sichtbarer Abgleich.</p>
-</section>
-<section id="leitfrage" class="slide level2">
-<h2>Leitfrage</h2>
-<p><strong>Wo erwarten wir in Marburg warme Oberflächen – und was zeigt der Satellit?</strong></p>
-<p>Wir modellieren keine Lufttemperatur und keine vollständige Wärmebelastung. Wir prüfen eine begründete Erwartung mit einem thermischen Satellitenbild.</p>
-</section></section>
-<section>
-<section id="teil-1-das-konzeptionelle-modell" class="title-slide slide level1 center">
-<h1>Teil 1 · Das konzeptionelle Modell</h1>
 
-</section>
-<section id="erwartung-aus-oberflächen-ableiten" class="slide level2">
-<h2>1. Erwartung aus Oberflächen ableiten</h2>
-<p>Vor dem Wärmebild fragen wir: <strong>Welche Oberfläche nimmt viel Energie auf, speichert sie oder kann wenig über Verdunstung kühlen?</strong></p>
-<table class="caption-top">
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="lehrpfad-für-eine-kurssitzung" class="level1">
+<h1>Lehrpfad für eine Kurssitzung</h1>
+<p>Die Sitzung untersucht, wie aus einer Temperaturbeobachtung eine räumliche Planungsgrundlage entsteht. Ausgangspunkt sind Oberflächenhotspots im Satellitenbild. Anschließend werden die zeitliche Statistik, die räumliche Gebietseinteilung und die menschliche Exposition als aufeinander aufbauende Modellentscheidungen behandelt.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
 <thead>
 <tr class="header">
-<th>Sichtbare Oberfläche</th>
-<th>Erwartung für einen sonnigen Sommertag</th>
+<th>Zeit</th>
+<th>Analyseschritt</th>
+<th>Modellierungsfrage</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Asphalt, große Dächer, Parkplatz, Platz</td>
-<td>eher warm</td>
+<td>0–10 min</td>
+<td>DLR-Mittelwertbild und Luftbild vergleichen</td>
+<td>Welche Zielgröße beobachten wir?</td>
 </tr>
 <tr class="even">
-<td>Baumkronen, schattiger Park, feuchte Vegetation</td>
-<td>eher kühl</td>
+<td>10–25 min</td>
+<td>Einzeltermine zur Zeitreihe verbinden; Skript lesen</td>
+<td>Welche zeitliche Auswahl bildet die Datengrundlage?</td>
 </tr>
 <tr class="odd">
-<td>Lahn oder Teich</td>
-<td>häufig kühlere Tagesoberfläche, thermisch träge</td>
+<td>25–40 min</td>
+<td>mean, q90 und q95 vergleichen</td>
+<td>Welche Hotspots entstehen durch die Wahl des Kennwerts?</td>
 </tr>
 <tr class="even">
-<td>trockene Wiese, Schotter, Baustelle</td>
-<td>offen: möglicher Grenzfall</td>
+<td>40–55 min</td>
+<td>Flächen aggregieren und zwei Segmentierungen vergleichen</td>
+<td>Welche räumlichen Einheiten bilden wir?</td>
+</tr>
+<tr class="odd">
+<td>55–70 min</td>
+<td>Stationsdaten und UTCI-Szenario</td>
+<td>Wie wird aus Temperatur eine Aussage über thermische Belastung?</td>
+</tr>
+<tr class="even">
+<td>70–90 min</td>
+<td>Planungsauftrag bearbeiten und begründen</td>
+<td>Wo treffen Hitze, Aufenthalt und besonderer Schutzbedarf zusammen?</td>
 </tr>
 </tbody>
 </table>
-
-<img data-src="../images/figures/fig03_vier_oberflaechenklassen.png" style="width:75.0%" class="r-stretch quarto-figure-center"><p class="caption">Die Oberflächenklassen bündeln sichtbare Stadtflächen zu einem einfachen Arbeitsmodell.</p></section>
-<section id="stadtstruktur-lesen" class="slide level2">
-<h2>2. Stadtstruktur lesen</h2>
-<p>Es geht nicht nur darum, <strong>welche</strong> Oberfläche vorliegt. Wir betrachten auch, wie sie im Raum angeordnet ist:</p>
+<p><strong>Vorbereitung:</strong> QGIS und RStudio sind eingerichtet; Untersuchungsgebiet und Vergleichsflächen liegen vor. Der mehrjährige Datenabruf und die vollständige Rasterberechnung werden vor der Sitzung ausgeführt. In der Sitzung werden ein Termin und die wesentlichen Codezeilen nachvollzogen und vorhandene Ergebnisse verglichen. Die Downloadzeit gehört nicht zu den 90 Minuten.</p>
+<p>Am Ende steht eine begründete räumliche Priorisierung mit dokumentierten Annahmen. Die Schritte 1–5 bilden den technischen und methodischen Hintergrund; der <a href="../pages/exkurs_stationen.html">Exkurs</a> vertieft den Übergang zur thermischen Belastung.</p>
+</section>
+<section id="was-beschreibt-das-mittelwertbild" class="level1">
+<h1>1 · Was beschreibt das Mittelwertbild?</h1>
+<p>Der <a href="../pages/qgis-howto-stadtwaerme-marburg.html">manuelle QGIS-Workflow</a> bleibt der Ausgangspunkt: Das DLR-Sommerprodukt wird für Marburg ausgeschnitten und mit dem Luftbild verglichen. Es fasst die gültigen wolkenfreien Landsat-Beobachtungen der Sommer 2021–2025 zusammen. Jede Rasterzelle erhält einen Mittelwert der an diesem Ort verfügbaren Temperaturen. Das Ergebnis zeigt, welche Oberflächen in dieser Stichprobe im Mittel wärmer oder kühler waren. <a href="https://geoservice.dlr.de/web/datasets/lst_de">Produktbeschreibung des DLR</a>.</p>
+<p>Ein hoher Mittelwert kann beispielsweise zu einem großflächig versiegelten Standort passen. Eine solche Zuordnung ist eine Hypothese über den Zusammenhang zwischen Oberflächenbeschaffenheit und Temperatur. Verschattung, Feuchte, Wetter und Aufnahmezeit beeinflussen die beobachteten Werte ebenfalls.</p>
+<p><strong>Modellierung beginnt mit der Wahl der Aussage:</strong> Soll eine Karte das mittlere Temperaturniveau, wiederkehrende hohe Temperaturen oder Unterschiede zwischen Standorten während einzelner Ereignisse beschreiben? Für diese Fragen benötigen wir unterschiedliche Kennwerte.</p>
+<p>Das Mittelwertbild verdichtet die Zeitdimension zu einer Zahl. Aus ihm lässt sich nicht rekonstruieren, ob ein Ort häufig mäßig warm war oder zwischen kühlen und sehr heißen Zuständen wechselte. Außerdem ist es ein Mittel verfügbarer Satellitenbeobachtungen: Bewölkte Tage sowie die meisten Tages- und Nachtstunden fehlen.</p>
+</section>
+<section id="wofür-brauchen-wir-eine-zeitreihe" class="level1">
+<h1>2 · Wofür brauchen wir eine Zeitreihe?</h1>
+<p>Eine Zeitreihe erhält zunächst die einzelnen Beobachtungen. Für jede Rasterzelle entsteht eine Folge von Temperaturen mit Aufnahmedatum. Für festgelegte Vergleichsflächen lässt sich daraus je Termin ein räumlicher Kennwert berechnen.</p>
+<p>Damit können wir drei Fragen bearbeiten:</p>
 <ul>
-<li>bilden Dächer, Straßen und Parkplätze einen zusammenhängenden warmen Block?</li>
-<li>verlaufen Grünzüge als kühlere Achsen durch die Bebauung?</li>
-<li>liegt ein großer Platz direkt neben Schatten oder Wasser?</li>
-<li>werden warme Bereiche am Stadtrand durch offene Landschaft unterbrochen?</li>
+<li>Bleibt die Rangfolge der Standorte über verschiedene Termine erhalten?</li>
+<li>Welche Standorte erreichen bei ähnlichem Mittelwert besonders hohe Temperaturen?</li>
+<li>Wie verändert sich die räumliche Abgrenzung warmer Bereiche, wenn wir Mittelwert, q90 oder q95 verwenden?</li>
 </ul>
-<p>Für Marburg können Innenstadt und Lahn, Bahnhofsumfeld, größere Parkplätze, Gewerbegebiete, Lahnberge und bewaldete Hänge als unterschiedliche Vergleichsräume dienen.</p>
+<p>Ein konstruiertes Beispiel verdeutlicht die zweite Frage:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">40</span>), <span class="dv">5</span>)  <span class="co"># wechselnd: fünf kühle und fünf heiße Beobachtungen</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">32</span>, <span class="dv">10</span>)       <span class="co"># gleichbleibendes Niveau</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rbind</span>(</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">A =</span> <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(a), <span class="at">q90 =</span> <span class="fu">quantile</span>(a, <span class="fl">0.90</span>, <span class="at">names =</span> <span class="cn">FALSE</span>)),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">B =</span> <span class="fu">c</span>(<span class="at">mean =</span> <span class="fu">mean</span>(b), <span class="at">q90 =</span> <span class="fu">quantile</span>(b, <span class="fl">0.90</span>, <span class="at">names =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Im Mittel liegt B mit 32 °C über A mit 30 °C. Beim q90 kehrt sich die Reihenfolge um: A erreicht 40 °C, B weiterhin 32 °C. Die Wahl der Statistik verändert damit die räumliche Bewertung.</p>
+<p>Die Zeitreihe ist weiterhin eine unregelmäßige Beobachtungsfolge. Verbindungslinien im Diagramm dienen der Orientierung; zwischen den Überflügen fehlen Messungen.</p>
 </section>
-<section id="tatsächliche-hotspots-abgleichen" class="slide level2">
-<h2>3. Tatsächliche Hotspots abgleichen</h2>
-<p>Erst jetzt kommt die LST-Karte hinzu. Wir prüfen dieselben Flächen erneut:</p>
-<ol type="1">
-<li><strong>Treffer:</strong> Erwarteter warmer Bereich ist im Satellitenbild warm.</li>
-<li><strong>Abweichung:</strong> Eine erwartete warme Fläche erscheint weniger warm oder umgekehrt.</li>
-<li><strong>Erklärung:</strong> Schatten, Feuchte, Material, Aufnahmezeit, Wolkenrest oder Mischpixel könnten eine Rolle spielen.</li>
-</ol>
-
-<img data-src="../images/figures/fig05_unterrichtsablauf.png" style="width:76.0%" class="r-stretch quarto-figure-center"><p class="caption">Vom sichtbaren Muster zum thermischen Test.</p></section>
-<section id="modellbeziehung" class="slide level2">
-<h2>Modellbeziehung</h2>
-<p><span class="math display">\[
-\text{Oberfläche} + \text{Schatten / Feuchte} + \text{räumliche Nachbarschaft}
-\;\longrightarrow\;
-\text{erwartete Oberflächentemperatur}
-\;\longrightarrow\;
-\text{Abgleich mit Landsat}
-\]</span></p>
-<p>Das ist ein <strong>Erklärungsmodell</strong>. Es sagt, wo wir genauer hinschauen sollten. Es garantiert nicht, dass jedes Dach oder jeder Parkplatz heiß ist.</p>
-</section>
-<section id="was-heißt-wirklich-heiß" class="slide level2">
-<h2>Was heißt „wirklich“ heiß?</h2>
-<p>„Tatsächlich“ heißt hier: <strong>im gewählten Landsat-Aufnahmetermin mit hoher Oberflächentemperatur abgebildet</strong>.</p>
-<p>LST = <em>Land Surface Temperature</em>. Sie beschreibt die Temperatur der Oberfläche, nicht die Lufttemperatur in zwei Metern Höhe. Die thermischen Landsat-Pixel sind grob: Bei Landsat 8/9 wird die Thermalaufnahme mit 100 m erfasst und auf ein 30-m-Raster gebracht.</p>
-</section></section>
-<section>
-<section id="teil-2-der-manuelle-qgis-weg" class="title-slide slide level1 center">
-<h1>Teil 2 · Der manuelle QGIS-Weg</h1>
-
-</section>
-<section id="zwei-daten-ein-projekt" class="slide level2">
-<h2>Zwei Daten, ein Projekt</h2>
-<p><strong>Raster 1 – Luftbild:</strong> Hessisches DOP RGB, zur Oberflächeninterpretation.</p>
-<p><strong>Raster 2 – Wärmebild:</strong> Landsat Collection 2 Level-2 <code>ST_B10</code>, in QGIS nach °C umgerechnet.</p>
-<p>Alles Weitere – Erwartungsflächen, Notizen und Kartenlayout – wird in QGIS von Hand erstellt.</p>
-</section>
-<section id="schritt-1-luftbild-von-marburg" class="slide level2">
-<h2>Schritt 1 · Luftbild von Marburg</h2>
-<ol type="1">
-<li>Hessischen RGB-Orthofoto-WMS in QGIS verbinden.</li>
-<li>Ausschnitt wählen: z. B. Innenstadt und Lahn oder ein Schulumfeld.</li>
-<li>Sichtbaren Ausschnitt als GeoTIFF speichern.</li>
-<li>Quellenangabe ergänzen: <strong>© HVBG – Hessische Verwaltung für Bodenmanagement und Geoinformation</strong>.</li>
-</ol>
-<p>WMS: <code>https://www.gds-srv.hessen.de/cgi-bin/lika-services/ogc-free-images.ows</code></p>
-<p>Layer: <code>he_dop20_rgb</code> · Projekt-KBS: <code>EPSG:25832</code></p>
-</section>
-<section id="schritt-2-landsat-szene-auswählen" class="slide level2">
-<h2>Schritt 2 · Landsat-Szene auswählen</h2>
-<p>Auf <a href="https://earthexplorer.usgs.gov/">USGS EarthExplorer</a> Marburg suchen und einen möglichst wolkenarmen Sommertermin auswählen:</p>
-<ul>
-<li>Datensatz: <strong>Landsat 8-9 OLI/TIRS C2 L2</strong></li>
-<li>Produkt: <strong>Surface Temperature (<code>ST_B10</code>)</strong></li>
-<li>Datum, Szenen-ID und gemeldeten Wolkenanteil notieren</li>
-</ul>
-<p>Nur das ST-Band ist für die Minimalübung nötig. Es ist ein Einzeltermin, kein Mehrjahres- oder Zehn-Szenen-Komposit.</p>
-</section>
-<section id="schritt-3-in-grad-celsius-umrechnen" class="slide level2">
-<h2>Schritt 3 · In Grad Celsius umrechnen</h2>
-<p>Im QGIS-Rasterrechner aus <code>ST_B10</code> ein Float-Raster erzeugen:</p>
-<p><span class="math display">\[
-T_{°C} = DN \times 0{,}00341802 + 149{,}0 - 273{,}15
-\]</span></p>
-<p>Mit dem tatsächlichen Aufnahmedatum speichern, zum Beispiel <code>marburg_lst_[Datum]_celsius.tif</code>.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource text number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>if("ST_B10@1" = 0, 0 / 0,</span>
-<span id="cb1-2"><a></a>   "ST_B10@1" * 0.00341802 + 149.0 - 273.15)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Den vollständigen Bandnamen aus der Rasterrechner-Liste einsetzen. <code>0 / 0</code> markiert Fill-Werte (DN = 0) als NoData. Danach mit <strong>Einkanal-Pseudofarbe</strong> und beschrifteter °C-Legende darstellen.</p>
-</section>
-<section id="schritt-4-erwartungsflächen-digitalisieren" class="slide level2">
-<h2>Schritt 4 · Erwartungsflächen digitalisieren</h2>
-<p>Auf dem Luftbild zunächst die Wärmekarte ausblenden. In QGIS einen GeoPackage-Polygonlayer erstellen und diese Felder anlegen:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Feld</th>
-<th>Inhalt</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>erwartung</code></td>
-<td>warm / mittel / kühl</td>
-</tr>
-<tr class="even">
-<td><code>oberflaeche</code></td>
-<td>Dach, Straße, Grün, Wasser, Mischfläche …</td>
-</tr>
-<tr class="odd">
-<td><code>grund</code></td>
-<td>Versiegelung, Schatten, Verdunstung, Feuchte …</td>
-</tr>
-</tbody>
-</table>
-<p>Zeichne etwa fünf größere Vergleichsflächen. Folge den sichtbaren Oberflächen und zeichne keine Grenzen genauer, als das 100-m-Thermalbild es sinnvoll hergibt.</p>
-</section>
-<section id="schritt-5-muster-testen" class="slide level2">
-<h2>Schritt 5 · Muster testen</h2>
-<p>Wärmebild wieder einschalten und die digitalisierten Flächen transparent darüberlegen.</p>
-<p>Notiere pro Fläche: <strong>Erwartung · Beobachtung · mögliche Erklärung der Abweichung</strong>.</p>
-<p>Fragen für die Auswertung:</p>
-<ul>
-<li>Sind erwartete warme Flächen Teil zusammenhängender Hotspot-Zonen?</li>
-<li>Unterbrechen Lahn und Grünräume diese Zonen?</li>
-<li>Welche Abweichung ist überraschend?</li>
-<li>Was lässt sich aus dem einzelnen Aufnahmetermin nicht ableiten?</li>
-</ul>
-</section>
-<section id="was-wurde-gegenüber-der-automatik-reduziert" class="slide level2">
-<h2>Was wurde gegenüber der Automatik reduziert?</h2>
-<table class="caption-top">
+<section id="wie-entsteht-die-zeitreihe" class="level1">
+<h1>3 · Wie entsteht die Zeitreihe?</h1>
+<section id="untersuchungsgebiet-und-vergleichsflächen" class="level2">
+<h2 class="anchored" data-anchor-id="untersuchungsgebiet-und-vergleichsflächen">Untersuchungsgebiet und Vergleichsflächen</h2>
+<p>In QGIS werden zwei GeoPackages im Projektordner gespeichert:</p>
+<table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
 <col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Automatisiertes Lehrkräftepaket</th>
-<th>Manueller Einstieg</th>
+<th>Datei</th>
+<th>Inhalt</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Suche und Auswahl von zehn heißen Landsat-Szenen</td>
-<td>Auswahl eines einzelnen klaren Sommertermins</td>
+<td><code>data/gebiet.gpkg</code></td>
+<td>ein Polygon des gesamten Untersuchungsgebiets</td>
 </tr>
 <tr class="even">
-<td>LST-Berechnung und pixelweises q90-Komposit</td>
-<td>eine LST-Szene aus <code>ST_B10</code> in °C</td>
-</tr>
-<tr class="odd">
-<td>automatische DOP-CIR-Klassifikation</td>
-<td>sichtbare Interpretation des RGB-Luftbilds</td>
-</tr>
-<tr class="even">
-<td>automatisch erzeugtes QGIS-Projekt und Printlayouts</td>
-<td>ein Projekt, manuell digitalisierte Erwartungsflächen</td>
+<td><code>data/flaechen.gpkg</code></td>
+<td>Vergleichspolygone, etwa Park, Gewerbegebiet und Wohnbebauung; eindeutiges Textfeld <code>area_id</code></td>
 </tr>
 </tbody>
 </table>
-<p><strong>Wichtig:</strong> Ein einzelner Landsat-Termin bildet nicht dasselbe ab wie das automatisierte Hot-q90-Komposit. Er macht aber den Modellgedanken, die Datenumrechnung und den GIS-Vergleich direkt nachvollziehbar.</p>
+<p>Die Flächen dienen zunächst als vorab definierte Untersuchungseinheiten. Ihre Abgrenzung wird aus Landnutzung und Stadtstruktur begründet. Dafür bleibt der manuelle Vergleich mit dem Luftbild erforderlich.</p>
 </section>
-<section id="quellen-und-links" class="slide level2">
-<h2>Quellen und Links</h2>
-<ul>
-<li><a href="https://hvbg.hessen.de/landesvermessung/geotopographie/luftbilder/digitale-orthophotos-true-orthophoto">Digitale Orthophotos Hessen (HVBG)</a></li>
-<li><a href="https://hvbg.hessen.de/geoinformation/geodateninfrastruktur/geoportal-hessen/geodatendienste-im-originaeren-format">WMS-Dienste und Capabilities Hessen (HVBG)</a></li>
-<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-level-2-science-products">Landsat Level-2 Datenzugang (USGS)</a></li>
-<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">Landsat ST-Skalierung (USGS)</a></li>
-<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands">QA_PIXEL und Wolkeninformation (USGS)</a></li>
-</ul>
-<p>Ausführliche Klick-für-Klick-Schritte: <a href="handreichung-lst-stadtklima-technisch.qmd">Technische QGIS-Anleitung</a>.</p>
+<section id="einen-termin-nachvollziehen" class="level2">
+<h2 class="anchored" data-anchor-id="einen-termin-nachvollziehen">Einen Termin nachvollziehen</h2>
+<p>Für einen Landsat-8/9-Termin werden das Temperaturband <code>ST_B10</code> und das Qualitätsband <code>QA_PIXEL</code> benötigt. Die Verarbeitung besteht aus vier Schritten:</p>
+<ol type="1">
+<li>Raster auf das Untersuchungsgebiet zuschneiden.</li>
+<li>Als ungültig markierte Werte, Wolken, Wolkenschatten und Schnee ausblenden.</li>
+<li>Die digitalen Werte des Temperaturbands in °C umrechnen.</li>
+<li>Das bereinigte Raster auf demselben Ausgaberaster wie alle anderen Termine ablegen.</li>
+</ol>
+<p>Die Umrechnung lautet:</p>
+<p><span class="math display">\[
+LST_{°C}=DN\cdot0{,}00341802+149-273{,}15.
+\]</span></p>
+<p>Die Skalierung und die Qualitätsbits sind in der <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">USGS-Temperaturdokumentation</a> und der <a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-quality-assessment-bands">QA-Dokumentation</a> beschrieben.</p>
+<p>Für die Übung wird ein 100-m-Ausgaberaster verwendet. Das erleichtert die Auswertung größerer Vergleichsflächen. Die native thermische Information von Landsat 8/9 liegt ebenfalls ungefähr auf dieser Skala; ein 30-m-Produktraster erlaubt keine unabhängigen Temperaturmessungen einzelner kleiner Gebäude. Die gemeinsame Rasterung verändert die räumliche Unterstützung der Werte und muss dokumentiert werden.</p>
+<p>Für jedes Vergleichspolygon berechnen wir anschließend den Median seiner gültigen Rasterzellen. Das liefert eine Tabellenzeile je Fläche und Termin:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>date</th>
+<th>area_id</th>
+<th style="text-align: right;">lst_c</th>
+<th style="text-align: right;">valid_pixels</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Aufnahmedatum</td>
+<td>Park</td>
+<td style="text-align: right;">Flächenmedian in °C</td>
+<td style="text-align: right;">Zahl gültiger Zellen</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="wiederholung-automatisieren" class="level2">
+<h2 class="anchored" data-anchor-id="wiederholung-automatisieren">Wiederholung automatisieren</h2>
+<p>Die Verarbeitung eines Termins wird für sämtliche ausgewählten Sommertermine wiederholt. Es werden keine besonders heißen Szenen vorab ausgewählt: Sonst beschriebe bereits der Mittelwert eine vorselektierte Hitzestichprobe.</p>
+<p>Die Skripte sind absichtlich linear aufgebaut. Tabellen, Schleifen, Diagramme und Kennwerte verwenden Base R; die räumlichen Aufgaben übernehmen <code>terra</code>, <code>sf</code> und später <code>supercells</code>. <code>rstac</code> übernimmt die Suche im öffentlichen Szenenkatalog.</p>
+<p>Einmalig in der R-Konsole:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"terra"</span>, <span class="st">"sf"</span>, <span class="st">"rstac"</span>, <span class="st">"supercells"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Das RStudio-Projekt liegt im Ordner mit dieser Struktur:</p>
+<pre class="text"><code>stadtwaerme/
+├── data/
+│   ├── gebiet.gpkg
+│   └── flaechen.gpkg
+├── scripts/
+│   ├── lst_abruf.R
+│   ├── lst_zeitreihe.R
+│   └── lst_regionen.R
+└── output/</code></pre>
+<p>Die drei verlinkten Skripte werden unter <code>scripts/</code> gespeichert. Alle Pfade beziehen sich auf den Projektordner.</p>
+<p><strong>Szenen abrufen:</strong> <a href="../scripts/lst_abruf.R">lst_abruf.R</a> sucht Landsat-8/9-Oberflächentemperaturprodukte am <a href="https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2">Microsoft Planetary Computer</a>, beschränkt die Auswahl auf Juni bis August 2021–2025 und speichert nur Temperatur- und Qualitätsband im Gebiet.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/lst_abruf.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Im Skript stehen Gebiet, Zeitraum und Wolkengrenze am Anfang. Die Wolkengrenze ist eine Vorauswahl für ganze Szenen. Die lokale QA-Maske folgt im nächsten Skript. Bei mehreren Szenen am selben Tag wird für diesen Einstieg die Szene mit dem geringsten Gesamtwolkenanteil verwendet; dadurch können an den Rändern Beobachtungen fehlen. <code>data/szenen.csv</code> hält Auswahl, Aufnahmezeit und Dateipfade fest.</p>
+<p><strong>Zeitreihe und Kennwerte berechnen:</strong> <a href="../scripts/lst_zeitreihe.R">lst_zeitreihe.R</a> bereinigt die einzelnen Termine, vereinheitlicht ihr Raster und erzeugt die Flächentabelle sowie die zeitlichen Rasterkennwerte.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/lst_zeitreihe.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Ausgabe unter <code>output/</code></th>
+<th>Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>lst_stapel.tif</code></td>
+<td>ein Rasterband je Termin: die räumliche Zeitreihe</td>
+</tr>
+<tr class="even">
+<td><code>termine.csv</code></td>
+<td>Zuordnung der Rasterbänder zu den Aufnahmen</td>
+</tr>
+<tr class="odd">
+<td><code>lst_zeitreihe.csv</code>, <code>lst_zeitreihe.png</code></td>
+<td>Flächenmediane je Termin und Diagramm</td>
+</tr>
+<tr class="even">
+<td><code>lst_kennwerte.tif</code></td>
+<td>drei Bänder: mean, q90 und q95 pro Rasterzelle</td>
+</tr>
+<tr class="odd">
+<td><code>lst_anzahl.tif</code></td>
+<td>Zahl gültiger Beobachtungen pro Rasterzelle</td>
+</tr>
+<tr class="even">
+<td><code>lst_q95_minus_mean.tif</code></td>
+<td>Differenz zwischen q95 und Mittelwert</td>
+</tr>
+<tr class="odd">
+<td><code>lst_kennwerte.png</code></td>
+<td>Kennwertkarten mit gemeinsamer Temperaturskala</td>
+</tr>
+</tbody>
+</table>
+<p>Die Zahl gültiger Beobachtungen gehört zur Interpretation. Im Skript werden Zellen mit weniger als zehn Beobachtungen für die Kennwertkarten ausgeblendet. Dieser Arbeitswert garantiert keine stabile Schätzung: Insbesondere q95 ist bei kleinen Stichproben stark von wenigen hohen Werten abhängig. Bei ungleich verteilten Aufnahmeterminen erhalten häufig beobachtete Sommer mehr Gewicht.</p>
+</section>
+</section>
+<section id="mittelwert-q90-und-q95-räumlich-vergleichen" class="level1">
+<h1>4 · Mittelwert, q90 und q95 räumlich vergleichen</h1>
+<p>Der Mittelwert berücksichtigt alle gültigen Beobachtungen einer Rasterzelle. q90 bezeichnet deren 90. Perzentil, q95 deren 95. Perzentil. Die oberen Quantile charakterisieren den hohen Temperaturbereich dieser Stichprobe. Sie sind weder ein einzelnes Ereignisbild noch eine Wiederkehrperiode.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Karte</th>
+<th>Räumliche Fragestellung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mittelwert</td>
+<td>Wo liegt das Temperaturniveau über die verfügbaren Sommerbeobachtungen hoch?</td>
+</tr>
+<tr class="even">
+<td>q90</td>
+<td>Wo liegen die oberen Temperaturen der Beobachtungsreihe hoch?</td>
+</tr>
+<tr class="odd">
+<td>q95</td>
+<td>Welche Bereiche fallen im äußersten oberen Teil der Stichprobe auf?</td>
+</tr>
+<tr class="even">
+<td>q95 − Mittelwert</td>
+<td>Wo ist der Abstand zwischen mittlerem Niveau und hohem Temperaturbereich groß?</td>
+</tr>
+<tr class="odd">
+<td>Beobachtungszahl</td>
+<td>Auf welcher Datengrundlage beruht der Vergleich?</td>
+</tr>
+</tbody>
+</table>
+<p>Ein Pixel mit hohem Mittelwert und geringer Differenz kann über die Stichprobe relativ gleichmäßig warm sein. Ein Pixel mit geringerem Mittelwert und großer Differenz reagiert möglicherweise stärker auf trockene, sonnige Bedingungen. Das sind zunächst Interpretationshypothesen, die am Luftbild und an einzelnen Terminen überprüft werden.</p>
+<p>Für den Kartenvergleich werden derselbe Ausschnitt, dieselbe Temperaturlegende und dieselbe NoData-Behandlung verwendet. Separate Quantilklassierungen jeder Karte würden in jeder Darstellung einen ähnlichen Anteil als „warm“ hervorheben und absolute Unterschiede verdecken.</p>
+<p><strong>Arbeitsauftrag:</strong> Vergleichen Sie die Rangfolge der fünf Flächen und die räumliche Ausdehnung hoher Werte. Prüfen Sie, ob etwa trockene Offenflächen unter q95 stärker hervortreten als unter dem Mittelwert. Kontrollieren Sie auffällige Bereiche anhand der Originaltermine und der Beobachtungszahl.</p>
+<p>Das selbst berechnete Mittelwertbild dient auch zum Vergleich mit dem DLR-Produkt. Eine exakte Reproduktion ist wegen Szenenauswahl, Maskierung und Ausgaberaster nicht zu erwarten. Für den Einstieg werden Muster und Größenordnung verglichen; eine Differenzkarte erfordert zusätzlich dieselbe Rastergeometrie und eine klar abgegrenzte gemeinsame Datenbasis.</p>
+</section>
+<section id="von-rasterzellen-zu-flächen-und-regionen" class="level1">
+<h1>5 · Von Rasterzellen zu Flächen und Regionen</h1>
+<section id="vorgegebene-gebiete-aggregieren" class="level2">
+<h2 class="anchored" data-anchor-id="vorgegebene-gebiete-aggregieren">Vorgegebene Gebiete aggregieren</h2>
+<p>Stadtquartiere, Landnutzungseinheiten oder regelmäßige Rasterquadrate können als räumliche Bezugseinheiten dienen. Dafür wird pro Gebiet und Termin ein Flächenwert berechnet. Die Wahl der Einheit bestimmt, welche Unterschiede erhalten bleiben: Große Quartiere mitteln kleine heiße Standorte stärker aus als kleine Vergleichspolygone.</p>
+<p>Zeitliche und räumliche Aggregation müssen dabei ausdrücklich benannt werden:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Reihenfolge</th>
+<th>Aussage</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Pro Pixel q90 über die Zeit, anschließend räumlicher Mittelwert im Quartier</td>
+<td>mittleres Niveau der lokalen oberen Temperaturen</td>
+</tr>
+<tr class="even">
+<td>Pro Termin räumlicher Mittelwert im Quartier, anschließend q90 dieser Folge</td>
+<td>oberer Temperaturbereich des Quartiers als Gesamteinheit</td>
+</tr>
+</tbody>
+</table>
+<p>Beide Größen unterscheiden sich. Die höchsten Temperaturen benachbarter Pixel können an verschiedenen Tagen auftreten. Das Quartier erreicht deshalb nicht zwangsläufig gleichzeitig das in der Quantilkarte dargestellte Temperaturniveau.</p>
+<p>Ein Quartiermittel lässt sich in R unmittelbar berechnen:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(terra)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>quartiere <span class="ot">&lt;-</span> <span class="fu">vect</span>(<span class="st">"data/quartiere.gpkg"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>kennwerte <span class="ot">&lt;-</span> <span class="fu">rast</span>(<span class="st">"output/lst_kennwerte.tif"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>quartiere <span class="ot">&lt;-</span> <span class="fu">project</span>(quartiere, <span class="fu">crs</span>(kennwerte))</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">extract</span>(kennwerte, quartiere, <span class="at">fun =</span> mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Dieses Beispiel verwendet Zellen nach ihrer Lage im Polygon. Für den Einstieg werden ausreichend große Gebiete gewählt; Randzellen werden nicht nach Flächenanteil gewichtet.</p>
+</section>
+<section id="temperaturbasierte-regionen-ableiten" class="level2">
+<h2 class="anchored" data-anchor-id="temperaturbasierte-regionen-ableiten">Temperaturbasierte Regionen ableiten</h2>
+<p>Wenn passende Gebietseinheiten fehlen, können benachbarte Rasterzellen nach thermischer Ähnlichkeit zusammengefasst werden. Jakub Nowosads R-Paket <a href="https://jakubnowosad.com/supercells/">supercells</a> bildet zusammenhängende Segmente. Für diese Fallstudie verwenden wir zwei Merkmale: mittlere LST und den Abstand q95 − Mittelwert. Die Standardisierung gibt beiden Merkmalen eine vergleichbare Gewichtung.</p>
+<p>Das Skript <a href="../scripts/lst_regionen.R">lst_regionen.R</a> setzt diese Regionalisierung um:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"scripts/lst_regionen.R"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Die Funktion <a href="https://jakubnowosad.com/supercells/reference/supercells.html">supercells()</a> verbindet Merkmalsähnlichkeit und räumliche Nähe. <code>k</code> steuert die angestrebte Zahl der Regionen, <code>compactness</code> deren räumliche Kompaktheit. Das Skript speichert die Polygone als <code>regionen.gpkg</code>, ihre Kennwerte und die erneut aggregierten ursprünglichen Zeitreihen.</p>
+<p>Damit lassen sich die beiden Aggregationsreihenfolgen für Region 1 direkt vergleichen:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>reihe <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"output/regionen_zeitreihe.csv"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>karte <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"output/regionen_kennwerte.csv"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(reihe<span class="sc">$</span>lst_c[reihe<span class="sc">$</span>region_id <span class="sc">==</span> <span class="dv">1</span>], <span class="fl">0.90</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>karte<span class="sc">$</span>q90[karte<span class="sc">$</span>region_id <span class="sc">==</span> <span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Der erste Wert ist q90 der regionalen Mitteltemperaturen über die Zeit. Der zweite ist der räumliche Mittelwert der pixelweisen q90-Werte.</p>
+<p><strong>Arbeitsauftrag:</strong> Wiederholen Sie die Berechnung zunächst mit <code>k &lt;- 15</code>, dann mit <code>k &lt;- 60</code>. Verändern Sie anschließend bei gleicher Segmentzahl die Kompaktheit. Speichern Sie jede Variante unter eigenem Namen. Vergleichen Sie Grenzlage, innere Temperaturstreuung und Unterschiede benachbarter Regionen.</p>
+<p>Die Segmente sind thermisch begründete Analysegebiete. Ob ihre Grenzen mit Stadtquartieren zusammenfallen, wird anschließend anhand von Bebauung, Nutzung und Topografie untersucht. Die Wahl von Merkmalen, Segmentzahl und Kompaktheit ist Teil des räumlichen Modells. Durch Vergleich mehrerer Varianten wird sichtbar, welche Strukturen über Maßstäbe hinweg bestehen.</p>
+<p>Für einen späteren Vergleich von Landbedeckungsmustern innerhalb solcher Gebiete bietet Nowosads <a href="https://jakubnowosad.com/motif/">motif</a> weitere Methoden. Es beschreibt Muster kategorialer Raster; in dieser Einheit werden zunächst kontinuierliche Temperaturmerkmale mit <code>supercells</code> regionalisiert.</p>
+</section>
+</section>
+<section id="einordnung-als-geographische-modellierung" class="level1">
+<h1>6 · Einordnung als geographische Modellierung</h1>
+<p>Die Verarbeitungskette umfasst mehrere Modellentscheidungen: LST als Zielgröße, Auswahl der Beobachtungen, gemeinsames Raster, zeitliche Statistik und räumliche Bezugseinheit. Jede Entscheidung verändert, welche Unterschiede sichtbar werden.</p>
+<p>Die automatisierte Berechnung macht diese Entscheidungen wiederholbar. Die fachliche Prüfung fragt anschließend, ob die resultierenden Muster zur Forschungsfrage passen und gegenüber anderen Kennwerten oder Gebietseinteilungen Bestand haben. Eine Segmentgrenze allein erklärt noch keinen Prozess; Oberflächenbeschaffenheit, Feuchte und Verschattung liefern mögliche Erklärungen.</p>
+<p>Die Beziehung zu gemessener Lufttemperatur wird gesondert behandelt: <a href="../pages/exkurs_stationen.html">Exkurs: Stationsmessungen in Mittelhessen</a>.</p>
+</section>
+<section id="vom-oberflächenhotspot-zur-thermischen-belastung" class="level1">
+<h1>7 · Vom Oberflächenhotspot zur thermischen Belastung</h1>
+<p>Die Planung richtet sich auf Aufenthaltsbedingungen für Menschen. Deshalb wird nach der Satellitenanalyse die Lufttemperatur ergänzt: Sie beschreibt einen Teil des Wärmeaustauschs mit der Umgebung. Für die Belastung im Freien sind zusätzlich Feuchte, Wind und Strahlung erforderlich.</p>
+<p>Der <a href="../pages/exkurs_stationen.html">Exkurs zu Stationsdaten und UTCI</a> erläutert diese Beziehung, verlinkt Stationen in Mittelhessen und enthält ein kurzes Szenarioskript. Bei gleicher Lufttemperatur wird eine besonnte mit einer verschatteten Situation verglichen. So wird deutlich, warum eine Maßnahme wie Verschattung die thermische Belastung verändern kann, ohne dass die Lufttemperatur im gleichen Maß sinkt.</p>
+<p>Ein LST-Raster lässt sich allein nicht in UTCI umrechnen. Die zusätzlich benötigten Größen müssen gemessen, räumlich modelliert oder als Szenarioannahmen ausgewiesen werden. Damit wechselt die Analyse von der Beobachtung der Oberfläche zu einem Modell des menschlichen Wärmehaushalts.</p>
+</section>
+<section id="planungsauftrag" class="level1">
+<h1>8 · Planungsauftrag: räumliche Prioritäten begründen</h1>
+<p><strong>Fragestellung:</strong> Für welche zwei Standorte im Untersuchungsgebiet sollte die Kommune eine vertiefte Prüfung von Hitzeschutzmaßnahmen priorisieren?</p>
+<p>Die thermischen Regionen werden mit Aufenthaltsorten und Nutzungen überlagert. Geeignete Bezugspunkte sind beispielsweise Pflegeeinrichtungen, Schulen, Spielplätze, Haltestellen und häufig genutzte Fußwege. Bevölkerungsdaten werden auf der verfügbaren Gebietsebene verwendet; Angaben zu einer Region lassen keine unmittelbare Aussage über einzelne Personen zu.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th>Räumliche Information</th>
+<th>Bedeutung für die Entscheidung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Thermische Situation</td>
+<td>LST-Mittelwert, q90/q95 und bei ausreichender Datengrundlage UTCI</td>
+<td>Welche Belastungshinweise liegen vor?</td>
+</tr>
+<tr class="even">
+<td>Exposition</td>
+<td>Aufenthaltsorte, Nutzungszeiten und Wege</td>
+<td>Wo und wann halten sich Menschen auf?</td>
+</tr>
+<tr class="odd">
+<td>Vulnerabilität</td>
+<td>Einrichtungen und verfügbare Bevölkerungsinformationen</td>
+<td>Wo besteht besonderer Schutzbedarf?</td>
+</tr>
+<tr class="even">
+<td>Anpassungsmöglichkeiten</td>
+<td>Schatten, erreichbare Grünräume, nutzbare kühle Innenräume</td>
+<td>Welche Entlastung steht bereits zur Verfügung?</td>
+</tr>
+</tbody>
+</table>
+<p>Der Schutzbedarf unter anderem älterer Menschen und kleiner Kinder wird im <a href="https://www.umweltbundesamt.de/themen/gesundheit/umwelteinfluesse-auf-den-menschen/klimawandel-gesundheit/wirkungskomplex-hitze">UBA-Hintergrund zu Hitze</a> erläutert. Ein Beispiel für die Verbindung räumlicher Klimamodelle und soziodemographischer Daten ist das <a href="https://www.umweltbundesamt.de/themen/klima-energie/klimafolgen-anpassung/werkzeuge-der-anpassung/tatenbank/hitzerisikomanagement-in-der-stadt-heats">Projekt HEATS</a>.</p>
+<p>Ein konstruiertes Vergleichsbeispiel zeigt die Entscheidung:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Standort</th>
+<th>Thermischer Hinweis</th>
+<th>Nutzung und Schutzbedarf</th>
+<th>Folgerung für die Prüfung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Gewerbedach</td>
+<td>sehr hohe q95-LST</td>
+<td>kaum Aufenthalt im Freien</td>
+<td>hoher Oberflächenwert allein begründet keine erste Priorität</td>
+</tr>
+<tr class="even">
+<td>Vorplatz einer Pflegeeinrichtung</td>
+<td>mäßig hohe LST, wenig Schatten</td>
+<td>besonders empfindliche Nutzergruppe</td>
+<td>lokale Strahlungssituation und Aufenthaltsbedingungen prüfen</td>
+</tr>
+<tr class="odd">
+<td>Schulweg an einer Haltestelle</td>
+<td>hohe LST und besonnte Wartefläche</td>
+<td>wiederkehrender Aufenthalt, darunter Kinder</td>
+<td>Verschattung und erreichbare Ausweichflächen prüfen</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ergebnis:</strong> Eine Karte markiert zwei reale Prüfstandorte. Für jeden Standort wird in wenigen Sätzen dokumentiert: thermischer Befund, genutzte räumliche Einheit, Nutzung und Schutzbedarf, fehlende Information und eine zu prüfende Maßnahme. Ein UTCI-Wert aus angenommenen Eingaben wird als Szenario ausgewiesen.</p>
+<p>Zum Abschluss wird geprüft, ob sich die Priorisierung beim Wechsel von mean zu q95 oder bei einer anderen Segmentierung verändert. Besteht sie nur unter einer bestimmten Parametrisierung, gehört diese Abhängigkeit in die Begründung. Die Karten dienen damit einer nachvollziehbaren Auswahl von Prüfgebieten.</p>
+<p>Grundlage der Fallstudie ist das Material <a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city">Summer in the City</a>. Der Kurs übernimmt die stadtklimatische Fragestellung und entwickelt daraus einen Analyseweg für Geographiestudierende.</p>
 
 
-</section></section>
-    </div>
-  <div class="quarto-auto-generated-content" style="display: none;">
-<div class="footer footer-default">
+</section>
 
-</div>
-</div></div>
-
-  <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="../site_libs/revealjs/dist/reveal.js"></script>
-  <!-- reveal.js plugins -->
-  <script src="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="../site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="../site_libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="../site_libs/revealjs/plugin/quarto-support/support.js"></script>
-  
-
-  <script src="../site_libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="../site_libs/revealjs/plugin/search/search.js"></script>
-  <script src="../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../site_libs/revealjs/plugin/math/math.js"></script>
-  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-'controlsAuto': false,
-'previewLinksAuto': false,
-'pdfSeparateFragments': false,
-'autoAnimateEasing': "ease",
-'autoAnimateDuration': 1,
-'autoAnimateUnmatched': true,
-'jumpToSlide': true,
-'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":false},
-'chalkboard': {"buttons":true},
-'smaller': false,
- 
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: false,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'edges',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: 'h.v',
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: true,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: false,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: false,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'fade',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'none',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // The "normal" size of the presentation, aspect ratio will be preserved
-        // when the presentation is scaled to fit different resolutions. Can be
-        // specified using percentage units.
-        width: 1050,
-
-        height: 700,
-
-        // Factor of the display size that should remain empty around the content
-        margin: 0.1,
-
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
-        // reveal.js plugins
-        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
-
-          RevealMath,
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
       });
-    </script>
-    <script id="quarto-html-after-body" type="application/javascript">
-      window.document.addEventListener("DOMContentLoaded", function (event) {
-        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
-        tabsets.forEach(function(tabset) {
-          const tabby = new Tabby('#' + tabset.id);
-        });
-        const isCodeAnnotation = (el) => {
-          for (const clz of el.classList) {
-            if (clz.startsWith('code-annotation-')) {                     
-              return true;
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/gisma-courses\.github\.io\/geo-mar-mod-2026");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
             }
-          }
-          return false;
         }
-        const onCopySuccess = function(e) {
-          // button target
-          const button = e.trigger;
-          // don't keep focus
-          button.blur();
-          // flash "checked"
-          button.classList.add('code-copy-button-checked');
-          var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
-          let tooltip;
-          if (window.bootstrap) {
-            button.setAttribute("data-bs-toggle", "tooltip");
-            button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
-            tooltip = new bootstrap.Tooltip(button, 
-              { trigger: "manual", 
-                customClass: "code-copy-button-tooltip",
-                offset: [0, -8]});
-            tooltip.show();    
-          }
-          setTimeout(function() {
-            if (tooltip) {
-              tooltip.hide();
-              button.removeAttribute("data-bs-title");
-              button.removeAttribute("data-bs-toggle");
-              button.removeAttribute("data-bs-placement");
-            }
-            button.setAttribute("title", currentTitle);
-            button.classList.remove('code-copy-button-checked');
-          }, 1000);
-          // clear code selection
-          e.clearSelection();
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
-        const getTextToCopy = function(trigger) {
-          const outerScaffold = trigger.parentElement.cloneNode(true);
-          const codeEl = outerScaffold.querySelector('code');
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
           }
-          return codeEl.innerText;
         }
-        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-          text: getTextToCopy
-        });
-        clipboard.on('success', onCopySuccess);
-        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-            text: getTextToCopy,
-            container: window.document.getElementById('quarto-embedded-source-code-modal')
-          });
-          clipboardModal.on('success', onCopySuccess);
-        }
-          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-          var mailtoRegex = new RegExp(/^mailto:/);
-            var filterRegex = new RegExp("https:\/\/gisma-courses\.github\.io\/geo-mar-mod2026");
-          var isInternal = (href) => {
-              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-          }
-          // Inspect non-navigation links and adorn them if external
-         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-          for (var i=0; i<links.length; i++) {
-            const link = links[i];
-            if (!isInternal(link.href)) {
-              // undo the damage that might have been done by quarto-nav.js in the case of
-              // links that we want to consider external
-              if (link.dataset.originalHref !== undefined) {
-                link.href = link.dataset.originalHref;
-              }
-            }
-          }
-        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-          const config = {
-            allowHTML: true,
-            maxWidth: 500,
-            delay: 100,
-            arrow: false,
-            appendTo: function(el) {
-                return el.closest('section.slide') || el.parentElement;
-            },
-            interactive: true,
-            interactiveBorder: 10,
-            theme: 'light-border',
-            placement: 'bottom-start',
-          };
-          if (contentFn) {
-            config.content = contentFn;
-          }
-          if (onTriggerFn) {
-            config.onTrigger = onTriggerFn;
-          }
-          if (onUntriggerFn) {
-            config.onUntrigger = onUntriggerFn;
-          }
-            config['offset'] = [0,0];
-            config['maxWidth'] = 700;
-          window.tippy(el, config); 
-        }
-        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-        for (var i=0; i<noterefs.length; i++) {
-          const ref = noterefs[i];
-          tippyHover(ref, function() {
-            // use id or data attribute instead here
-            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-            try { href = new URL(href).hash; } catch {}
-            const id = href.replace(/^#\/?/, "");
-            const note = window.document.getElementById(id);
-            if (note) {
-              return note.innerHTML;
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
             } else {
-              return "";
+              container.appendChild(child.cloneNode(true));
+              break;
             }
-          });
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
         }
-        const findCites = (el) => {
-          const parentEl = el.parentElement;
-          if (parentEl) {
-            const cites = parentEl.dataset.cites;
-            if (cites) {
-              return {
-                el,
-                cites: cites.split(' ')
-              };
-            } else {
-              return findCites(el.parentElement)
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
             }
           } else {
-            return undefined;
-          }
-        };
-        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-        for (var i=0; i<bibliorefs.length; i++) {
-          const ref = bibliorefs[i];
-          const citeInfo = findCites(ref);
-          if (citeInfo) {
-            tippyHover(citeInfo.el, function() {
-              var popup = window.document.createElement('div');
-              citeInfo.cites.forEach(function(cite) {
-                var citeDiv = window.document.createElement('div');
-                citeDiv.classList.add('hanging-indent');
-                citeDiv.classList.add('csl-entry');
-                var biblioDiv = window.document.getElementById('ref-' + cite);
-                if (biblioDiv) {
-                  citeDiv.innerHTML = biblioDiv.innerHTML;
-                }
-                popup.appendChild(citeDiv);
-              });
-              return popup.innerHTML;
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
             });
           }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
         }
+      }, function(instance) {
       });
-      </script>
-    
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Exkurs: Messdaten und UTCI">
+        <span class="nav-page-text">Exkurs: Messdaten und UTCI</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
 
-</body></html>
+
+
+
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/edit/main/pages/modellierung_luftbild_lst.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/gisma-courses/geo-mar-mod-2026/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer></body></html>

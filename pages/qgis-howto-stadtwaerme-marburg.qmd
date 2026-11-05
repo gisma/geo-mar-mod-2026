@@ -1,19 +1,14 @@
 ---
-title: "QGIS-Howto: Stadtwärme in Marburg"
-subtitle: "Luftbild und Wärmebild manuell vergleichen"
+title: "QGIS-Referenz: Stadtwärme in Marburg"
+subtitle: "Räumliche Operationalisierung mit Luftbild und DLR-LST-Produkt"
 order: 20
-title-block-banner: ../images/01-splash.png
-title-block-banner-color: black
 #page-layout: full
-format-links: [html, pdf, docx]
+format-links: [html]
 format:
   html:
     toc: false
     code-fold: false
     number-sections: false
-  pdf:
-    pdf-engine: lualatex
-  docx: default
 execute:
   echo: false
   warning: false
@@ -32,7 +27,7 @@ Das Ergebnis ist ein QGIS-Projekt mit zwei Rasterebenen und einer selbst gezeich
 **Direkter Datendownload:** [DLR-LST-Sommermittel 2021–2025 als GeoTIFF herunterladen (ca. 1,3 GiB)](https://download.geoservice.dlr.de/LST_DE/files/Germany_LST_summer_2021-2025_mean.tif). Das Raster umfasst Deutschland einschließlich Marburg und enthält bereits °C. Es handelt sich um einen zeitlichen Mittelwert, nicht um ein q90- oder q95-Produkt.
 :::
 
-# Was du brauchst
+# Daten und Software
 
 | Eingabe | Quelle | Verwendung |
 |---|---|---|
@@ -119,10 +114,11 @@ Die Erwartung wird zuerst ohne sichtbare Temperaturkarte erstellt.
 1. Wärmebild vorübergehend ausblenden.
 2. **Layer → Layer erstellen → Neuer GeoPackage-Layer…** öffnen.
 3. Datei `erwartungen.gpkg`, Geometrietyp **Polygon**, Projekt-KBS **EPSG:25832** wählen.
-4. Drei Textfelder anlegen:
+4. Vier Textfelder anlegen:
 
 | Feldname | Beispiele |
 |---|---|
+| `area_id` | eindeutige Flächenkennung, z. B. `park`, `gewerbe`, `wohnen` |
 | `erwartung` | `warm`, `mittel`, `kuehl` |
 | `oberflaeche` | Dach, Straße, Parkplatz, Vegetation, Wasser, Mischfläche |
 | `begruendung` | Versiegelung, Schatten, Verdunstung, Feuchte, Material |
@@ -146,7 +142,7 @@ LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Luf
 
 # Bezug zum Skriptworkflow
 
-| Skriptworkflow im Quellrepository | Minimaler manueller QGIS-Weg |
+| Skriptworkflow im Quellrepository | Manuelle Kursimplementierung |
 |---|---|
 | Landsat-Szenen laden, maskieren und in °C umrechnen | bereits aufbereitetes DLR-LST-GeoTIFF direkt herunterladen |
 | Heiße Szenen auswählen und pixelweises q90 berechnen | das frei verfügbare Sommermittel 2021–2025 verwenden |
@@ -155,6 +151,12 @@ LST bezeichnet die Temperatur der Landoberfläche. Sie ist keine Messung der Luf
 | Projekt und Printlayouts automatisch erzeugen | Layer anordnen, Erwartungen digitalisieren und Projekt speichern |
 
 Manuell nachgebildet werden die **räumliche Interpretation, die Erwartung und ihr Abgleich mit einem Landsat-basierten Wärmebild**. Die thermische Statistik unterscheidet sich: Das Skript erzeugt Hot-q90 aus ausgewählten heißen Szenen; das hier direkt herunterladbare DLR-Produkt enthält das Sommermittel der gültigen Beobachtungen. Deshalb werden Ergebnis und Legende ausdrücklich als **Sommermittel** bezeichnet.
+
+# Übergang zur automatisierten Auswertung
+
+Die hier digitalisierten Flächen werden im [Lehrpfad zur Modellierung städtischer Hitze](modellierung_luftbild_lst.qmd) weiterverwendet. Für die R-Skripte wird der Polygonlayer über **Exportieren → Objekte speichern als…** als `data/flaechen.gpkg` im RStudio-Projekt gespeichert. Das Feld `area_id` bleibt erhalten.
+
+Ein zusätzlicher Polygonlayer mit genau einem Polygon legt das gesamte Untersuchungsgebiet fest. Er wird als `data/gebiet.gpkg` gespeichert und umfasst die Vergleichsflächen einschließlich ihres räumlichen Zusammenhangs. Diese beiden Dateien sind die Eingaben für den automatisierten Abruf und die Zeitreihenberechnung.
 
 # Quellen und weitere Informationen
 

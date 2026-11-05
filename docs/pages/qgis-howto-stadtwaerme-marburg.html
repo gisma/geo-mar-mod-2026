@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>QGIS-Howto: Stadtwärme in Marburg – Modellieren in der Geographie</title>
+<title>QGIS-Referenz: Stadtwärme in Marburg – Modellieren in der Geographie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,8 +29,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../pages/modellbildung_gis_reader.html" rel="prev">
-<link href="..//images/logo.png" rel="icon" type="image/png">
+<link href="../pages/exkurs_stationen.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -72,35 +71,18 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>
-
-      .quarto-title-block .quarto-title-banner h1,
-      .quarto-title-block .quarto-title-banner h2,
-      .quarto-title-block .quarto-title-banner h3,
-      .quarto-title-block .quarto-title-banner h4,
-      .quarto-title-block .quarto-title-banner h5,
-      .quarto-title-block .quarto-title-banner h6
-      {
-        color: black;
-      }
-
-      .quarto-title-block .quarto-title-banner {
-        color: black;
-background: ../images/01-splash.png;
-      }
-</style>
 
 
-<meta property="og:title" content="QGIS-Howto: Stadtwärme in Marburg – Modellieren in der Geographie">
-<meta property="og:description" content="Luftbild und Wärmebild manuell vergleichen">
+<meta property="og:title" content="QGIS-Referenz: Stadtwärme in Marburg – Modellieren in der Geographie">
+<meta property="og:description" content="Räumliche Operationalisierung mit Luftbild und DLR-LST-Produkt">
 <meta property="og:site_name" content="Modellieren in der Geographie">
-<meta name="twitter:title" content="QGIS-Howto: Stadtwärme in Marburg – Modellieren in der Geographie">
-<meta name="twitter:description" content="Luftbild und Wärmebild manuell vergleichen">
+<meta name="twitter:title" content="QGIS-Referenz: Stadtwärme in Marburg – Modellieren in der Geographie">
+<meta name="twitter:description" content="Räumliche Operationalisierung mit Luftbild und DLR-LST-Produkt">
 <meta name="twitter:creator" content="@gisma">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+<body class="nav-sidebar docked fullcontent quarto-light"><script id="quarto-html-before-body" type="application/javascript">
     const toggleBodyColorMode = (bsSheetEl) => {
       const mode = bsSheetEl.getAttribute("data-mode");
       const bodyEl = window.document.querySelector("body");
@@ -265,42 +247,25 @@ background: ../images/01-splash.png;
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">QGIS-Howto: Stadtwärme in Marburg</h1>
+          <h1 class="quarto-secondary-nav-title">QGIS-Referenz: Stadtwärme in Marburg</h1>
         </a>     
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">QGIS-Howto: Stadtwärme in Marburg</h1>
-            <p class="subtitle lead">Luftbild und Wärmebild manuell vergleichen</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="../">R-spatial in a nutshell</a> 
+      <a href="../">Stadtwärme modellieren</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -318,7 +283,7 @@ background: ../images/01-splash.png;
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Inhalte</span></a>
+ <span class="menu-text">Modellierung</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -326,78 +291,31 @@ background: ../images/01-splash.png;
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../pages/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Kursstruktur</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Worksheets</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/ws/ws-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheet 01</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/ws/ws-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheet 02</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Folien</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/modellbildung_gis_folien.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellierung was ist das?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wärmeinsel?</span></a>
+ <span class="menu-text">Modellierung städtischer Hitze</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Materials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Anleitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../pages/modellbildung_gis_reader.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Foliensatz</span></a>
-  </div>
-</li>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">QGIS-Howto: Stadtwärme in Marburg</span></a>
+ <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
   </div>
 </li>
       </ul>
@@ -407,14 +325,29 @@ background: ../images/01-splash.png;
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-    <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="qgis-howto-stadtwaerme-marburg.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li><li><a href="qgis-howto-stadtwaerme-marburg.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">QGIS-Referenz: Stadtwärme in Marburg</h1>
+<p class="subtitle lead">Räumliche Operationalisierung mit Luftbild und DLR-LST-Produkt</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="ziel" class="level1">
@@ -436,8 +369,8 @@ Important
 </div>
 </div>
 </section>
-<section id="was-du-brauchst" class="level1">
-<h1>Was du brauchst</h1>
+<section id="daten-und-software" class="level1">
+<h1>Daten und Software</h1>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -561,7 +494,7 @@ Important
 <li>Wärmebild vorübergehend ausblenden.</li>
 <li><strong>Layer → Layer erstellen → Neuer GeoPackage-Layer…</strong> öffnen.</li>
 <li>Datei <code>erwartungen.gpkg</code>, Geometrietyp <strong>Polygon</strong>, Projekt-KBS <strong>EPSG:25832</strong> wählen.</li>
-<li>Drei Textfelder anlegen:</li>
+<li>Vier Textfelder anlegen:</li>
 </ol>
 <table class="caption-top table">
 <colgroup>
@@ -576,14 +509,18 @@ Important
 </thead>
 <tbody>
 <tr class="odd">
+<td><code>area_id</code></td>
+<td>eindeutige Flächenkennung, z. B. <code>park</code>, <code>gewerbe</code>, <code>wohnen</code></td>
+</tr>
+<tr class="even">
 <td><code>erwartung</code></td>
 <td><code>warm</code>, <code>mittel</code>, <code>kuehl</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code>oberflaeche</code></td>
 <td>Dach, Straße, Parkplatz, Vegetation, Wasser, Mischfläche</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>begruendung</code></td>
 <td>Versiegelung, Schatten, Verdunstung, Feuchte, Material</td>
 </tr>
@@ -635,7 +572,7 @@ Important
 <thead>
 <tr class="header">
 <th>Skriptworkflow im Quellrepository</th>
-<th>Minimaler manueller QGIS-Weg</th>
+<th>Manuelle Kursimplementierung</th>
 </tr>
 </thead>
 <tbody>
@@ -662,6 +599,11 @@ Important
 </tbody>
 </table>
 <p>Manuell nachgebildet werden die <strong>räumliche Interpretation, die Erwartung und ihr Abgleich mit einem Landsat-basierten Wärmebild</strong>. Die thermische Statistik unterscheidet sich: Das Skript erzeugt Hot-q90 aus ausgewählten heißen Szenen; das hier direkt herunterladbare DLR-Produkt enthält das Sommermittel der gültigen Beobachtungen. Deshalb werden Ergebnis und Legende ausdrücklich als <strong>Sommermittel</strong> bezeichnet.</p>
+</section>
+<section id="übergang-zur-automatisierten-auswertung" class="level1">
+<h1>Übergang zur automatisierten Auswertung</h1>
+<p>Die hier digitalisierten Flächen werden im <a href="../pages/modellierung_luftbild_lst.html">Lehrpfad zur Modellierung städtischer Hitze</a> weiterverwendet. Für die R-Skripte wird der Polygonlayer über <strong>Exportieren → Objekte speichern als…</strong> als <code>data/flaechen.gpkg</code> im RStudio-Projekt gespeichert. Das Feld <code>area_id</code> bleibt erhalten.</p>
+<p>Ein zusätzlicher Polygonlayer mit genau einem Polygon legt das gesamte Untersuchungsgebiet fest. Er wird als <code>data/gebiet.gpkg</code> gespeichert und umfasst die Vergleichsflächen einschließlich ihres räumlichen Zusammenhangs. Diese beiden Dateien sind die Eingaben für den automatisierten Abruf und die Zeitreihenberechnung.</p>
 </section>
 <section id="quellen-und-weitere-informationen" class="level1">
 <h1>Quellen und weitere Informationen</h1>
@@ -765,7 +707,7 @@ Important
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/gisma-courses\.github\.io\/geo-mar-mod2026");
+        var filterRegex = new RegExp("https:\/\/gisma-courses\.github\.io\/geo-mar-mod-2026");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -1099,8 +1041,8 @@ Important
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../pages/modellbildung_gis_reader.html" class="pagination-link" aria-label="Foliensatz">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Foliensatz</span>
+      <a href="../pages/exkurs_stationen.html" class="pagination-link" aria-label="Exkurs: Messdaten und UTCI">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Exkurs: Messdaten und UTCI</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

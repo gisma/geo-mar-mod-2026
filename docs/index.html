@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Modellieren in der Geographie</title>
+<title>Modellierung städtischer Hitze – Modellieren in der Geographie</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -29,7 +29,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href=".//images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -71,30 +70,13 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<style>
-
-      .quarto-title-block .quarto-title-banner h1,
-      .quarto-title-block .quarto-title-banner h2,
-      .quarto-title-block .quarto-title-banner h3,
-      .quarto-title-block .quarto-title-banner h4,
-      .quarto-title-block .quarto-title-banner h5,
-      .quarto-title-block .quarto-title-banner h6
-      {
-        color: black;
-      }
-
-      .quarto-title-block .quarto-title-banner {
-        color: black;
-background: ../images/placeholder.png;
-      }
-</style>
 
 
-<meta property="og:title" content="Modellieren in der Geographie">
-<meta property="og:description" content="Wirklichkeit - Abstraktion - Prognose - Evaluation">
+<meta property="og:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
+<meta property="og:description" content="Thermische Hotspots, menschliche Belastung und räumliche Planung">
 <meta property="og:site_name" content="Modellieren in der Geographie">
-<meta name="twitter:title" content="Modellieren in der Geographie">
-<meta name="twitter:description" content="Wirklichkeit - Abstraktion - Prognose - Evaluation">
+<meta name="twitter:title" content="Modellierung städtischer Hitze – Modellieren in der Geographie">
+<meta name="twitter:description" content="Thermische Hotspots, menschliche Belastung und räumliche Planung">
 <meta name="twitter:creator" content="@gisma">
 <meta name="twitter:card" content="summary">
 </head>
@@ -264,42 +246,25 @@ background: ../images/placeholder.png;
   </script>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <a class="flex-grow-1 no-decor" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-          <h1 class="quarto-secondary-nav-title">Modellieren in der Geographie</h1>
+          <h1 class="quarto-secondary-nav-title">Modellierung städtischer Hitze</h1>
         </a>     
     </div>
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title d-none d-lg-block">Modellieren in der Geographie</h1>
-            <p class="subtitle lead">Wirklichkeit - Abstraktion - Prognose - Evaluation</p>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">R-spatial in a nutshell</a> 
+      <a href="./">Stadtwärme modellieren</a> 
         <div class="sidebar-tools-main">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
@@ -317,7 +282,7 @@ background: ../images/placeholder.png;
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Inhalte</span></a>
+ <span class="menu-text">Modellierung</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -325,17 +290,22 @@ background: ../images/placeholder.png;
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Kursstruktur</span></a>
+  <a href="./pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modellierung städtischer Hitze</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pages/exkurs_stationen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exkurs: Messdaten und UTCI</span></a>
   </div>
 </li>
       </ul>
   </li>
-        <li class="px-0"><hr class="sidebar-divider hi "></li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Worksheets</span></a>
+ <span class="menu-text">Anleitung</span></a>
           <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -343,60 +313,8 @@ background: ../images/placeholder.png;
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./pages/ws/ws-01.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheet 01</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/ws/ws-02.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Worksheet 02</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
- <span class="menu-text">Folien</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/modellbildung_gis_folien.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Modellierung was ist das?</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/modellierung_luftbild_lst.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Wärmeinsel?</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
- <span class="menu-text">Materials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./pages/modellbildung_gis_reader.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Foliensatz</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./pages/qgis-howto-stadtwaerme-marburg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">QGIS-Howto: Stadtwärme in Marburg</span></a>
+ <span class="menu-text">QGIS-Referenz: Stadtwärme in Marburg</span></a>
   </div>
 </li>
       </ul>
@@ -408,155 +326,50 @@ background: ../images/placeholder.png;
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Modellierung städtischer Hitze</h1>
+<p class="subtitle lead">Thermische Hotspots, menschliche Belastung und räumliche Planung</p>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+
+</header>
 
 
 <section id="zielsetzung" class="level2">
 <h2 class="anchored" data-anchor-id="zielsetzung">Zielsetzung</h2>
-<p>Wie beschreiben wir räumliche Muster? Wie bilden wir aus Klimadaten sinnvolle Teilräume? Wo sind räumliche Vorhersagen belastbar, und wann zeigt ein Satellitenbild tatsächlich eine Veränderung?</p>
-<p>In diesem Kurs lernen Sie ausgewählte fortgeschrittene Grundlagen der Geoinformationswissenschaft und Fernerkundung anzuwenden. Sie arbeiten mit realen Daten aus Hessen und Nordrhein-Westfalen, beschaffen diese selbst und bearbeiten überschaubare anwendungsbezogene Fragen. Dabei verbinden Sie die räumliche Kontrolle in QGIS mit reproduzierbaren Auswertungen in R und ausgewählten externen Werkzeugen.</p>
+<p>Wie wird aus einem thermischen Satellitenbild eine begründete räumliche Priorisierung für den Hitzeschutz?</p>
+<p>Die Fallstudie Marburg führt von Oberflächentemperaturen über zeitliche Kennwerte und thermische Regionen zu Aufenthaltsbedingungen und besonderem Schutzbedarf. Im Mittelpunkt stehen die Modellentscheidungen: Was wird beobachtet, wie wird aggregiert und welche zusätzliche Information verlangt die Planungsfrage?</p>
 <p>Sie lernen, vorhandene Skripte gezielt anzupassen, methodische Entscheidungen zu vergleichen und Ergebnisse fachlich zu prüfen. Räumliche Auflösung, Untersuchungsgebiet, zeitlicher Bezug und Übertragbarkeit begleiten alle Themen. Ziel ist, dass Sie einen Analyseweg selbstständig ausführen und seine Aussagekraft begründen können.</p>
 </section>
-<section id="arbeitsweise" class="level2">
-<h2 class="anchored" data-anchor-id="arbeitsweise">Arbeitsweise</h2>
-<p>Die zwölf Sitzungen verbinden kurze fachliche Einführungen mit einem hohen Übungsanteil. Die Arbeitsaufträge finden Sie in den jeweils verlinkten Worksheets.</p>
-<p>Sie nutzen Code aus den Kursmaterialien, Dokumentation und KI-Unterstützung. Dazu gehört, Eingaben und Parameter zu verstehen, Änderungen festzuhalten und Ausgaben zu kontrollieren. Sie müssen keine Algorithmen selbst entwickeln. Sie sollen jedoch erklären können, was Ihr Skript verarbeitet und woran Sie ein plausibles Ergebnis erkennen.</p>
+<section id="der-lernweg" class="level2">
+<h2 class="anchored" data-anchor-id="der-lernweg">Der Lernweg</h2>
+<p>Der <a href="./pages/modellierung_luftbild_lst.html">Lehrpfad für eine 90-minütige Sitzung</a> beginnt mit dem DLR-Mittelwertbild. Aus einzelnen Landsat-Terminen wird eine Zeitreihe berechnet. Mittelwert, q90 und q95 werden räumlich verglichen und mit Jakub Nowosads R-Paket supercells zu thermischen Regionen zusammengefasst. Kurze R-Skripte setzen die Rechenschritte um.</p>
+<p>Der separate <a href="./pages/exkurs_stationen.html">Exkurs zu Stationsdaten und UTCI</a> erklärt den Zusammenhang von Oberflächen-, Luft- und Strahlungstemperatur. Ein Szenariovergleich macht die Bedeutung von Verschattung sichtbar. Abschließend werden thermische Befunde mit Aufenthaltsorten und vulnerablen Gruppen verbunden, um Prüfstandorte für die Stadtplanung zu begründen.</p>
 <p>Im Verlauf des Kurses entsteht ein Projektordner mit Datenquellen, Skripten, Parametern und ausgewählten Ergebnissen. Ihre Interpretationen unterscheiden zwischen Beobachtung, möglicher Erklärung und verbleibender Unsicherheit.</p>
-</section>
-<section id="block-1-daten-beschaffen-und-skripte-nutzen" class="level2">
-<h2 class="anchored" data-anchor-id="block-1-daten-beschaffen-und-skripte-nutzen">Block 1 · Daten beschaffen und Skripte nutzen</h2>
-<p>Sie richten einen reproduzierbaren Arbeitsablauf ein und beschaffen Sentinel-2-Daten für den Burgwald. Sie lernen, eine automatisierte Bildauswahl zu kontrollieren und Vegetationsindizes anhand konkreter Flächen zu interpretieren. Der Vergleich unterschiedlicher Aufnahmetermine zeigt, wie stark Datenqualität und zeitlicher Bezug die Aussage beeinflussen.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Sitzung</th>
-<th>Inhalt und Lernziel</th>
-<th>Arbeitsauftrag</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>1 · Skripte handhaben</td>
-<td>Ein vorhandenes Skript übernehmen, Pfade und Parameter anpassen, Fehler mit Dokumentation oder KI bearbeiten und den Ablauf erneut ausführen.</td>
-<td><a href="worksheets/ws-01.qmd">Worksheet 01</a></td>
-</tr>
-<tr class="even">
-<td>2 · Satellitendaten beschaffen</td>
-<td>Sentinel-2-Aufnahmen über den CDSE-Workflow abrufen; Abdeckung, Wolken, Schatten und Aufnahmedaten prüfen.</td>
-<td><a href="worksheets/ws-02.qmd">Worksheet 02</a></td>
-</tr>
-<tr class="odd">
-<td>3 · Vegetationssignale interpretieren</td>
-<td>NDVI und kNDVI an Wald-, Offenland- und auffälligen Vergleichsflächen untersuchen; Unterschiede zwischen Vegetationssignal und Aufnahmebedingungen erkennen.</td>
-<td><a href="worksheets/ws-03.qmd">Worksheet 03</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="block-2-räumliche-muster-und-klimaregionalisierung" class="level2">
-<h2 class="anchored" data-anchor-id="block-2-räumliche-muster-und-klimaregionalisierung">Block 2 · Räumliche Muster und Klimaregionalisierung</h2>
-<p>Sie vergleichen klassische Landschaftsmaße mit informationstheoretischen Ansätzen. Dabei untersuchen Sie, welche Informationen über Zusammensetzung und räumliche Anordnung tatsächlich erfasst werden. Anschließend wechseln Sie von kategorischer Landbedeckung zu kontinuierlichen Klimadaten: Sie segmentieren Temperaturjahresgänge und bewerten, wie Parameter und Rasterauflösung die entstehenden Regionen beeinflussen.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Sitzung</th>
-<th>Inhalt und Lernziel</th>
-<th>Arbeitsauftrag</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>4 · Muster quantitativ beschreiben</td>
-<td>SHDI und Aggregation Index mit Entropie und relativer gegenseitiger Information vergleichen; den Einfluss räumlicher Anordnung und Fenstergröße untersuchen.</td>
-<td><a href="worksheets/ws-04.qmd">Worksheet 04</a></td>
-</tr>
-<tr class="even">
-<td>5 · Klimadaten segmentieren</td>
-<td>Monatliche Klimadaten selbst beschaffen und mit <code>supercells</code> regionalisieren; Segmentzahl und Kompaktheit kontrolliert variieren.</td>
-<td><a href="worksheets/ws-05.qmd">Worksheet 05</a></td>
-</tr>
-<tr class="odd">
-<td>6 · Regionalisierungen beurteilen</td>
-<td>Homogenität innerhalb der Segmente, Unterschiede benachbarter Jahresgänge und Empfindlichkeit gegenüber gröberer Rasterauflösung bewerten.</td>
-<td><a href="worksheets/ws-06.qmd">Worksheet 06</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="block-3-räumliche-vorhersagen-und-modellgültigkeit" class="level2">
-<h2 class="anchored" data-anchor-id="block-3-räumliche-vorhersagen-und-modellgültigkeit">Block 3 · Räumliche Vorhersagen und Modellgültigkeit</h2>
-<p>Am LAI-Beispiel aus den EON-Materialien verfolgen Sie den Weg von punktuellen Referenzwerten zur flächenhaften Schätzung. Sie prüfen den räumlichen und zeitlichen Bezug der Daten und vergleichen unterschiedliche Validierungsansätze. Mit der Area of Applicability untersuchen Sie anschließend, wo die Prädiktorbedingungen durch die Trainingsdaten abgedeckt sind.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Sitzung</th>
-<th>Inhalt und Lernziel</th>
-<th>Arbeitsauftrag</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>7 · Referenzdaten und Schätzung</td>
-<td>LAI-Referenzen und Satellitendaten zusammenführen; ein einfaches Modell anwenden und dessen Datengrundlage, Residuen und Voraussetzungen beurteilen.</td>
-<td><a href="worksheets/ws-07.qmd">Worksheet 07</a></td>
-</tr>
-<tr class="even">
-<td>8 · Räumlich validieren</td>
-<td>Einen Random Forest mit zufälligen und räumlichen Prüffaltungen vergleichen; bei gleichen Prädiktoren und Modelleinstellungen die Bedeutung der Prüfsituation erkennen.</td>
-<td><a href="worksheets/ws-08.qmd">Worksheet 08</a></td>
-</tr>
-<tr class="odd">
-<td>9 · Anwendungsbereich prüfen</td>
-<td>Vorhersage und AOA gemeinsam interpretieren; untersuchen, wie eine Änderung der Prädiktorauswahl Modellgüte und Anwendungsbereich beeinflusst.</td>
-<td><a href="worksheets/ws-09.qmd">Worksheet 09</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="block-4-veränderungen-werkzeugverknüpfung-und-transfer" class="level2">
-<h2 class="anchored" data-anchor-id="block-4-veränderungen-werkzeugverknüpfung-und-transfer">Block 4 · Veränderungen, Werkzeugverknüpfung und Transfer</h2>
-<p>Sie greifen die Sentinel-Daten erneut auf und untersuchen zeitliche Veränderungen. Zusätzliche Beobachtungen helfen, auffällige Signale zu überprüfen. An einem begrenzten R–OTB-Beispiel lernen Sie, einen Verarbeitungsschritt über Werkzeuggrenzen hinweg nachzuvollziehen. Abschließend übertragen Sie einen erprobten Ansatz auf eine eigene räumliche Frage.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Sitzung</th>
-<th>Inhalt und Lernziel</th>
-<th>Arbeitsauftrag</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>10 · Veränderungen untersuchen</td>
-<td>Sommeraufnahmen mehrerer Jahre vergleichen; Veränderungskandidaten anhand der Originalbilder und einer zusätzlichen Aufnahme prüfen.</td>
-<td><a href="worksheets/ws-10.qmd">Worksheet 10</a></td>
-</tr>
-<tr class="even">
-<td>11 · Werkzeuge verbinden</td>
-<td>Eine bandweise Standardisierung über R, <code>link2GI</code> und OTB ausführen; Werte, Georeferenzierung und Übergabe zwischen den Werkzeugen kontrollieren.</td>
-<td><a href="worksheets/ws-11.qmd">Worksheet 11</a></td>
-</tr>
-<tr class="odd">
-<td>12 · Eigenständig übertragen</td>
-<td>Eine begrenzte Frage zu Landschaftsmustern, Klimaregionalisierung oder zeitlicher Veränderung für einen eigenen Ausschnitt bearbeiten und den Ablauf durch eine andere Gruppe nachvollziehen lassen.</td>
-<td><a href="worksheets/ws-12.qmd">Worksheet 12</a></td>
-</tr>
-</tbody>
-</table>
 </section>
 <section id="was-sie-am-ende-können-sollen" class="level2">
 <h2 class="anchored" data-anchor-id="was-sie-am-ende-können-sollen">Was Sie am Ende können sollen</h2>
-<p>Sie können zu einer räumlichen Frage geeignete Daten beschaffen, einen vorhandenen Analyseweg anpassen und dessen Ergebnisse kritisch beurteilen. Sie begründen die Wahl von Parametern und Maßstäben, erkennen Grenzen von Validierung und Übertragbarkeit und dokumentieren Ihren Ablauf so, dass andere ihn erneut ausführen können.</p>
+<p>Sie können die Aussage eines Temperaturkennwerts erklären, die Folgen räumlicher Aggregation prüfen und den Übergang vom Oberflächenhotspot zur menschlichen Belastung begründen. Sie unterscheiden Beobachtung, Modellannahme und Planungsentscheidung und dokumentieren, welche Daten für eine belastbare Priorisierung noch fehlen.</p>
 </section>
 <section id="materialgrundlage" class="level2">
 <h2 class="anchored" data-anchor-id="materialgrundlage">Materialgrundlage</h2>
 <ul>
-<li><a href="https://gisma-courses.github.io/LV-19-d19-006-24/">Advanced GIS and Remote Sensing 2024 – Methoden, Reader und Worksheets</a></li>
-<li><a href="https://github.com/gisma/LV-19-d19-006-25-R">Aktuelle R-Workflows – LV-19-d19-006-25-R</a></li>
-<li><a href="https://github.com/earth-observation-network/EON2026">EON2026 – Machine Learning, räumliche Validierung und AOA</a></li>
+<li><a href="https://github.com/OGERHub/KlimaResilienzSchule/tree/main/04-summer-in-the-city">Ursprüngliches Materialpaket: KlimaResilienzSchule</a></li>
+<li><a href="https://www.usgs.gov/landsat-missions/landsat-collection-2-surface-temperature">Landsat Collection 2 Surface Temperature (USGS)</a></li>
 </ul>
 
 
@@ -649,7 +462,7 @@ background: ../images/placeholder.png;
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/gisma-courses\.github\.io\/geo-mar-mod2026");
+        var filterRegex = new RegExp("https:\/\/gisma-courses\.github\.io\/geo-mar-mod-2026");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
